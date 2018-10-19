@@ -13,18 +13,10 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Llibre" EntityType="Model1.Llibre" />
-          <EntitySet Name="Autor" EntityType="Model1.Autor" />
-          <EntitySet Name="LlistaEspera" EntityType="Model1.LlistaEspera" />
-          <EntitySet Name="Copia" EntityType="Model1.Copia" />
-          <EntitySet Name="Prestec" EntityType="Model1.Prestec" />
-          <EntitySet Name="Soci" EntityType="Model1.Soci" />
           <EntitySet Name="Sancio" EntityType="Model1.Sancio" />
+          <EntitySet Name="DiesNoHabils" EntityType="Model1.DiesNoHabils" />
         </EntityContainer>
-        <EntityType Name="Llibre">
-          <Key>
-            <PropertyRef Name="ISBN" />
-          </Key>
+        <EntityType Name="Llibre" BaseType="Model1.Copia">
           <Property Name="ISBN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Titol" Type="String" Nullable="false" />
           <Property Name="numPagines" Type="Int32" Nullable="false" />
@@ -34,10 +26,7 @@
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" />
           <Property Name="dataBaixa" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Autor">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
+        <EntityType Name="Autor" BaseType="Model1.Llibre">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" Nullable="false" />
           <Property Name="Cognom" Type="String" Nullable="false" />
@@ -45,36 +34,24 @@
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" />
           <Property Name="dataBaixa" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="LlistaEspera">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
+        <EntityType Name="LlistaEspera" BaseType="Model1.Llibre">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="posicio" Type="Int32" Nullable="false" />
           <Property Name="idLlibre" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Copia">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
+        <EntityType Name="Copia" BaseType="Model1.Sancio">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ISBN" Type="Int32" Nullable="false" />
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" />
           <Property Name="dataBaixa" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Prestec">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
+        <EntityType Name="Prestec" BaseType="Model1.Sancio">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCopia" Type="Int32" Nullable="false" />
           <Property Name="dataInici" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Soci">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
+        <EntityType Name="Soci" BaseType="Model1.Sancio">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nom" Type="String" Nullable="false" />
           <Property Name="cognom" Type="String" Nullable="false" />
@@ -89,6 +66,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dataSancio" Type="DateTime" Nullable="false" />
           <Property Name="idPrestec" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiesNoHabils">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
