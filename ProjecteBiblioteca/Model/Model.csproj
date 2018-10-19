@@ -64,6 +64,7 @@
     <Compile Include="Llibre.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="LlibreDTO.cs" />
     <Compile Include="LlistaEspera.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
