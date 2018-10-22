@@ -22,7 +22,7 @@ namespace Model {
             this.dataBaixa = databaixa;
             this.llibre_ISBN = llibre_isbn;
         }
-        public CopiaDTO(Copia c) {
+        public CopiaDTO(Copias c) {
             this.Id = c.Id;
             this.ISBN = c.ISBN;
             this.dataIntroduccio = c.dataIntroduccio;

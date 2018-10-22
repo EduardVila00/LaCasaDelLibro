@@ -12,9 +12,15 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class DiesNoHabil
+    public partial class Prestecs
     {
         public int Id { get; set; }
-        public System.DateTime data { get; set; }
+        public int IdCopia { get; set; }
+        public System.DateTime dataInici { get; set; }
+        public System.DateTime dataFinal { get; set; }
+        public System.DateTime dataReal { get; set; }
+        public int Sancios_Id { get; set; }
+    
+        public virtual Sancio Sancio { get; set; }
     }
 }

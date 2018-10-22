@@ -22,7 +22,7 @@ namespace Model {
             this.dataDarreraModificacio = datadarreramodificacio;
             this.dataBaixa = databaixa;
         }
-        public AutorDTO(Autor a) {
+        public AutorDTO(Autors a) {
             this.Id = a.Id;
             this.Nom = a.Nom;
             this.Cognom = a.Cognom;

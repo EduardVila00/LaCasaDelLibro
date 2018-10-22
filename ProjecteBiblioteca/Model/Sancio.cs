@@ -17,8 +17,8 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sancio()
         {
-            this.Prestecs = new HashSet<Prestec>();
-            this.Socis = new HashSet<Soci>();
+            this.Prestecs = new HashSet<Prestecs>();
+            this.Socis = new HashSet<Socis>();
         }
     
         public int Id { get; set; }
@@ -26,10 +26,10 @@ namespace Model
         public int idPrestec { get; set; }
         public int Copias_Id { get; set; }
     
-        public virtual Copia Copia { get; set; }
+        public virtual Copias Copias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Prestec> Prestecs { get; set; }
+        public virtual ICollection<Prestecs> Prestecs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Soci> Socis { get; set; }
+        public virtual ICollection<Socis> Socis { get; set; }
     }
 }

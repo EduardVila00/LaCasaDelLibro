@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd7b4e35d1e648ecb9625baa689f9109" Name="Diagram1">
+        <EntityTypeShape EntityType="BibliotecaModel1.Autors" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaModel1.Copias" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaModel1.DiesNoHabils" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaModel1.Llibre" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaModel1.LlistaEspera" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaModel1.Prestecs" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaModel1.Sancio" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaModel1.Socis" Width="1.5" PointX="9.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="BibliotecaModel1.FK_LlibreCopia" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaModel1.FK_SancioCopia" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaModel1.FK_LlibreLlistaEspera" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaModel1.FK_PrestecSancio" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaModel1.LlibreAutor" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaModel1.SancioSoci" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

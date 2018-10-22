@@ -23,7 +23,7 @@ namespace Model {
             this.dataBaixa = dataBaixa;
         }
 
-        public SociDTO(Soci s) {
+        public SociDTO(Socis s) {
             Id = s.Id;
             this.nom = s.nom;
             this.cognom = s.cognom;

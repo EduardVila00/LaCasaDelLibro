@@ -17,7 +17,7 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LlistaEspera()
         {
-            this.Llibres = new HashSet<Llibre>();
+            this.Llibre = new HashSet<Llibre>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace Model
         public int idLlibre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Llibre> Llibres { get; set; }
+        public virtual ICollection<Llibre> Llibre { get; set; }
     }
 }

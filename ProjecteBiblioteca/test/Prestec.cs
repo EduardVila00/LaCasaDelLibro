@@ -17,6 +17,8 @@ namespace test
         public int Id { get; set; }
         public int IdCopia { get; set; }
         public System.DateTime dataInici { get; set; }
+        public System.DateTime dataFinal { get; set; }
+        public System.DateTime dataReal { get; set; }
     
         public virtual Sancio Sancios { get; set; }
     }

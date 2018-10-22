@@ -36,10 +36,6 @@
       <End Role="Sancio" EntitySet="Sancio" />
       <End Role="Copia" EntitySet="Copias" />
     </AssociationSet>
-    <AssociationSet Name="PrestecSancio" Association="Model1.Store.PrestecSancio">
-      <End Role="Prestec" EntitySet="Prestecs" />
-      <End Role="Sancio" EntitySet="Sancio" />
-    </AssociationSet>
     <AssociationSet Name="FK_SancioSoci_Sancio" Association="Model1.Store.FK_SancioSoci_Sancio">
       <End Role="Sancio" EntitySet="Sancio" />
       <End Role="SancioSoci" EntitySet="SancioSoci" />
@@ -47,6 +43,10 @@
     <AssociationSet Name="FK_SancioSoci_Soci" Association="Model1.Store.FK_SancioSoci_Soci">
       <End Role="Soci" EntitySet="Socis" />
       <End Role="SancioSoci" EntitySet="SancioSoci" />
+    </AssociationSet>
+    <AssociationSet Name="PrestecSancio" Association="Model1.Store.PrestecSancio">
+      <End Role="Prestec" EntitySet="Prestecs" />
+      <End Role="Sancio" EntitySet="Sancio" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Sancio">
@@ -94,6 +94,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdCopia" Type="int" Nullable="false" />
     <Property Name="dataInici" Type="datetime" Nullable="false" />
+    <Property Name="dataFinal" Type="datetime" Nullable="false" />
+    <Property Name="dataReal" Type="datetime" Nullable="false" />
     <Property Name="Sancios_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Copias">
@@ -270,13 +272,13 @@
             <End Role="Sancio" EntitySet="Sancio" />
             <End Role="Copia" EntitySet="Copias" />
           </AssociationSet>
-          <AssociationSet Name="PrestecSancio" Association="Model1.PrestecSancio">
-            <End Role="Prestec" EntitySet="Prestecs" />
-            <End Role="Sancio" EntitySet="Sancio" />
-          </AssociationSet>
           <AssociationSet Name="SancioSoci" Association="Model1.SancioSoci">
             <End Role="Sancio" EntitySet="Sancio" />
             <End Role="Soci" EntitySet="Socis" />
+          </AssociationSet>
+          <AssociationSet Name="PrestecSancio" Association="Model1.PrestecSancio">
+            <End Role="Prestec" EntitySet="Prestecs" />
+            <End Role="Sancio" EntitySet="Sancio" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Llibre">
@@ -335,6 +337,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCopia" Type="Int32" Nullable="false" />
           <Property Name="dataInici" Type="DateTime" Nullable="false" />
+          <Property Name="dataFinal" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="dataReal" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Sancios" Relationship="Model1.PrestecSancio" FromRole="Prestec" ToRole="Sancio" />
         </EntityType>
         <EntityType Name="Soci">
@@ -357,8 +361,8 @@
           <Property Name="dataSancio" Type="DateTime" Nullable="false" />
           <Property Name="idPrestec" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Copias" Relationship="Model1.SancioCopia" FromRole="Sancio" ToRole="Copia" />
-          <NavigationProperty Name="Prestec" Relationship="Model1.PrestecSancio" FromRole="Sancio" ToRole="Prestec" />
           <NavigationProperty Name="Socis" Relationship="Model1.SancioSoci" FromRole="Sancio" ToRole="Soci" />
+          <NavigationProperty Name="Prestec" Relationship="Model1.PrestecSancio" FromRole="Sancio" ToRole="Prestec" />
         </EntityType>
         <EntityType Name="DiesNoHabils">
           <Key>
@@ -383,13 +387,13 @@
           <End Type="Model1.Sancio" Role="Sancio" Multiplicity="1" />
           <End Type="Model1.Copia" Role="Copia" Multiplicity="1" />
         </Association>
-        <Association Name="PrestecSancio">
-          <End Type="Model1.Prestec" Role="Prestec" Multiplicity="1" />
-          <End Type="Model1.Sancio" Role="Sancio" Multiplicity="1" />
-        </Association>
         <Association Name="SancioSoci">
           <End Type="Model1.Sancio" Role="Sancio" Multiplicity="*" />
           <End Type="Model1.Soci" Role="Soci" Multiplicity="*" />
+        </Association>
+        <Association Name="PrestecSancio">
+          <End Type="Model1.Prestec" Role="Prestec" Multiplicity="1" />
+          <End Type="Model1.Sancio" Role="Sancio" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -443,6 +447,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdCopia" ColumnName="IdCopia" />
           <ScalarProperty Name="dataInici" ColumnName="dataInici" />
+          <ScalarProperty Name="dataFinal" ColumnName="dataFinal" />
+          <ScalarProperty Name="dataReal" ColumnName="dataReal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -513,20 +519,20 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="PrestecSancio" TypeName="Model1.PrestecSancio" StoreEntitySet="Prestecs">
-      <EndProperty Name="Sancio">
-        <ScalarProperty Name="Id" ColumnName="Sancios_Id" />
-      </EndProperty>
-      <EndProperty Name="Prestec">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="SancioSoci" TypeName="Model1.SancioSoci" StoreEntitySet="SancioSoci">
       <EndProperty Name="Sancio">
         <ScalarProperty Name="Id" ColumnName="Sancio_Id" />
       </EndProperty>
       <EndProperty Name="Soci">
         <ScalarProperty Name="Id" ColumnName="Socis_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PrestecSancio" TypeName="Model1.PrestecSancio" StoreEntitySet="Prestecs">
+      <EndProperty Name="Sancio">
+        <ScalarProperty Name="Id" ColumnName="Sancios_Id" />
+      </EndProperty>
+      <EndProperty Name="Prestec">
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

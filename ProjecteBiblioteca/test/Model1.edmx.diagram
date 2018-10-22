@@ -17,8 +17,8 @@
         <AssociationConnector Association="Model1.LlibreAutor" />
         <AssociationConnector Association="Model1.LlibreCopia" />
         <AssociationConnector Association="Model1.SancioCopia" />
-        <AssociationConnector Association="Model1.PrestecSancio" />
         <AssociationConnector Association="Model1.SancioSoci" />
+        <AssociationConnector Association="Model1.PrestecSancio" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

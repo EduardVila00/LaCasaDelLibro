@@ -25,8 +25,8 @@ namespace test
         public int idPrestec { get; set; }
     
         public virtual Copia Copias { get; set; }
-        public virtual Prestec Prestec { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Soci> Socis { get; set; }
+        public virtual Prestec Prestec { get; set; }
     }
 }

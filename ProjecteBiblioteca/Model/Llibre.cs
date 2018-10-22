@@ -17,8 +17,8 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Llibre()
         {
-            this.Copias = new HashSet<Copia>();
-            this.Autors = new HashSet<Autor>();
+            this.Copias = new HashSet<Copias>();
+            this.Autors = new HashSet<Autors>();
         }
     
         public int ISBN { get; set; }
@@ -32,9 +32,9 @@ namespace Model
         public int LlistaEsperas_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Copia> Copias { get; set; }
+        public virtual ICollection<Copias> Copias { get; set; }
         public virtual LlistaEspera LlistaEspera { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Autor> Autors { get; set; }
+        public virtual ICollection<Autors> Autors { get; set; }
     }
 }

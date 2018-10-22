@@ -12,12 +12,12 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Copia
+    public partial class Copias
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Copia()
+        public Copias()
         {
-            this.Sancios = new HashSet<Sancio>();
+            this.Sancio = new HashSet<Sancio>();
         }
     
         public int Id { get; set; }
@@ -29,6 +29,6 @@ namespace Model
     
         public virtual Llibre Llibre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sancio> Sancios { get; set; }
+        public virtual ICollection<Sancio> Sancio { get; set; }
     }
 }

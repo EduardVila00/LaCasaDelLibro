@@ -12,22 +12,22 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Autor
+    public partial class Socis
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Autor()
+        public Socis()
         {
-            this.Llibres = new HashSet<Llibre>();
+            this.Sancio = new HashSet<Sancio>();
         }
     
         public int Id { get; set; }
-        public string Nom { get; set; }
-        public string Cognom { get; set; }
+        public string nom { get; set; }
+        public string cognom { get; set; }
         public System.DateTime dataIntroduccio { get; set; }
         public System.DateTime dataDarreraModificacio { get; set; }
         public System.DateTime dataBaixa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Llibre> Llibres { get; set; }
+        public virtual ICollection<Sancio> Sancio { get; set; }
     }
 }
