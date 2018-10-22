@@ -30,9 +30,9 @@
             // dgvLlibres
             // 
             this.dgvLlibres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLlibres.Location = new System.Drawing.Point(12, 12);
+            this.dgvLlibres.Location = new System.Drawing.Point(39, 25);
             this.dgvLlibres.Name = "dgvLlibres";
-            this.dgvLlibres.Size = new System.Drawing.Size(240, 150);
+            this.dgvLlibres.Size = new System.Drawing.Size(349, 209);
             this.dgvLlibres.TabIndex = 0;
             // 
             // Form1
@@ -50,7 +50,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvLlibres;
+        public System.Windows.Forms.DataGridView dgvLlibres;
     }
 }
 
