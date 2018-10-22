@@ -10,34 +10,34 @@ namespace Model {
         public int Id { get; set; }
         public string Nom { get; set; }
         public string Cognom { get; set; }
-        public DateTime DataIntroduccio { get; set; }
-        public DateTime DataDarreraModificacio { get; set; }
-        public DateTime DataBaixa { get; set; }
+        public DateTime dataIntroduccio { get; set; }
+        public DateTime dataDarreraModificacio { get; set; }
+        public DateTime dataBaixa { get; set; }
 
         public AutorDTO(int id, string nom, string cognom, DateTime dataintroduccio, DateTime datadarreramodificacio, DateTime databaixa) {
             this.Id = id;
             this.Nom = nom;
             this.Cognom = cognom;
-            this.DataIntroduccio = dataintroduccio;
-            this.DataDarreraModificacio = datadarreramodificacio;
-            this.DataBaixa = databaixa;
+            this.dataIntroduccio = dataintroduccio;
+            this.dataDarreraModificacio = datadarreramodificacio;
+            this.dataBaixa = databaixa;
         }
         public AutorDTO(Autor a) {
             this.Id = a.Id;
             this.Nom = a.Nom;
             this.Cognom = a.Cognom;
-            this.DataIntroduccio = a.dataIntroduccio;
-            this.DataDarreraModificacio = a.dataDarreraModificacio;
-            this.DataBaixa = a.dataBaixa;
+            this.dataIntroduccio = a.dataIntroduccio;
+            this.dataDarreraModificacio = a.dataDarreraModificacio;
+            this.dataBaixa = a.dataBaixa;
 
         }
         public AutorDTO(DataGridViewCellCollection row) {
             this.Id = (int) row["Id"].Value;
             this.Nom = (string) row["Nom"].Value;
             this.Cognom = (string) row["Cognom"].Value;
-            this.DataIntroduccio = (DateTime) row["dataIntroduccio"].Value;
-            this.DataDarreraModificacio = (DateTime) row["dataDarreraModificacio"].Value;
-            this.DataBaixa = (DateTime) row["dataBaixa"].Value;
+            this.dataIntroduccio = (DateTime) row["dataIntroduccio"].Value;
+            this.dataDarreraModificacio = (DateTime) row["dataDarreraModificacio"].Value;
+            this.dataBaixa = (DateTime) row["dataBaixa"].Value;
         }
     }
 }
