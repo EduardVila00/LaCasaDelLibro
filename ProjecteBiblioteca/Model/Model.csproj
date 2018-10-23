@@ -52,23 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutorDTO.cs" />
-    <Compile Include="Autors.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
     <Compile Include="CopiaDTO.cs" />
-    <Compile Include="Copias.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DiesNoHabils.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Llibre.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
     <Compile Include="LlibreDTO.cs" />
-    <Compile Include="LlistaEspera.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
     <Compile Include="LlistaEsperaDTO.cs" />
     <Compile Include="Model2.Context.cs">
       <AutoGen>True</AutoGen>
@@ -86,18 +71,9 @@
       <DependentUpon>Model2.edmx</DependentUpon>
     </Compile>
     <Compile Include="PrestecDTO.cs" />
-    <Compile Include="Prestecs.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sancio.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
     <Compile Include="SancioDTO.cs" />
     <Compile Include="SociDTO.cs" />
-    <Compile Include="Socis.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -121,6 +97,7 @@
       <DependentUpon>Model2.edmx</DependentUpon>
       <LastGenOutput>Model2.cs</LastGenOutput>
     </Content>
+    <Content Include="Model3.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

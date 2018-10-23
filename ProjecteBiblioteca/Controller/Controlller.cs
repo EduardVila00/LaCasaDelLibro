@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace Controller {
     public class Controller {
         Form1 f1 = new Form1();
+        BibliotecaEntities2 db = new BibliotecaEntities2();
 
 
         public void init() {
