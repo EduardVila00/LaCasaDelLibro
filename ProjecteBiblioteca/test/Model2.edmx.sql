@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/19/2018 17:27:22
--- Generated from EDMX file: C:\Users\Eduard Vila\Dropbox\DAM 2\M15\LaCasaDelLibro\ProjecteBiblioteca\test\Model1.edmx
+-- Date Created: 10/23/2018 19:08:53
+-- Generated from EDMX file: C:\Users\Eduard Vila\Source\Repos\EduardVila00\LaCasaDelLibro\ProjecteBiblioteca\test\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,65 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_LlibreLlistaEspera]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Llibre] DROP CONSTRAINT [FK_LlibreLlistaEspera];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LlibreAutor_Llibre]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[LlibreAutor] DROP CONSTRAINT [FK_LlibreAutor_Llibre];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LlibreAutor_Autor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[LlibreAutor] DROP CONSTRAINT [FK_LlibreAutor_Autor];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LlibreCopia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Copias] DROP CONSTRAINT [FK_LlibreCopia];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SancioCopia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Sancio] DROP CONSTRAINT [FK_SancioCopia];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PrestecSancio]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Prestecs] DROP CONSTRAINT [FK_PrestecSancio];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SancioSoci_Sancio]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SancioSoci] DROP CONSTRAINT [FK_SancioSoci_Sancio];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SancioSoci_Soci]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SancioSoci] DROP CONSTRAINT [FK_SancioSoci_Soci];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Sancio]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Sancio];
+GO
+IF OBJECT_ID(N'[dbo].[DiesNoHabils]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DiesNoHabils];
+GO
+IF OBJECT_ID(N'[dbo].[LlistaEspera]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LlistaEspera];
+GO
+IF OBJECT_ID(N'[dbo].[Llibre]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Llibre];
+GO
+IF OBJECT_ID(N'[dbo].[Prestecs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Prestecs];
+GO
+IF OBJECT_ID(N'[dbo].[Copias]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Copias];
+GO
+IF OBJECT_ID(N'[dbo].[Socis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Socis];
+GO
+IF OBJECT_ID(N'[dbo].[Autors]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Autors];
+GO
+IF OBJECT_ID(N'[dbo].[LlibreAutor]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LlibreAutor];
+GO
+IF OBJECT_ID(N'[dbo].[SancioSoci]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SancioSoci];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -32,12 +86,14 @@ CREATE TABLE [dbo].[Sancio] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [dataSancio] datetime  NOT NULL,
     [idPrestec] int  NOT NULL,
+    [dataReturn] datetime  NOT NULL,
+    [dataFinal] datetime  NOT NULL,
     [Copias_Id] int  NOT NULL
 );
 GO
 
--- Creating table 'DiesNoHabils'
-CREATE TABLE [dbo].[DiesNoHabils] (
+-- Creating table 'DiaNoHabil'
+CREATE TABLE [dbo].[DiaNoHabil] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [data] datetime  NOT NULL
 );
@@ -53,7 +109,7 @@ GO
 
 -- Creating table 'Llibre'
 CREATE TABLE [dbo].[Llibre] (
-    [ISBN] int IDENTITY(1,1) NOT NULL,
+    [ISBN] nvarchar(max)  NOT NULL,
     [Titol] nvarchar(max)  NOT NULL,
     [numPagines] int  NOT NULL,
     [disponible] bit  NOT NULL,
@@ -77,11 +133,11 @@ GO
 -- Creating table 'Copias'
 CREATE TABLE [dbo].[Copias] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [ISBN] int  NOT NULL,
+    [ISBN] nvarchar(max)  NOT NULL,
     [dataIntroduccio] datetime  NOT NULL,
     [dataDarreraModificacio] datetime  NOT NULL,
     [dataBaixa] datetime  NOT NULL,
-    [Llibre_ISBN] int  NOT NULL
+    [Llibre_ISBN] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -109,7 +165,7 @@ GO
 
 -- Creating table 'LlibreAutor'
 CREATE TABLE [dbo].[LlibreAutor] (
-    [Llibre_ISBN] int  NOT NULL,
+    [Llibre_ISBN] nvarchar(max)  NOT NULL,
     [Autors_Id] int  NOT NULL
 );
 GO
@@ -131,9 +187,9 @@ ADD CONSTRAINT [PK_Sancio]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'DiesNoHabils'
-ALTER TABLE [dbo].[DiesNoHabils]
-ADD CONSTRAINT [PK_DiesNoHabils]
+-- Creating primary key on [Id] in table 'DiaNoHabil'
+ALTER TABLE [dbo].[DiaNoHabil]
+ADD CONSTRAINT [PK_DiaNoHabil]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

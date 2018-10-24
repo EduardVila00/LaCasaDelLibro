@@ -7,7 +7,7 @@
     <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="Sancio" EntityType="Model1.Store.Sancio" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DiesNoHabils" EntityType="Model1.Store.DiesNoHabils" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DiaNoHabil" EntityType="Model1.Store.DiaNoHabil" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LlistaEspera" EntityType="Model1.Store.LlistaEspera" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Llibre" EntityType="Model1.Store.Llibre" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Prestecs" EntityType="Model1.Store.Prestecs" store:Type="Tables" Schema="dbo" />
@@ -56,9 +56,11 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dataSancio" Type="datetime" Nullable="false" />
     <Property Name="idPrestec" Type="int" Nullable="false" />
+    <Property Name="dataReturn" Type="datetime" Nullable="false" />
+    <Property Name="dataFinal" Type="datetime" Nullable="false" />
     <Property Name="Copias_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="DiesNoHabils">
+  <EntityType Name="DiaNoHabil">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -77,7 +79,7 @@
     <Key>
       <PropertyRef Name="ISBN" />
     </Key>
-    <Property Name="ISBN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISBN" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Titol" Type="nvarchar(max)" Nullable="false" />
     <Property Name="numPagines" Type="int" Nullable="false" />
     <Property Name="disponible" Type="bit" Nullable="false" />
@@ -101,11 +103,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ISBN" Type="int" Nullable="false" />
+    <Property Name="ISBN" Type="nvarchar(max)" Nullable="false" />
     <Property Name="dataIntroduccio" Type="datetime" Nullable="false" />
     <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
     <Property Name="dataBaixa" Type="datetime" Nullable="false" />
-    <Property Name="Llibre_ISBN" Type="int" Nullable="false" />
+    <Property Name="Llibre_ISBN" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Socis">
     <Key>
@@ -134,7 +136,7 @@
       <PropertyRef Name="Llibre_ISBN" />
       <PropertyRef Name="Autors_Id" />
     </Key>
-    <Property Name="Llibre_ISBN" Type="int" Nullable="false" />
+    <Property Name="Llibre_ISBN" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Autors_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SancioSoci">
@@ -247,7 +249,7 @@
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Sancio" EntityType="Model1.Sancio" />
-          <EntitySet Name="DiesNoHabils" EntityType="Model1.DiesNoHabils" />
+          <EntitySet Name="DiaNoHabil" EntityType="Model1.DiaNoHabil" />
           <AssociationSet Name="LlibreLlistaEspera" Association="Model1.LlibreLlistaEspera">
             <End Role="Llibre" EntitySet="Llibre" />
             <End Role="LlistaEspera" EntitySet="LlistaEspera" />
@@ -283,7 +285,7 @@
           <Key>
             <PropertyRef Name="ISBN" />
           </Key>
-          <Property Name="ISBN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISBN" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="Titol" Type="String" Nullable="false" />
           <Property Name="numPagines" Type="Int32" Nullable="false" />
           <Property Name="disponible" Type="Boolean" Nullable="false" />
@@ -321,7 +323,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ISBN" Type="Int32" Nullable="false" />
+          <Property Name="ISBN" Type="String" Nullable="false" />
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" />
           <Property Name="dataBaixa" Type="DateTime" Nullable="false" />
@@ -359,8 +361,10 @@
           <NavigationProperty Name="Copias" Relationship="Model1.SancioCopia" FromRole="Sancio" ToRole="Copia" />
           <NavigationProperty Name="Prestec" Relationship="Model1.PrestecSancio" FromRole="Sancio" ToRole="Prestec" />
           <NavigationProperty Name="Socis" Relationship="Model1.SancioSoci" FromRole="Sancio" ToRole="Soci" />
+          <Property Name="dataReturn" Type="DateTime" Nullable="false" />
+          <Property Name="dataFinal" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="DiesNoHabils">
+        <EntityType Name="DiaNoHabil">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -403,12 +407,14 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dataSancio" ColumnName="dataSancio" />
           <ScalarProperty Name="idPrestec" ColumnName="idPrestec" />
+          <ScalarProperty Name="dataReturn" ColumnName="dataReturn" />
+          <ScalarProperty Name="dataFinal" ColumnName="dataFinal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DiesNoHabils">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.DiesNoHabils)">
-        <MappingFragment StoreEntitySet="DiesNoHabils">
+    <EntitySetMapping Name="DiaNoHabil">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.DiaNoHabil)">
+        <MappingFragment StoreEntitySet="DiaNoHabil">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="data" ColumnName="data" />
         </MappingFragment>

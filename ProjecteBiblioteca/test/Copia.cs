@@ -15,7 +15,7 @@ namespace test
     public partial class Copia
     {
         public int Id { get; set; }
-        public int ISBN { get; set; }
+        public string ISBN { get; set; }
         public System.DateTime dataIntroduccio { get; set; }
         public System.DateTime dataDarreraModificacio { get; set; }
         public System.DateTime dataBaixa { get; set; }

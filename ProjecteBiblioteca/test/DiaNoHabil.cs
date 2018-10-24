@@ -12,7 +12,7 @@ namespace test
     using System;
     using System.Collections.Generic;
     
-    public partial class DiesNoHabils
+    public partial class DiaNoHabil
     {
         public int Id { get; set; }
         public System.DateTime data { get; set; }

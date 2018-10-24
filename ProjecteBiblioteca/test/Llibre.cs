@@ -21,7 +21,7 @@ namespace test
             this.Copias = new HashSet<Copia>();
         }
     
-        public int ISBN { get; set; }
+        public string ISBN { get; set; }
         public string Titol { get; set; }
         public int numPagines { get; set; }
         public bool disponible { get; set; }

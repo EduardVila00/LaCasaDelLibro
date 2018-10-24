@@ -23,6 +23,8 @@ namespace test
         public int Id { get; set; }
         public System.DateTime dataSancio { get; set; }
         public int idPrestec { get; set; }
+        public System.DateTime dataReturn { get; set; }
+        public System.DateTime dataFinal { get; set; }
     
         public virtual Copia Copias { get; set; }
         public virtual Prestec Prestec { get; set; }

@@ -26,7 +26,7 @@ namespace test
         }
     
         public virtual DbSet<Sancio> Sancio { get; set; }
-        public virtual DbSet<DiesNoHabils> DiesNoHabils { get; set; }
+        public virtual DbSet<DiaNoHabil> DiaNoHabil { get; set; }
         public virtual DbSet<LlistaEspera> LlistaEspera { get; set; }
         public virtual DbSet<Llibre> Llibre { get; set; }
         public virtual DbSet<Prestec> Prestecs { get; set; }
