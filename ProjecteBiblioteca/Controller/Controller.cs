@@ -31,7 +31,7 @@ namespace Controller {
             calendari.ShowDialog();
             menu.Dispose();
 
-
+        }
         public void run() {
             Application.Run(menu);
         }
