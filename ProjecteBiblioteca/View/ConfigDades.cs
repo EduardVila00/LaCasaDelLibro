@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace View {
-    public partial class Autorscs : Form {
-        public Autorscs() {
+    public partial class ConfigDades : Form {
+        public ConfigDades() {
             InitializeComponent();
         }
     }

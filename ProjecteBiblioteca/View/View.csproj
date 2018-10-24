@@ -49,11 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Autorscs.cs">
+    <Compile Include="Calendari.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Autorscs.Designer.cs">
-      <DependentUpon>Autorscs.cs</DependentUpon>
+    <Compile Include="Calendari.Designer.cs">
+      <DependentUpon>Calendari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigDades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigDades.Designer.cs">
+      <DependentUpon>ConfigDades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigSocis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigSocis.Designer.cs">
+      <DependentUpon>ConfigSocis.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -67,11 +79,14 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prestecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prestecs.Designer.cs">
+      <DependentUpon>Prestecs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Autorscs.resx">
-      <DependentUpon>Autorscs.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
