@@ -12,6 +12,7 @@ namespace Controller
     class Controller
     {
         View.Menu menu = new View.Menu();
+        ConfigDades cd = new ConfigDades();
         BibliotecaEntities db = new BibliotecaEntities();
 
 
@@ -23,12 +24,32 @@ namespace Controller
 
         public void initListeners()
         {
-                //hHola
+            cd.dgvAutors.SelectionChanged += autorSelectionChanged;
         }
 
         public void run()
         {
             Application.Run(menu);
+        }
+
+        protected void autorSelectionChanged(object sender, EventArgs args)
+        {
+            AutorDTO a;
+            if ((a = autorGetSelected()) != null)
+            {
+            }
+        }
+
+        protected AutorDTO autorGetSelected()
+        {
+            if (cd.dgvAutors.SelectedRows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return (new AutorDTO(cd.dgvAutors.SelectedRows[0].Cells));
+            }
         }
 
     }
