@@ -80,6 +80,9 @@
       <DependentUpon>Prestecs.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConfigDades.resx">
+      <DependentUpon>ConfigDades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Calendari.resx">
       <DependentUpon>Calendari.cs</DependentUpon>
     </EmbeddedResource>

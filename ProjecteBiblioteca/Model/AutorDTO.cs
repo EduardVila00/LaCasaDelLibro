@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Model {
-    class AutorDTO {
+    public class AutorDTO {
         public int Id { get; set; }
         public string Nom { get; set; }
         public string Cognom { get; set; }
