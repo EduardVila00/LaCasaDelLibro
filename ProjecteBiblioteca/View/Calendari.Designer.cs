@@ -23,12 +23,30 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.SuspendLayout();
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(110, 193);
+            this.monthCalendar1.MaxSelectionCount = 14;
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            // 
+            // Calendari
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.monthCalendar1);
+            this.Name = "Calendari";
             this.Text = "Calendari";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        public System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
