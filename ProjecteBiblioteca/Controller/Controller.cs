@@ -29,9 +29,6 @@ namespace Controller
         public void run()
         {
             Application.Run(menu);
-            //hello mama
-            //Hail
-            //hello papa
         }
 
     }
