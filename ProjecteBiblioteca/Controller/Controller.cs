@@ -14,47 +14,46 @@ namespace Controller {
         Calendari calendari = new Calendari();
         BibliotecaEntities db = new BibliotecaEntities();
 
-
+        #region Controller Principal
         public void init() {
             initListeners();
             run();
         }
-
+       
         public void initListeners() {
             menu.buttonCalendari.Click += obrirCalendari;
             cd.dgvAutors.SelectionChanged += autorSelectionChanged;
 
         }
+        public void run() {
+            Application.Run(menu);
+        }
+        #endregion
+        #region Calendari
+
 
         protected void obrirCalendari(object sender, EventArgs args) {
             menu.Hide();
             calendari.ShowDialog();
-            menu.Dispose();
-
-        }
-        public void run() {
-            Application.Run(menu);
         }
 
-        protected void autorSelectionChanged(object sender, EventArgs args)
-        {
+        #endregion
+
+        #region Config Dades
+        protected void autorSelectionChanged(object sender, EventArgs args) {
             AutorDTO a;
-            if ((a = autorGetSelected()) != null)
-            {
+            if ((a = autorGetSelected()) != null) {
             }
         }
 
-        protected AutorDTO autorGetSelected()
-        {
-            if (cd.dgvAutors.SelectedRows.Count == 0)
-            {
+        protected AutorDTO autorGetSelected() {
+            if (cd.dgvAutors.SelectedRows.Count == 0) {
                 return null;
-            }
-            else
-            {
+            } else {
                 return (new AutorDTO(cd.dgvAutors.SelectedRows[0].Cells));
             }
         }
+        #endregion
 
     }
 }
