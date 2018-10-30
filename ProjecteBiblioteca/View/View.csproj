@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Autor.Designer.cs">
+      <DependentUpon>Autor.cs</DependentUpon>
+    </Compile>
     <Compile Include="BibliotecaAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
       <DependentUpon>Prestecs.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Autor.resx">
+      <DependentUpon>Autor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BibliotecaAdmin.resx">
       <DependentUpon>BibliotecaAdmin.cs</DependentUpon>
     </EmbeddedResource>

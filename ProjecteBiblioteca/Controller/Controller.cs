@@ -23,10 +23,10 @@ namespace Controller {
        
         public void initListeners() {
             menu.buttonCalendari.Click += obrirCalendari;
-            cd.dgvAutors.SelectionChanged += autorSelectionChanged;
-            calendari.buttondesabilitar.Click += habilitarCalendari;
-            cd.buttonAfegirAutor.Click += finestraAutor;
-            cd.dgvAutors.SelectionChanged += autorSelectionChanged;
+            //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
+            //calendari.buttondesabilitar.Click += habilitarCalendari;
+            //cd.buttonAfegirAutor.Click += finestraAutor;
+            //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
 
         }
         public void run() {
@@ -58,7 +58,7 @@ namespace Controller {
         }
 
         #endregion
-
+        /*
         #region Config Dades
         protected void obrirConfigDades(object sender, EventArgs args) {
             menu.Hide();
@@ -150,5 +150,6 @@ namespace Controller {
             }
         }
         #endregion
+    */
     }
 }
