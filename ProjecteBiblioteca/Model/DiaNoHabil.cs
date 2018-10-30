@@ -12,7 +12,7 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class DiesNoHabil
+    public partial class DiaNoHabil
     {
         public int Id { get; set; }
         public System.DateTime data { get; set; }

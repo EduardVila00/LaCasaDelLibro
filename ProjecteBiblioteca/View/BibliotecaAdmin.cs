@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace View {
-    public partial class Calendari : Form {
-        public Calendari() {
+    public partial class BibliotecaAdmin : Form {
+        public BibliotecaAdmin() {
             InitializeComponent();
         }
     }
-
-  
 }

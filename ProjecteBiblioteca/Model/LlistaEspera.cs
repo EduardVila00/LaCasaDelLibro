@@ -14,17 +14,10 @@ namespace Model
     
     public partial class LlistaEspera
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LlistaEspera()
-        {
-            this.Llibres = new HashSet<Llibre>();
-        }
-    
         public int Id { get; set; }
-        public int posicio { get; set; }
-        public int idLlibre { get; set; }
+        public string LlibreIsbn { get; set; }
+        public int idSoci { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Llibre> Llibres { get; set; }
+        public virtual Llibre Llibre { get; set; }
     }
 }

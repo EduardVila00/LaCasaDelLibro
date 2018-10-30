@@ -8,24 +8,24 @@ using System.Windows.Forms;
 namespace Model {
     class LlistaEsperaDTO {
         public int Id { get; set; }
-        public int posicio { get; set; }
-        public int idLlibre { get; set; }
+        public int idSoci { get; set; }
+        public string LlibreIsbn { get; set; }
 
-        public LlistaEsperaDTO(int id, int posicio, int idLlibre) {
+        public LlistaEsperaDTO(int id, int idSoci, string LlibreIsbn) {
             Id = id;
-            this.posicio = posicio;
-            this.idLlibre = idLlibre;
+            this.idSoci = idSoci;
+            this.LlibreIsbn = LlibreIsbn;
         }
 
         public LlistaEsperaDTO(LlistaEspera llistaEspera) {
             this.Id = llistaEspera.Id;
-            this.posicio = llistaEspera.posicio;
-            this.idLlibre = llistaEspera.idLlibre;
+            this.idSoci = llistaEspera.idSoci;
+            this.LlibreIsbn = llistaEspera.LlibreIsbn;
         }
         public LlistaEsperaDTO(DataGridViewCellCollection row) {
             this.Id = (int) row["Id"].Value;
-            this.posicio = (int) row["posicio"].Value;
-            this.idLlibre = (int) row["idLlibre"].Value;
+            this.idSoci = (int) row["idSoci"].Value;
+            this.LlibreIsbn = (string) row["LlibreIsbn"].Value;
         }
     }
 }

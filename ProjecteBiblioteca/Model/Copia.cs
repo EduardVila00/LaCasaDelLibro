@@ -17,18 +17,18 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Copia()
         {
-            this.Sancios = new HashSet<Sancio>();
+            this.Prestec = new HashSet<Prestec>();
         }
     
         public int Id { get; set; }
-        public int ISBN { get; set; }
+        public bool disponible { get; set; }
         public System.DateTime dataIntroduccio { get; set; }
         public System.DateTime dataDarreraModificacio { get; set; }
-        public System.DateTime dataBaixa { get; set; }
-        public int Llibre_ISBN { get; set; }
+        public Nullable<System.DateTime> dataBaixa { get; set; }
+        public string LlibreIsbn { get; set; }
     
-        public virtual Llibre Llibre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sancio> Sancios { get; set; }
+        public virtual ICollection<Prestec> Prestec { get; set; }
+        public virtual Llibre Llibre { get; set; }
     }
 }

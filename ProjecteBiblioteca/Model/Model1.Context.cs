@@ -25,13 +25,12 @@ namespace Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Autor> Autors { get; set; }
-        public virtual DbSet<Copia> Copias { get; set; }
-        public virtual DbSet<DiesNoHabil> DiesNoHabils { get; set; }
-        public virtual DbSet<Llibre> Llibres { get; set; }
-        public virtual DbSet<LlistaEspera> LlistaEsperas { get; set; }
-        public virtual DbSet<Prestec> Prestecs { get; set; }
-        public virtual DbSet<Sancio> Sancios { get; set; }
-        public virtual DbSet<Soci> Socis { get; set; }
+        public virtual DbSet<Autor> Autor { get; set; }
+        public virtual DbSet<Copia> Copia { get; set; }
+        public virtual DbSet<DiaNoHabil> DiaNoHabil { get; set; }
+        public virtual DbSet<Llibre> Llibre { get; set; }
+        public virtual DbSet<LlistaEspera> LlistaEspera { get; set; }
+        public virtual DbSet<Prestec> Prestec { get; set; }
+        public virtual DbSet<Soci> Soci { get; set; }
     }
 }

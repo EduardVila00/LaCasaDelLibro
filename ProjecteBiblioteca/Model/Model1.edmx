@@ -5,29 +5,29 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Autors">
+        <EntityType Name="Autor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Cognom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cognoms" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="dataIntroduccio" Type="datetime" Nullable="false" />
           <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
-          <Property Name="dataBaixa" Type="datetime" Nullable="false" />
+          <Property Name="dataBaixa" Type="datetime" />
         </EntityType>
-        <EntityType Name="Copias">
+        <EntityType Name="Copia">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ISBN" Type="int" Nullable="false" />
+          <Property Name="disponible" Type="bit" Nullable="false" />
           <Property Name="dataIntroduccio" Type="datetime" Nullable="false" />
           <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
-          <Property Name="dataBaixa" Type="datetime" Nullable="false" />
-          <Property Name="Llibre_ISBN" Type="int" Nullable="false" />
+          <Property Name="dataBaixa" Type="datetime" />
+          <Property Name="LlibreIsbn" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="DiesNoHabils">
+        <EntityType Name="DiaNoHabil">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -36,209 +36,135 @@
         </EntityType>
         <EntityType Name="Llibre">
           <Key>
-            <PropertyRef Name="ISBN" />
+            <PropertyRef Name="Isbn" />
           </Key>
-          <Property Name="ISBN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Titol" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Isbn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="titol" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="numPagines" Type="int" Nullable="false" />
-          <Property Name="disponible" Type="bit" Nullable="false" />
-          <Property Name="editorial" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="editorial" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idioma" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="dataIntroduccio" Type="datetime" Nullable="false" />
           <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
-          <Property Name="dataBaixa" Type="datetime" Nullable="false" />
-          <Property Name="LlistaEsperas_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="LlibreAutor">
-          <Key>
-            <PropertyRef Name="Llibre_ISBN" />
-            <PropertyRef Name="Autors_Id" />
-          </Key>
-          <Property Name="Llibre_ISBN" Type="int" Nullable="false" />
-          <Property Name="Autors_Id" Type="int" Nullable="false" />
+          <Property Name="dataBaixa" Type="datetime" />
+          <Property Name="AutorId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LlistaEspera">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="posicio" Type="int" Nullable="false" />
-          <Property Name="idLlibre" Type="int" Nullable="false" />
+          <Property Name="LlibreIsbn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idSoci" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Prestecs">
+        <EntityType Name="Prestec">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdCopia" Type="int" Nullable="false" />
           <Property Name="dataInici" Type="datetime" Nullable="false" />
-          <Property Name="Sancios_Id" Type="int" Nullable="false" />
+          <Property Name="dataFinal" Type="datetime" Nullable="false" />
+          <Property Name="dataRetorn" Type="datetime" Nullable="false" />
+          <Property Name="CopiaId" Type="int" Nullable="false" />
+          <Property Name="SocisId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Sancio">
+        <EntityType Name="Soci">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dataSancio" Type="datetime" Nullable="false" />
-          <Property Name="idPrestec" Type="int" Nullable="false" />
-          <Property Name="Copias_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SancioSoci">
-          <Key>
-            <PropertyRef Name="Sancio_Id" />
-            <PropertyRef Name="Socis_Id" />
-          </Key>
-          <Property Name="Sancio_Id" Type="int" Nullable="false" />
-          <Property Name="Socis_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Socis">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nom" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="cognom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cognoms" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="dataIntroduccio" Type="datetime" Nullable="false" />
           <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
-          <Property Name="dataBaixa" Type="datetime" Nullable="false" />
+          <Property Name="dataBaixa" Type="datetime" />
         </EntityType>
-        <Association Name="FK_LlibreAutor_Autor">
-          <End Role="Autors" Type="Self.Autors" Multiplicity="1" />
-          <End Role="LlibreAutor" Type="Self.LlibreAutor" Multiplicity="*" />
+        <Association Name="FK_AutorLlibre">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="1" />
+          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Autors">
+            <Principal Role="Autor">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LlibreAutor">
-              <PropertyRef Name="Autors_Id" />
+            <Dependent Role="Llibre">
+              <PropertyRef Name="AutorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LlibreAutor_Llibre">
-          <End Role="Llibre" Type="Self.Llibre" Multiplicity="1" />
-          <End Role="LlibreAutor" Type="Self.LlibreAutor" Multiplicity="*" />
+        <Association Name="FK_CopiaPrestec">
+          <End Role="Copia" Type="Self.Copia" Multiplicity="1" />
+          <End Role="Prestec" Type="Self.Prestec" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Llibre">
-              <PropertyRef Name="ISBN" />
+            <Principal Role="Copia">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LlibreAutor">
-              <PropertyRef Name="Llibre_ISBN" />
+            <Dependent Role="Prestec">
+              <PropertyRef Name="CopiaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LlibreCopia">
           <End Role="Llibre" Type="Self.Llibre" Multiplicity="1" />
-          <End Role="Copias" Type="Self.Copias" Multiplicity="*" />
+          <End Role="Copia" Type="Self.Copia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Llibre">
-              <PropertyRef Name="ISBN" />
+              <PropertyRef Name="Isbn" />
             </Principal>
-            <Dependent Role="Copias">
-              <PropertyRef Name="Llibre_ISBN" />
+            <Dependent Role="Copia">
+              <PropertyRef Name="LlibreIsbn" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LlibreLlistaEspera">
-          <End Role="LlistaEspera" Type="Self.LlistaEspera" Multiplicity="1" />
-          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
+          <End Role="Llibre" Type="Self.Llibre" Multiplicity="1" />
+          <End Role="LlistaEspera" Type="Self.LlistaEspera" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LlistaEspera">
-              <PropertyRef Name="Id" />
+            <Principal Role="Llibre">
+              <PropertyRef Name="Isbn" />
             </Principal>
-            <Dependent Role="Llibre">
-              <PropertyRef Name="LlistaEsperas_Id" />
+            <Dependent Role="LlistaEspera">
+              <PropertyRef Name="LlibreIsbn" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PrestecSancio">
-          <End Role="Sancio" Type="Self.Sancio" Multiplicity="1" />
-          <End Role="Prestecs" Type="Self.Prestecs" Multiplicity="*" />
+        <Association Name="FK_PrestecSocis">
+          <End Role="Soci" Type="Self.Soci" Multiplicity="1" />
+          <End Role="Prestec" Type="Self.Prestec" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Sancio">
+            <Principal Role="Soci">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Prestecs">
-              <PropertyRef Name="Sancios_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SancioCopia">
-          <End Role="Copias" Type="Self.Copias" Multiplicity="1" />
-          <End Role="Sancio" Type="Self.Sancio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Copias">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sancio">
-              <PropertyRef Name="Copias_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SancioSoci_Sancio">
-          <End Role="Sancio" Type="Self.Sancio" Multiplicity="1" />
-          <End Role="SancioSoci" Type="Self.SancioSoci" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sancio">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SancioSoci">
-              <PropertyRef Name="Sancio_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SancioSoci_Soci">
-          <End Role="Socis" Type="Self.Socis" Multiplicity="1" />
-          <End Role="SancioSoci" Type="Self.SancioSoci" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Socis">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SancioSoci">
-              <PropertyRef Name="Socis_Id" />
+            <Dependent Role="Prestec">
+              <PropertyRef Name="SocisId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BibliotecaModelStoreContainer">
-          <EntitySet Name="Autors" EntityType="Self.Autors" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Copias" EntityType="Self.Copias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DiesNoHabils" EntityType="Self.DiesNoHabils" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Autor" EntityType="Self.Autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Copia" EntityType="Self.Copia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiaNoHabil" EntityType="Self.DiaNoHabil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Llibre" EntityType="Self.Llibre" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LlibreAutor" EntityType="Self.LlibreAutor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LlistaEspera" EntityType="Self.LlistaEspera" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Prestecs" EntityType="Self.Prestecs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sancio" EntityType="Self.Sancio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SancioSoci" EntityType="Self.SancioSoci" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Socis" EntityType="Self.Socis" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_LlibreAutor_Autor" Association="Self.FK_LlibreAutor_Autor">
-            <End Role="Autors" EntitySet="Autors" />
-            <End Role="LlibreAutor" EntitySet="LlibreAutor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LlibreAutor_Llibre" Association="Self.FK_LlibreAutor_Llibre">
+          <EntitySet Name="Prestec" EntityType="Self.Prestec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soci" EntityType="Self.Soci" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AutorLlibre" Association="Self.FK_AutorLlibre">
+            <End Role="Autor" EntitySet="Autor" />
             <End Role="Llibre" EntitySet="Llibre" />
-            <End Role="LlibreAutor" EntitySet="LlibreAutor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CopiaPrestec" Association="Self.FK_CopiaPrestec">
+            <End Role="Copia" EntitySet="Copia" />
+            <End Role="Prestec" EntitySet="Prestec" />
           </AssociationSet>
           <AssociationSet Name="FK_LlibreCopia" Association="Self.FK_LlibreCopia">
             <End Role="Llibre" EntitySet="Llibre" />
-            <End Role="Copias" EntitySet="Copias" />
+            <End Role="Copia" EntitySet="Copia" />
           </AssociationSet>
           <AssociationSet Name="FK_LlibreLlistaEspera" Association="Self.FK_LlibreLlistaEspera">
-            <End Role="LlistaEspera" EntitySet="LlistaEspera" />
             <End Role="Llibre" EntitySet="Llibre" />
+            <End Role="LlistaEspera" EntitySet="LlistaEspera" />
           </AssociationSet>
-          <AssociationSet Name="FK_PrestecSancio" Association="Self.FK_PrestecSancio">
-            <End Role="Sancio" EntitySet="Sancio" />
-            <End Role="Prestecs" EntitySet="Prestecs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SancioCopia" Association="Self.FK_SancioCopia">
-            <End Role="Copias" EntitySet="Copias" />
-            <End Role="Sancio" EntitySet="Sancio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SancioSoci_Sancio" Association="Self.FK_SancioSoci_Sancio">
-            <End Role="Sancio" EntitySet="Sancio" />
-            <End Role="SancioSoci" EntitySet="SancioSoci" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SancioSoci_Soci" Association="Self.FK_SancioSoci_Soci">
-            <End Role="Socis" EntitySet="Socis" />
-            <End Role="SancioSoci" EntitySet="SancioSoci" />
+          <AssociationSet Name="FK_PrestecSocis" Association="Self.FK_PrestecSocis">
+            <End Role="Soci" EntitySet="Soci" />
+            <End Role="Prestec" EntitySet="Prestec" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -251,27 +177,27 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Cognom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognoms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dataBaixa" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Llibres" Relationship="Self.LlibreAutor" FromRole="Autors" ToRole="Llibre" />
+          <Property Name="dataBaixa" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Llibre" Relationship="Self.FK_AutorLlibre" FromRole="Autor" ToRole="Llibre" />
         </EntityType>
         <EntityType Name="Copia">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ISBN" Type="Int32" Nullable="false" />
+          <Property Name="disponible" Type="Boolean" Nullable="false" />
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dataBaixa" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Llibre_ISBN" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Llibre" Relationship="Self.FK_LlibreCopia" FromRole="Copias" ToRole="Llibre" />
-          <NavigationProperty Name="Sancios" Relationship="Self.FK_SancioCopia" FromRole="Copias" ToRole="Sancio" />
+          <Property Name="dataBaixa" Type="DateTime" Precision="3" />
+          <Property Name="LlibreIsbn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Prestec" Relationship="Self.FK_CopiaPrestec" FromRole="Copia" ToRole="Prestec" />
+          <NavigationProperty Name="Llibre" Relationship="Self.FK_LlibreCopia" FromRole="Copia" ToRole="Llibre" />
         </EntityType>
-        <EntityType Name="DiesNoHabil">
+        <EntityType Name="DiaNoHabil">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -280,152 +206,142 @@
         </EntityType>
         <EntityType Name="Llibre">
           <Key>
-            <PropertyRef Name="ISBN" />
+            <PropertyRef Name="Isbn" />
           </Key>
-          <Property Name="ISBN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Titol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Isbn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="titol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="numPagines" Type="Int32" Nullable="false" />
-          <Property Name="disponible" Type="Boolean" Nullable="false" />
-          <Property Name="editorial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="editorial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idioma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dataBaixa" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LlistaEsperas_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Copias" Relationship="Self.FK_LlibreCopia" FromRole="Llibre" ToRole="Copias" />
+          <Property Name="dataBaixa" Type="DateTime" Precision="3" />
+          <Property Name="AutorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Autor" Relationship="Self.FK_AutorLlibre" FromRole="Llibre" ToRole="Autor" />
+          <NavigationProperty Name="Copia" Relationship="Self.FK_LlibreCopia" FromRole="Llibre" ToRole="Copia" />
           <NavigationProperty Name="LlistaEspera" Relationship="Self.FK_LlibreLlistaEspera" FromRole="Llibre" ToRole="LlistaEspera" />
-          <NavigationProperty Name="Autors" Relationship="Self.LlibreAutor" FromRole="Llibre" ToRole="Autors" />
         </EntityType>
         <EntityType Name="LlistaEspera">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="posicio" Type="Int32" Nullable="false" />
-          <Property Name="idLlibre" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Llibres" Relationship="Self.FK_LlibreLlistaEspera" FromRole="LlistaEspera" ToRole="Llibre" />
+          <Property Name="LlibreIsbn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idSoci" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Llibre" Relationship="Self.FK_LlibreLlistaEspera" FromRole="LlistaEspera" ToRole="Llibre" />
         </EntityType>
         <EntityType Name="Prestec">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCopia" Type="Int32" Nullable="false" />
           <Property Name="dataInici" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Sancios_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Sancio" Relationship="Self.FK_PrestecSancio" FromRole="Prestecs" ToRole="Sancio" />
-        </EntityType>
-        <EntityType Name="Sancio">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dataSancio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="idPrestec" Type="Int32" Nullable="false" />
-          <Property Name="Copias_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Copia" Relationship="Self.FK_SancioCopia" FromRole="Sancio" ToRole="Copias" />
-          <NavigationProperty Name="Prestecs" Relationship="Self.FK_PrestecSancio" FromRole="Sancio" ToRole="Prestecs" />
-          <NavigationProperty Name="Socis" Relationship="Self.SancioSoci" FromRole="Sancio" ToRole="Socis" />
+          <Property Name="dataFinal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dataRetorn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CopiaId" Type="Int32" Nullable="false" />
+          <Property Name="SocisId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Copia" Relationship="Self.FK_CopiaPrestec" FromRole="Prestec" ToRole="Copia" />
+          <NavigationProperty Name="Soci" Relationship="Self.FK_PrestecSocis" FromRole="Prestec" ToRole="Soci" />
         </EntityType>
         <EntityType Name="Soci">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="cognom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognoms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dataBaixa" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Sancios" Relationship="Self.SancioSoci" FromRole="Socis" ToRole="Sancio" />
+          <Property Name="dataBaixa" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Prestec" Relationship="Self.FK_PrestecSocis" FromRole="Soci" ToRole="Prestec" />
         </EntityType>
-        <Association Name="FK_LlibreCopia">
-          <End Role="Llibre" Type="Self.Llibre" Multiplicity="1" />
-          <End Role="Copias" Type="Self.Copia" Multiplicity="*" />
+        <Association Name="FK_AutorLlibre">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="1" />
+          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Llibre">
-              <PropertyRef Name="ISBN" />
+            <Principal Role="Autor">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Copias">
-              <PropertyRef Name="Llibre_ISBN" />
+            <Dependent Role="Llibre">
+              <PropertyRef Name="AutorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SancioCopia">
-          <End Role="Copias" Type="Self.Copia" Multiplicity="1" />
-          <End Role="Sancio" Type="Self.Sancio" Multiplicity="*" />
+        <Association Name="FK_CopiaPrestec">
+          <End Role="Copia" Type="Self.Copia" Multiplicity="1" />
+          <End Role="Prestec" Type="Self.Prestec" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Copias">
+            <Principal Role="Copia">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Sancio">
-              <PropertyRef Name="Copias_Id" />
+            <Dependent Role="Prestec">
+              <PropertyRef Name="CopiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LlibreCopia">
+          <End Role="Llibre" Type="Self.Llibre" Multiplicity="1" />
+          <End Role="Copia" Type="Self.Copia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Llibre">
+              <PropertyRef Name="Isbn" />
+            </Principal>
+            <Dependent Role="Copia">
+              <PropertyRef Name="LlibreIsbn" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LlibreLlistaEspera">
-          <End Role="LlistaEspera" Type="Self.LlistaEspera" Multiplicity="1" />
-          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
+          <End Role="Llibre" Type="Self.Llibre" Multiplicity="1" />
+          <End Role="LlistaEspera" Type="Self.LlistaEspera" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LlistaEspera">
-              <PropertyRef Name="Id" />
+            <Principal Role="Llibre">
+              <PropertyRef Name="Isbn" />
             </Principal>
-            <Dependent Role="Llibre">
-              <PropertyRef Name="LlistaEsperas_Id" />
+            <Dependent Role="LlistaEspera">
+              <PropertyRef Name="LlibreIsbn" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PrestecSancio">
-          <End Role="Sancio" Type="Self.Sancio" Multiplicity="1" />
-          <End Role="Prestecs" Type="Self.Prestec" Multiplicity="*" />
+        <Association Name="FK_PrestecSocis">
+          <End Role="Soci" Type="Self.Soci" Multiplicity="1" />
+          <End Role="Prestec" Type="Self.Prestec" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Sancio">
+            <Principal Role="Soci">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Prestecs">
-              <PropertyRef Name="Sancios_Id" />
+            <Dependent Role="Prestec">
+              <PropertyRef Name="SocisId" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="LlibreAutor">
-          <End Role="Autors" Type="Self.Autor" Multiplicity="*" />
-          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
-        </Association>
-        <Association Name="SancioSoci">
-          <End Role="Sancio" Type="Self.Sancio" Multiplicity="*" />
-          <End Role="Socis" Type="Self.Soci" Multiplicity="*" />
         </Association>
         <EntityContainer Name="BibliotecaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Autors" EntityType="Self.Autor" />
-          <EntitySet Name="Copias" EntityType="Self.Copia" />
-          <EntitySet Name="DiesNoHabils" EntityType="Self.DiesNoHabil" />
-          <EntitySet Name="Llibres" EntityType="Self.Llibre" />
-          <EntitySet Name="LlistaEsperas" EntityType="Self.LlistaEspera" />
-          <EntitySet Name="Prestecs" EntityType="Self.Prestec" />
-          <EntitySet Name="Sancios" EntityType="Self.Sancio" />
-          <EntitySet Name="Socis" EntityType="Self.Soci" />
-          <AssociationSet Name="FK_LlibreCopia" Association="Self.FK_LlibreCopia">
-            <End Role="Llibre" EntitySet="Llibres" />
-            <End Role="Copias" EntitySet="Copias" />
+          <EntitySet Name="Autor" EntityType="Self.Autor" />
+          <EntitySet Name="Copia" EntityType="Self.Copia" />
+          <EntitySet Name="DiaNoHabil" EntityType="Self.DiaNoHabil" />
+          <EntitySet Name="Llibre" EntityType="Self.Llibre" />
+          <EntitySet Name="LlistaEspera" EntityType="Self.LlistaEspera" />
+          <EntitySet Name="Prestec" EntityType="Self.Prestec" />
+          <EntitySet Name="Soci" EntityType="Self.Soci" />
+          <AssociationSet Name="FK_AutorLlibre" Association="Self.FK_AutorLlibre">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Llibre" EntitySet="Llibre" />
           </AssociationSet>
-          <AssociationSet Name="FK_SancioCopia" Association="Self.FK_SancioCopia">
-            <End Role="Copias" EntitySet="Copias" />
-            <End Role="Sancio" EntitySet="Sancios" />
+          <AssociationSet Name="FK_CopiaPrestec" Association="Self.FK_CopiaPrestec">
+            <End Role="Copia" EntitySet="Copia" />
+            <End Role="Prestec" EntitySet="Prestec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LlibreCopia" Association="Self.FK_LlibreCopia">
+            <End Role="Llibre" EntitySet="Llibre" />
+            <End Role="Copia" EntitySet="Copia" />
           </AssociationSet>
           <AssociationSet Name="FK_LlibreLlistaEspera" Association="Self.FK_LlibreLlistaEspera">
-            <End Role="LlistaEspera" EntitySet="LlistaEsperas" />
-            <End Role="Llibre" EntitySet="Llibres" />
+            <End Role="Llibre" EntitySet="Llibre" />
+            <End Role="LlistaEspera" EntitySet="LlistaEspera" />
           </AssociationSet>
-          <AssociationSet Name="FK_PrestecSancio" Association="Self.FK_PrestecSancio">
-            <End Role="Sancio" EntitySet="Sancios" />
-            <End Role="Prestecs" EntitySet="Prestecs" />
-          </AssociationSet>
-          <AssociationSet Name="LlibreAutor" Association="Self.LlibreAutor">
-            <End Role="Autors" EntitySet="Autors" />
-            <End Role="Llibre" EntitySet="Llibres" />
-          </AssociationSet>
-          <AssociationSet Name="SancioSoci" Association="Self.SancioSoci">
-            <End Role="Sancio" EntitySet="Sancios" />
-            <End Role="Socis" EntitySet="Socis" />
+          <AssociationSet Name="FK_PrestecSocis" Association="Self.FK_PrestecSocis">
+            <End Role="Soci" EntitySet="Soci" />
+            <End Role="Prestec" EntitySet="Prestec" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -434,110 +350,86 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BibliotecaModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
-          <EntitySetMapping Name="Autors">
+          <EntitySetMapping Name="Autor">
             <EntityTypeMapping TypeName="BibliotecaModel.Autor">
-              <MappingFragment StoreEntitySet="Autors">
+              <MappingFragment StoreEntitySet="Autor">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nom" ColumnName="Nom" />
-                <ScalarProperty Name="Cognom" ColumnName="Cognom" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="cognoms" ColumnName="cognoms" />
                 <ScalarProperty Name="dataIntroduccio" ColumnName="dataIntroduccio" />
                 <ScalarProperty Name="dataDarreraModificacio" ColumnName="dataDarreraModificacio" />
                 <ScalarProperty Name="dataBaixa" ColumnName="dataBaixa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Copias">
+          <EntitySetMapping Name="Copia">
             <EntityTypeMapping TypeName="BibliotecaModel.Copia">
-              <MappingFragment StoreEntitySet="Copias">
+              <MappingFragment StoreEntitySet="Copia">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
                 <ScalarProperty Name="dataIntroduccio" ColumnName="dataIntroduccio" />
                 <ScalarProperty Name="dataDarreraModificacio" ColumnName="dataDarreraModificacio" />
                 <ScalarProperty Name="dataBaixa" ColumnName="dataBaixa" />
-                <ScalarProperty Name="Llibre_ISBN" ColumnName="Llibre_ISBN" />
+                <ScalarProperty Name="LlibreIsbn" ColumnName="LlibreIsbn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DiesNoHabils">
-            <EntityTypeMapping TypeName="BibliotecaModel.DiesNoHabil">
-              <MappingFragment StoreEntitySet="DiesNoHabils">
+          <EntitySetMapping Name="DiaNoHabil">
+            <EntityTypeMapping TypeName="BibliotecaModel.DiaNoHabil">
+              <MappingFragment StoreEntitySet="DiaNoHabil">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="data" ColumnName="data" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Llibres">
+          <EntitySetMapping Name="Llibre">
             <EntityTypeMapping TypeName="BibliotecaModel.Llibre">
               <MappingFragment StoreEntitySet="Llibre">
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="Titol" ColumnName="Titol" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="titol" ColumnName="titol" />
                 <ScalarProperty Name="numPagines" ColumnName="numPagines" />
-                <ScalarProperty Name="disponible" ColumnName="disponible" />
                 <ScalarProperty Name="editorial" ColumnName="editorial" />
+                <ScalarProperty Name="idioma" ColumnName="idioma" />
                 <ScalarProperty Name="dataIntroduccio" ColumnName="dataIntroduccio" />
                 <ScalarProperty Name="dataDarreraModificacio" ColumnName="dataDarreraModificacio" />
                 <ScalarProperty Name="dataBaixa" ColumnName="dataBaixa" />
-                <ScalarProperty Name="LlistaEsperas_Id" ColumnName="LlistaEsperas_Id" />
+                <ScalarProperty Name="AutorId" ColumnName="AutorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LlistaEsperas">
+          <EntitySetMapping Name="LlistaEspera">
             <EntityTypeMapping TypeName="BibliotecaModel.LlistaEspera">
               <MappingFragment StoreEntitySet="LlistaEspera">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="posicio" ColumnName="posicio" />
-                <ScalarProperty Name="idLlibre" ColumnName="idLlibre" />
+                <ScalarProperty Name="LlibreIsbn" ColumnName="LlibreIsbn" />
+                <ScalarProperty Name="idSoci" ColumnName="idSoci" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Prestecs">
+          <EntitySetMapping Name="Prestec">
             <EntityTypeMapping TypeName="BibliotecaModel.Prestec">
-              <MappingFragment StoreEntitySet="Prestecs">
+              <MappingFragment StoreEntitySet="Prestec">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdCopia" ColumnName="IdCopia" />
                 <ScalarProperty Name="dataInici" ColumnName="dataInici" />
-                <ScalarProperty Name="Sancios_Id" ColumnName="Sancios_Id" />
+                <ScalarProperty Name="dataFinal" ColumnName="dataFinal" />
+                <ScalarProperty Name="dataRetorn" ColumnName="dataRetorn" />
+                <ScalarProperty Name="CopiaId" ColumnName="CopiaId" />
+                <ScalarProperty Name="SocisId" ColumnName="SocisId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sancios">
-            <EntityTypeMapping TypeName="BibliotecaModel.Sancio">
-              <MappingFragment StoreEntitySet="Sancio">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="dataSancio" ColumnName="dataSancio" />
-                <ScalarProperty Name="idPrestec" ColumnName="idPrestec" />
-                <ScalarProperty Name="Copias_Id" ColumnName="Copias_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Socis">
+          <EntitySetMapping Name="Soci">
             <EntityTypeMapping TypeName="BibliotecaModel.Soci">
-              <MappingFragment StoreEntitySet="Socis">
+              <MappingFragment StoreEntitySet="Soci">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
-                <ScalarProperty Name="cognom" ColumnName="cognom" />
+                <ScalarProperty Name="cognoms" ColumnName="cognoms" />
                 <ScalarProperty Name="dataIntroduccio" ColumnName="dataIntroduccio" />
                 <ScalarProperty Name="dataDarreraModificacio" ColumnName="dataDarreraModificacio" />
                 <ScalarProperty Name="dataBaixa" ColumnName="dataBaixa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="LlibreAutor" TypeName="BibliotecaModel.LlibreAutor" StoreEntitySet="LlibreAutor">
-            <EndProperty Name="Autors">
-              <ScalarProperty Name="Id" ColumnName="Autors_Id" />
-            </EndProperty>
-            <EndProperty Name="Llibre">
-              <ScalarProperty Name="ISBN" ColumnName="Llibre_ISBN" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="SancioSoci" TypeName="BibliotecaModel.SancioSoci" StoreEntitySet="SancioSoci">
-            <EndProperty Name="Sancio">
-              <ScalarProperty Name="Id" ColumnName="Sancio_Id" />
-            </EndProperty>
-            <EndProperty Name="Socis">
-              <ScalarProperty Name="Id" ColumnName="Socis_Id" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -552,7 +444,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

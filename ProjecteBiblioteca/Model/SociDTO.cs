@@ -12,24 +12,24 @@ namespace Model {
         public string cognom { get; set; }
         public DateTime dataIntroduccio { get; set; }
         public DateTime dataDarreraModificacio { get; set; }
-        public DateTime dataBaixa { get; set; }
+        public DateTime? dataBaixa { get; set; }
 
-        public SociDTO(int id, string nom, string cognom, DateTime dataIntroduccio, DateTime dataDarreraModificacio, DateTime dataBaixa) {
+        public SociDTO(int id, string nom, string cognom, DateTime dataIntroduccio, DateTime dataDarreraModificacio) {
             Id = id;
             this.nom = nom;
             this.cognom = cognom;
             this.dataIntroduccio = dataIntroduccio;
             this.dataDarreraModificacio = dataDarreraModificacio;
-            this.dataBaixa = dataBaixa;
+            this.dataBaixa = null;
         }
 
         public SociDTO(Soci s) {
             Id = s.Id;
             this.nom = s.nom;
-            this.cognom = s.cognom;
+            this.cognom = s.cognoms;
             this.dataIntroduccio = s.dataIntroduccio;
             this.dataDarreraModificacio = s.dataDarreraModificacio;
-            this.dataBaixa = s.dataBaixa;
+            this.dataBaixa = null;
         }
 
         public SociDTO(DataGridViewCellCollection row) {

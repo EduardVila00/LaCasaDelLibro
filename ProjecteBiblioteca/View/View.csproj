@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BibliotecaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BibliotecaAdmin.Designer.cs">
+      <DependentUpon>BibliotecaAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Calendari.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
       <DependentUpon>Prestecs.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BibliotecaAdmin.resx">
+      <DependentUpon>BibliotecaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfigDades.resx">
       <DependentUpon>ConfigDades.cs</DependentUpon>
     </EmbeddedResource>
