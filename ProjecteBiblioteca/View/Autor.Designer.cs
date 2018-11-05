@@ -100,9 +100,9 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvAutors;
-        private System.Windows.Forms.Button buttonAfegir;
-        private System.Windows.Forms.Button buttonModificar;
-        private System.Windows.Forms.Button buttonEliminar;
+        public System.Windows.Forms.DataGridView dgvAutors;
+        public System.Windows.Forms.Button buttonAfegir;
+        public System.Windows.Forms.Button buttonModificar;
+        public System.Windows.Forms.Button buttonEliminar;
     }
 }

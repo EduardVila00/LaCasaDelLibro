@@ -38,6 +38,11 @@ namespace Controller {
 
         }
 
+        public void populaters()
+        {
+            autorsPopulate();
+        }
+
 
         public void changeButton1(object sender, EventArgs e) {
 
@@ -109,16 +114,7 @@ namespace Controller {
 
         #endregion
         
-        #region Config Dades
-        protected void obrirConfigDades(object sender, EventArgs args) {
-            menu.Hide();
-            cd.ShowDialog();
-            autorsPopulate();
-        }
-        protected void finestraAutor(object sender, EventArgs args) {
-            cd.Hide();
-            fa.ShowDialog();
-        }
+        #region Autor
         protected int trySave() {
             try {
                 db.SaveChanges();
@@ -146,51 +142,51 @@ namespace Controller {
             } catch (Exception e) {
             }
         }
-        protected void afegirAutor(object sender, EventArgs args) {
-            string nom;
-            string cognom;
-            if (((nom = fa.textBoxNom.Text).CompareTo("") > 0) && ((cognom = fa.textBoxCognom.Text).CompareTo("") > 0)) {
-                Autors a = new Autors();
-                a.Nom = nom;
-                a.Cognom = cognom;
-                a.dataIntroduccio = DateTime.Now;
-                a.dataDarreraModificacio = DateTime.Now;
-                a.dataBaixa = DateTime.Parse("01/01/1990");
-                db.Autors.Add(a);
-                int n = trySave();
-                autorsPopulate();
-                autorsGo(cd.dgvAutors.RowCount - 1);
-                cd.Visible = true;
-                fa.Hide();
-            }
-        }
+        //protected void afegirAutor(object sender, EventArgs args) {
+        //    string nom;
+        //    string cognom;
+        //    if (((nom = fa.textBoxNom.Text).CompareTo("") > 0) && ((cognom = fa.textBoxCognom.Text).CompareTo("") > 0)) {
+        //        Autors a = new Autors();
+        //        a.Nom = nom;
+        //        a.Cognom = cognom;
+        //        a.dataIntroduccio = DateTime.Now;
+        //        a.dataDarreraModificacio = DateTime.Now;
+        //        a.dataBaixa = DateTime.Parse("01/01/1990");
+        //        db.Autors.Add(a);
+        //        int n = trySave();
+        //        autorsPopulate();
+        //        autorsGo(cd.dgvAutors.RowCount - 1);
+        //        cd.Visible = true;
+        //        fa.Hide();
+        //    }
+        //}
         public void autorsPopulate() {
             try {
-                .dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
+                BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
             } catch (Exception e) {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
         }
-        public void llibresPopulate(AutorDTO a) {
-            try {
-                cd.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.Autors.Equals(a)).Select(l => new LlibreDTO(l)).ToList();
-            } catch (Exception e) {
-                MessageBox.Show("Error: \n" + e.ToString());
-            }
-        }
-        public void copiesPopulate(LlibreDTO l) {
-            try {
-                cd.dgvCopies.DataSource = db.Copias.ToList().Where(c => c.Llibre_ISBN.Equals(l.ISBN)).Select(c => new CopiaDTO(c)).ToList();
-            } catch (Exception e) {
-                MessageBox.Show("Error: \n" + e.ToString());
-            }
-        }
-        protected void autorSelectionChanged(object sender, EventArgs args) {
-            AutorDTO a;
-            if ((a = autorGetSelected()) != null) {
-                llibresPopulate(a);
-            }
-        }
+        //public void llibresPopulate(AutorDTO a) {
+        //    try {
+        //        cd.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.Autor.Equals(a)).Select(l => new LlibreDTO(l)).ToList();
+        //    } catch (Exception e) {
+        //        MessageBox.Show("Error: \n" + e.ToString());
+        //    }
+        //}
+        //public void copiesPopulate(LlibreDTO l) {
+        //    try {
+        //        cd.dgvCopies.DataSource = db.Copias.ToList().Where(c => c.Llibre_ISBN.Equals(l.ISBN)).Select(c => new CopiaDTO(c)).ToList();
+        //    } catch (Exception e) {
+        //        MessageBox.Show("Error: \n" + e.ToString());
+        //    }
+        //}
+        //protected void autorSelectionChanged(object sender, EventArgs args) {
+        //    AutorDTO a;
+        //    if ((a = autorGetSelected()) != null) {
+        //        llibresPopulate(a);
+        //    }
+        //}
 
         protected AutorDTO autorGetSelected() {
             if (cd.dgvAutors.SelectedRows.Count == 0) {
