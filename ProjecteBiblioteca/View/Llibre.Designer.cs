@@ -1,5 +1,5 @@
 ﻿namespace View {
-    partial class Autor {
+    partial class Llibre {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -83,7 +83,7 @@
             this.button3.Text = "Eliminar";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // Autor
+            // Llibre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,7 +91,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Autor";
+            this.Name = "Llibre";
             this.Size = new System.Drawing.Size(803, 426);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -100,9 +100,9 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

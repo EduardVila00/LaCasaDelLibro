@@ -67,6 +67,12 @@
     <Compile Include="Calendari.Designer.cs">
       <DependentUpon>Calendari.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalendariFinal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendariFinal.Designer.cs">
+      <DependentUpon>CalendariFinal.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfigDades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,24 +85,51 @@
     <Compile Include="ConfigSocis.Designer.cs">
       <DependentUpon>ConfigSocis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuracio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Configuracio.Designer.cs">
+      <DependentUpon>Configuracio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Copia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Copia.Designer.cs">
+      <DependentUpon>Copia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Llibre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Llibre.Designer.cs">
+      <DependentUpon>Llibre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Prestecs.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Prestec.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Prestecs.Designer.cs">
-      <DependentUpon>Prestecs.cs</DependentUpon>
+    <Compile Include="Prestec.Designer.cs">
+      <DependentUpon>Prestec.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuari.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usuari.Designer.cs">
+      <DependentUpon>Usuari.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Autor.resx">
       <DependentUpon>Autor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BibliotecaAdmin.resx">
       <DependentUpon>BibliotecaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendariFinal.resx">
+      <DependentUpon>CalendariFinal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigDades.resx">
       <DependentUpon>ConfigDades.cs</DependentUpon>
@@ -104,8 +137,20 @@
     <EmbeddedResource Include="Calendari.resx">
       <DependentUpon>Calendari.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Configuracio.resx">
+      <DependentUpon>Configuracio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Copia.resx">
+      <DependentUpon>Copia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Llibre.resx">
+      <DependentUpon>Llibre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prestec.resx">
+      <DependentUpon>Prestec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,6 +161,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Usuari.resx">
+      <DependentUpon>Usuari.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.Config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

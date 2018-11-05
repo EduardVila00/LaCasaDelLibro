@@ -20,15 +20,59 @@ namespace Controller {
             initListeners();
             run();
         }
-       
+
         public void initListeners() {
             menu.buttonCalendari.Click += obrirCalendari;
+            BibliotecaAdmin.buttonAutors.Click += changeButton1;
+            BibliotecaAdmin.buttonCalendari.Click += changeButton1;
+            BibliotecaAdmin.buttonConfiguracio.Click += changeButton1;
+            BibliotecaAdmin.buttonCopies.Click += changeButton1;
+            BibliotecaAdmin.buttonLlibres.Click += changeButton1;
+            BibliotecaAdmin.buttonPrestecs.Click += changeButton1;
+            BibliotecaAdmin.buttonUsuaris.Click += changeButton1;
             //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
             //calendari.buttondesabilitar.Click += habilitarCalendari;
             //cd.buttonAfegirAutor.Click += finestraAutor;
             //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
 
         }
+
+
+        public void changeButton1(object sender, EventArgs e) {
+
+            Button button = sender as Button;
+            BibliotecaAdmin.SidePanel.Top = button.Top;
+            BibliotecaAdmin.SidePanel.Height = button.Height;
+            int pos = button.Top;
+            switch (pos) {
+
+                case 59:
+                    BibliotecaAdmin.autor1.BringToFront();
+                    break;
+                case 116:
+                    BibliotecaAdmin.llibre1.BringToFront();
+                    break;
+                case 173:
+                    BibliotecaAdmin.copia1.BringToFront();
+                    break;
+                case 230:
+                    BibliotecaAdmin.usuari1.BringToFront();
+                    break;
+                case 287:
+                    BibliotecaAdmin.prestec1.BringToFront();
+                    break;
+                case 344:
+                    BibliotecaAdmin.calendariFinal1.BringToFront();
+                    break;
+                case 401:
+                    BibliotecaAdmin.configuracio1.BringToFront();
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
         public void run() {
             Application.Run(BibliotecaAdmin);
         }
