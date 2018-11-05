@@ -39,13 +39,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.autor1 = new View.Autor();
-            this.calendariFinal1 = new View.CalendariFinal();
-            this.configuracio1 = new View.Configuracio();
-            this.copia1 = new View.Copia();
-            this.llibre1 = new View.Llibre();
-            this.prestec1 = new View.Prestec();
             this.usuari1 = new View.Usuari();
+            this.prestec1 = new View.Prestec();
+            this.llibre1 = new View.Llibre();
+            this.copia1 = new View.Copia();
+            this.configuracio1 = new View.Configuracio();
+            this.calendariFinal1 = new View.CalendariFinal();
+            this.autor1 = new View.Autor();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -81,7 +82,7 @@
             // 
             this.buttonConfiguracio.FlatAppearance.BorderSize = 0;
             this.buttonConfiguracio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConfiguracio.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConfiguracio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonConfiguracio.ForeColor = System.Drawing.Color.White;
             this.buttonConfiguracio.Image = ((System.Drawing.Image)(resources.GetObject("buttonConfiguracio.Image")));
             this.buttonConfiguracio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -97,7 +98,7 @@
             // 
             this.buttonPrestecs.FlatAppearance.BorderSize = 0;
             this.buttonPrestecs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPrestecs.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrestecs.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrestecs.ForeColor = System.Drawing.Color.White;
             this.buttonPrestecs.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrestecs.Image")));
             this.buttonPrestecs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -113,7 +114,7 @@
             // 
             this.buttonCalendari.FlatAppearance.BorderSize = 0;
             this.buttonCalendari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCalendari.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCalendari.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCalendari.ForeColor = System.Drawing.Color.White;
             this.buttonCalendari.Image = ((System.Drawing.Image)(resources.GetObject("buttonCalendari.Image")));
             this.buttonCalendari.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,7 +130,7 @@
             // 
             this.buttonUsuaris.FlatAppearance.BorderSize = 0;
             this.buttonUsuaris.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUsuaris.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUsuaris.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUsuaris.ForeColor = System.Drawing.Color.White;
             this.buttonUsuaris.Image = ((System.Drawing.Image)(resources.GetObject("buttonUsuaris.Image")));
             this.buttonUsuaris.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -145,7 +146,7 @@
             // 
             this.buttonCopies.FlatAppearance.BorderSize = 0;
             this.buttonCopies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCopies.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCopies.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCopies.ForeColor = System.Drawing.Color.White;
             this.buttonCopies.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopies.Image")));
             this.buttonCopies.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -161,7 +162,7 @@
             // 
             this.button14.FlatAppearance.BorderSize = 0;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button14.Location = new System.Drawing.Point(3, 546);
@@ -176,7 +177,7 @@
             // 
             this.buttonLlibres.FlatAppearance.BorderSize = 0;
             this.buttonLlibres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLlibres.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLlibres.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLlibres.ForeColor = System.Drawing.Color.White;
             this.buttonLlibres.Image = ((System.Drawing.Image)(resources.GetObject("buttonLlibres.Image")));
             this.buttonLlibres.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -192,7 +193,7 @@
             // 
             this.buttonAutors.FlatAppearance.BorderSize = 0;
             this.buttonAutors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAutors.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAutors.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAutors.ForeColor = System.Drawing.Color.White;
             this.buttonAutors.Image = ((System.Drawing.Image)(resources.GetObject("buttonAutors.Image")));
             this.buttonAutors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -218,22 +219,22 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(13, 108);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
+            this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "Montnegre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(9, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 21);
+            this.label2.Size = new System.Drawing.Size(88, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Biblioteca";
             // 
@@ -257,40 +258,12 @@
             this.panel2.Size = new System.Drawing.Size(805, 10);
             this.panel2.TabIndex = 1;
             // 
-            // autor1
+            // usuari1
             // 
-            this.autor1.Location = new System.Drawing.Point(209, 145);
-            this.autor1.Name = "autor1";
-            this.autor1.Size = new System.Drawing.Size(803, 426);
-            this.autor1.TabIndex = 3;
-            // 
-            // calendariFinal1
-            // 
-            this.calendariFinal1.Location = new System.Drawing.Point(209, 145);
-            this.calendariFinal1.Name = "calendariFinal1";
-            this.calendariFinal1.Size = new System.Drawing.Size(803, 426);
-            this.calendariFinal1.TabIndex = 4;
-            // 
-            // configuracio1
-            // 
-            this.configuracio1.Location = new System.Drawing.Point(209, 145);
-            this.configuracio1.Name = "configuracio1";
-            this.configuracio1.Size = new System.Drawing.Size(803, 426);
-            this.configuracio1.TabIndex = 5;
-            // 
-            // copia1
-            // 
-            this.copia1.Location = new System.Drawing.Point(209, 145);
-            this.copia1.Name = "copia1";
-            this.copia1.Size = new System.Drawing.Size(803, 426);
-            this.copia1.TabIndex = 6;
-            // 
-            // llibre1
-            // 
-            this.llibre1.Location = new System.Drawing.Point(209, 145);
-            this.llibre1.Name = "llibre1";
-            this.llibre1.Size = new System.Drawing.Size(803, 426);
-            this.llibre1.TabIndex = 7;
+            this.usuari1.Location = new System.Drawing.Point(209, 145);
+            this.usuari1.Name = "usuari1";
+            this.usuari1.Size = new System.Drawing.Size(803, 426);
+            this.usuari1.TabIndex = 9;
             // 
             // prestec1
             // 
@@ -299,18 +272,59 @@
             this.prestec1.Size = new System.Drawing.Size(803, 426);
             this.prestec1.TabIndex = 8;
             // 
-            // usuari1
+            // llibre1
             // 
-            this.usuari1.Location = new System.Drawing.Point(209, 145);
-            this.usuari1.Name = "usuari1";
-            this.usuari1.Size = new System.Drawing.Size(803, 426);
-            this.usuari1.TabIndex = 9;
+            this.llibre1.Location = new System.Drawing.Point(209, 145);
+            this.llibre1.Name = "llibre1";
+            this.llibre1.Size = new System.Drawing.Size(803, 426);
+            this.llibre1.TabIndex = 7;
+            // 
+            // copia1
+            // 
+            this.copia1.Location = new System.Drawing.Point(209, 145);
+            this.copia1.Name = "copia1";
+            this.copia1.Size = new System.Drawing.Size(803, 426);
+            this.copia1.TabIndex = 6;
+            // 
+            // configuracio1
+            // 
+            this.configuracio1.Location = new System.Drawing.Point(209, 145);
+            this.configuracio1.Name = "configuracio1";
+            this.configuracio1.Size = new System.Drawing.Size(803, 426);
+            this.configuracio1.TabIndex = 5;
+            // 
+            // calendariFinal1
+            // 
+            this.calendariFinal1.Location = new System.Drawing.Point(209, 145);
+            this.calendariFinal1.Name = "calendariFinal1";
+            this.calendariFinal1.Size = new System.Drawing.Size(803, 426);
+            this.calendariFinal1.TabIndex = 4;
+            // 
+            // autor1
+            // 
+            this.autor1.Location = new System.Drawing.Point(209, 145);
+            this.autor1.Name = "autor1";
+            this.autor1.Size = new System.Drawing.Size(803, 426);
+            this.autor1.TabIndex = 3;
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.BackColor = System.Drawing.Color.White;
+            this.buttonExit.FlatAppearance.BorderSize = 0;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExit.Image")));
+            this.buttonExit.Location = new System.Drawing.Point(972, 12);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(40, 35);
+            this.buttonExit.TabIndex = 10;
+            this.buttonExit.UseVisualStyleBackColor = false;
             // 
             // BibliotecaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 583);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.usuari1);
             this.Controls.Add(this.prestec1);
             this.Controls.Add(this.llibre1);
@@ -357,5 +371,6 @@
         public Llibre llibre1;
         public Prestec prestec1;
         public Usuari usuari1;
+        public System.Windows.Forms.Button buttonExit;
     }
 }

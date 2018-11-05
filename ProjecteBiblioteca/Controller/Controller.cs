@@ -30,6 +30,7 @@ namespace Controller {
             BibliotecaAdmin.buttonLlibres.Click += changeButton1;
             BibliotecaAdmin.buttonPrestecs.Click += changeButton1;
             BibliotecaAdmin.buttonUsuaris.Click += changeButton1;
+            BibliotecaAdmin.buttonExit.Click += exit;
             //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
             //calendari.buttondesabilitar.Click += habilitarCalendari;
             //cd.buttonAfegirAutor.Click += finestraAutor;
@@ -76,6 +77,11 @@ namespace Controller {
         public void run() {
             Application.Run(BibliotecaAdmin);
         }
+
+        public void exit(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         #endregion
         #region Calendari
 
@@ -102,7 +108,7 @@ namespace Controller {
         }
 
         #endregion
-        /*
+        
         #region Config Dades
         protected void obrirConfigDades(object sender, EventArgs args) {
             menu.Hide();
@@ -160,7 +166,7 @@ namespace Controller {
         }
         public void autorsPopulate() {
             try {
-                cd.dgvAutors.DataSource = db.Autors.ToList().Select(a => new AutorDTO(a)).ToList();
+                .dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
             } catch (Exception e) {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
@@ -194,6 +200,6 @@ namespace Controller {
             }
         }
         #endregion
-    */
+    
     }
 }
