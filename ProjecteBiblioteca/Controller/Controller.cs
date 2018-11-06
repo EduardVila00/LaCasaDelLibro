@@ -163,6 +163,10 @@ namespace Controller {
         public void autorsPopulate() {
             try {
                 BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
+                BibliotecaAdmin.llibre1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
+                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataBaixa"].Visible = false;
+                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
+                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
             } catch (Exception e) {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
@@ -189,13 +193,42 @@ namespace Controller {
         //}
 
         protected AutorDTO autorGetSelected() {
-            if (cd.dgvAutors.SelectedRows.Count == 0) {
+            if (BibliotecaAdmin.autor1.dgvAutors.SelectedRows.Count == 0) {
                 return null;
             } else {
-                return (new AutorDTO(cd.dgvAutors.SelectedRows[0].Cells));
+                return (new AutorDTO(BibliotecaAdmin.autor1.dgvAutors.SelectedRows[0].Cells));
+            }
+        }
+        protected AutorDTO autorLlibreGetSelected()
+        {
+            if (BibliotecaAdmin.llibre1.dgvAutors.SelectedRows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return (new AutorDTO(BibliotecaAdmin.llibre1.dgvAutors.SelectedRows[0].Cells));
             }
         }
         #endregion
+        #region Llibre
+        public void llibresPopulate()
+        {
+            try
+            {
+                AutorDTO a = autorLlibreGetSelected();
+                BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.AutorId.Equals(a.Id)).Select(l => new LlibreDTO(l)).ToList();
+                BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataBaixa"].Visible = false;
+                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
+                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: \n" + e.ToString());
+            }
+        }
+            #endregion
 
-    }
+        }
 }

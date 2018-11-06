@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Model {
-    class LlibreDTO {
+    public class LlibreDTO {
         public string Isbn { get; set; }
         public string Titol { get; set; }
         public int numPagines { get; set; }
