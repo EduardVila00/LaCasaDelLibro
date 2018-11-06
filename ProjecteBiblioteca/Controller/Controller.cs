@@ -18,11 +18,13 @@ namespace Controller {
         #region Controller Principal
         public void init() {
             initListeners();
+            populaters();
+
             run();
         }
 
         public void initListeners() {
-            menu.buttonCalendari.Click += obrirCalendari;
+            BibliotecaAdmin.autor1.BringToFront();
             BibliotecaAdmin.buttonAutors.Click += changeButton1;
             BibliotecaAdmin.buttonCalendari.Click += changeButton1;
             BibliotecaAdmin.buttonConfiguracio.Click += changeButton1;
@@ -38,8 +40,7 @@ namespace Controller {
 
         }
 
-        public void populaters()
-        {
+        public void populaters() {
             autorsPopulate();
         }
 
@@ -83,9 +84,8 @@ namespace Controller {
             Application.Run(BibliotecaAdmin);
         }
 
-        public void exit(object sender, EventArgs e)
-        {
-            Application.Exit();
+        public void exit(object sender, EventArgs e) {
+            Environment.Exit(-1);
         }
         #endregion
         #region Calendari
@@ -113,7 +113,7 @@ namespace Controller {
         }
 
         #endregion
-        
+
         #region Autor
         protected int trySave() {
             try {
@@ -196,6 +196,6 @@ namespace Controller {
             }
         }
         #endregion
-    
+
     }
 }

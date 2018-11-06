@@ -309,7 +309,7 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.BackColor = System.Drawing.Color.White;
+            this.buttonExit.BackColor = System.Drawing.Color.Transparent;
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExit.Image")));

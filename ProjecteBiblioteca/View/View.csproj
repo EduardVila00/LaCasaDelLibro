@@ -49,6 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfegirAutor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AfegirAutor.Designer.cs">
+      <DependentUpon>AfegirAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AfegirLlibre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AfegirLlibre.Designer.cs">
+      <DependentUpon>AfegirLlibre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AfegirUsuari.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AfegirUsuari.Designer.cs">
+      <DependentUpon>AfegirUsuari.cs</DependentUpon>
+    </Compile>
     <Compile Include="Autor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +127,24 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModificarAutor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModificarAutor.Designer.cs">
+      <DependentUpon>ModificarAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarLlibre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModificarLlibre.Designer.cs">
+      <DependentUpon>ModificarLlibre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarUsuari.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModificarUsuari.Designer.cs">
+      <DependentUpon>ModificarUsuari.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prestec.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +158,15 @@
     <Compile Include="Usuari.Designer.cs">
       <DependentUpon>Usuari.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AfegirAutor.resx">
+      <DependentUpon>AfegirAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AfegirLlibre.resx">
+      <DependentUpon>AfegirLlibre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AfegirUsuari.resx">
+      <DependentUpon>AfegirUsuari.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Autor.resx">
       <DependentUpon>Autor.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +193,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarAutor.resx">
+      <DependentUpon>ModificarAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarLlibre.resx">
+      <DependentUpon>ModificarLlibre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarUsuari.resx">
+      <DependentUpon>ModificarUsuari.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prestec.resx">
       <DependentUpon>Prestec.cs</DependentUpon>
