@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Controller {
     public class Controller {
@@ -33,6 +34,10 @@ namespace Controller {
             BibliotecaAdmin.buttonPrestecs.Click += changeButton1;
             BibliotecaAdmin.buttonUsuaris.Click += changeButton1;
             BibliotecaAdmin.buttonExit.Click += exit;
+            BibliotecaAdmin.calendariFinal1.dataGridView1.SelectionChanged += calendariSelectionChanged;
+            BibliotecaAdmin.calendariFinal1.buttonDes.Click += deshabilitarDia;
+            BibliotecaAdmin.calendariFinal1.buttonHabilitar.Click += habilitarDia;
+
             //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
             //calendari.buttondesabilitar.Click += habilitarCalendari;
             //cd.buttonAfegirAutor.Click += finestraAutor;
@@ -42,6 +47,7 @@ namespace Controller {
 
         public void populaters() {
             autorsPopulate();
+            diesNoHabilsPopulate();
         }
 
 
@@ -93,23 +99,51 @@ namespace Controller {
         protected void diesNoHabilsPopulate() {
             // f1.dgvContactes.DataSource = db.contactes.ToList().Select(c => new ContacteDTO(c)).ToList();
             //calendari.dgvDiesNoHabils.DataSource = db.DiaNoHabil.ToList().Select();
+            BibliotecaAdmin.calendariFinal1.dataGridView1.DataSource = db.DiaNoHabil.ToList();
         }
 
 
-        protected void obrirCalendari(object sender, EventArgs args) {
-            menu.Hide();
-            calendari.ShowDialog();
-        }
 
-        protected void habilitarCalendari(object sender, EventArgs args) {
-            DateTime dataNoValida = calendari.dateTimePicker1.Value;
-            string dataNoValidaString = dataNoValida.ToString("MM/dd/yyyy");
-
+        protected void deshabilitarDia(object sender, EventArgs args) {
+            DateTime dataNoValida = BibliotecaAdmin.calendariFinal1.dateTimePickerDes.Value;
+            string dataNoValidaString = dataNoValida.ToString("yyyy/MM/dd");
+            DateTime datafinal = DateTime.Parse(dataNoValidaString);
             DiaNoHabil diaNoHabil = new DiaNoHabil();
-            diaNoHabil.data = dataNoValida;
+            diaNoHabil.data = datafinal;
             db.DiaNoHabil.Add(diaNoHabil);
+            diesNoHabilsPopulate();
+        }
+        protected DiaNoHabilDTO diaNoHabilGetSelected() {
+            if (BibliotecaAdmin.calendariFinal1.dataGridView1.SelectedRows.Count == 0) {
+                return null;
 
-            MessageBox.Show(dataNoValidaString);
+            } else {
+                return (new DiaNoHabilDTO(BibliotecaAdmin.calendariFinal1.dataGridView1.SelectedRows[0].Cells));
+            }
+        }
+        protected void calendariSelectionChanged(object sender, EventArgs e) {
+            DiaNoHabilDTO c;
+            if ((c = diaNoHabilGetSelected()) != null) {
+                BibliotecaAdmin.calendariFinal1.dateTimePickerHab.Value = c.data;
+            }
+        }
+
+        protected void habilitarDia(object sender, EventArgs e) {
+            DiaNoHabil c;
+            DiaNoHabilDTO cDTO = diaNoHabilGetSelected();
+            c = db.DiaNoHabil.Where(x => x.Id == cDTO.Id).FirstOrDefault();
+            db.DiaNoHabil.Remove(c);
+
+            trySaves();
+            diesNoHabilsPopulate();
+        }
+
+        protected void trySaves() {
+            try {
+                db.SaveChanges();
+            } catch (Exception e) {
+                Console.WriteLine(e);
+            }
         }
 
         #endregion
@@ -199,36 +233,28 @@ namespace Controller {
                 return (new AutorDTO(BibliotecaAdmin.autor1.dgvAutors.SelectedRows[0].Cells));
             }
         }
-        protected AutorDTO autorLlibreGetSelected()
-        {
-            if (BibliotecaAdmin.llibre1.dgvAutors.SelectedRows.Count == 0)
-            {
+        protected AutorDTO autorLlibreGetSelected() {
+            if (BibliotecaAdmin.llibre1.dgvAutors.SelectedRows.Count == 0) {
                 return null;
-            }
-            else
-            {
+            } else {
                 return (new AutorDTO(BibliotecaAdmin.llibre1.dgvAutors.SelectedRows[0].Cells));
             }
         }
         #endregion
         #region Llibre
-        public void llibresPopulate()
-        {
-            try
-            {
+        public void llibresPopulate() {
+            try {
                 AutorDTO a = autorLlibreGetSelected();
                 BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.AutorId.Equals(a.Id)).Select(l => new LlibreDTO(l)).ToList();
                 BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
                 BibliotecaAdmin.llibre1.dgvAutors.Columns["dataBaixa"].Visible = false;
                 BibliotecaAdmin.llibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
                 BibliotecaAdmin.llibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
         }
-            #endregion
+        #endregion
 
-        }
+    }
 }

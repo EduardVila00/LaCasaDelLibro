@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Model {
-    class DiaNoHabilDTO {
+    public class DiaNoHabilDTO {
         public int Id { get; set; }
         public DateTime data { get; set; }
 
