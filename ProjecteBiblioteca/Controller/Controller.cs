@@ -7,23 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controller {
-    public class Controller {
-        View.Menu menu = new View.Menu();
+namespace Controller
+{
+    public class Controller
+    {
         BibliotecaAdmin BibliotecaAdmin = new BibliotecaAdmin();
-        ConfigDades cd = new ConfigDades();
-        Calendari calendari = new Calendari();
         BibliotecaEntities db = new BibliotecaEntities();
 
         #region Controller Principal
-        public void init() {
+        public void init()
+        {
             initListeners();
             populaters();
-
             run();
         }
 
-        public void initListeners() {
+        public void initListeners()
+        {
             BibliotecaAdmin.autor1.BringToFront();
             BibliotecaAdmin.buttonAutors.Click += changeButton1;
             BibliotecaAdmin.buttonCalendari.Click += changeButton1;
@@ -33,25 +33,31 @@ namespace Controller {
             BibliotecaAdmin.buttonPrestecs.Click += changeButton1;
             BibliotecaAdmin.buttonUsuaris.Click += changeButton1;
             BibliotecaAdmin.buttonExit.Click += exit;
-            //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
+            BibliotecaAdmin.llibre1.dgvAutors.SelectionChanged += autorSelectionChanged;
+            BibliotecaAdmin.copia1.dgvLlibres.SelectionChanged += llibreSelectionChanged;
             //calendari.buttondesabilitar.Click += habilitarCalendari;
             //cd.buttonAfegirAutor.Click += finestraAutor;
-            //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
+
 
         }
 
-        public void populaters() {
+        public void populaters()
+        {
             autorsPopulate();
+            llibresPopulate();
+            copiesPopulate();
         }
 
 
-        public void changeButton1(object sender, EventArgs e) {
+        public void changeButton1(object sender, EventArgs e)
+        {
 
             Button button = sender as Button;
             BibliotecaAdmin.SidePanel.Top = button.Top;
             BibliotecaAdmin.SidePanel.Height = button.Height;
             int pos = button.Top;
-            switch (pos) {
+            switch (pos)
+            {
 
                 case 59:
                     BibliotecaAdmin.autor1.BringToFront();
@@ -80,29 +86,27 @@ namespace Controller {
 
         }
 
-        public void run() {
+        public void run()
+        {
             Application.Run(BibliotecaAdmin);
         }
 
-        public void exit(object sender, EventArgs e) {
+        public void exit(object sender, EventArgs e)
+        {
             Environment.Exit(-1);
         }
         #endregion
         #region Calendari
 
-        protected void diesNoHabilsPopulate() {
+        protected void diesNoHabilsPopulate()
+        {
             // f1.dgvContactes.DataSource = db.contactes.ToList().Select(c => new ContacteDTO(c)).ToList();
             //calendari.dgvDiesNoHabils.DataSource = db.DiaNoHabil.ToList().Select();
         }
 
-
-        protected void obrirCalendari(object sender, EventArgs args) {
-            menu.Hide();
-            calendari.ShowDialog();
-        }
-
-        protected void habilitarCalendari(object sender, EventArgs args) {
-            DateTime dataNoValida = calendari.dateTimePicker1.Value;
+        protected void habilitarCalendari(object sender, EventArgs args)
+        {
+            DateTime dataNoValida = DateTime.Now;
             string dataNoValidaString = dataNoValida.ToString("MM/dd/yyyy");
 
             DiaNoHabil diaNoHabil = new DiaNoHabil();
@@ -115,31 +119,47 @@ namespace Controller {
         #endregion
 
         #region Autor
-        protected int trySave() {
-            try {
+        protected int trySave()
+        {
+            try
+            {
                 db.SaveChanges();
-                return (cd.dgvAutors.SelectedRows[0].Index);
-            } catch (Exception e) {
+                return (BibliotecaAdmin.autor1.dgvAutors.SelectedRows[0].Index);
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e);
                 return 0;
             }
         }
-        protected void autorsGo(int n) {
-            try {
-                cd.dgvAutors.CurrentCell = cd.dgvAutors.Rows[n].Cells[0];
-            } catch (Exception e) {
+        protected void autorsGo(int n)
+        {
+            try
+            {
+                BibliotecaAdmin.autor1.dgvAutors.CurrentCell = BibliotecaAdmin.autor1.dgvAutors.Rows[n].Cells[0];
+            }
+            catch (Exception e)
+            {
             }
         }
-        protected void llibresGo(int n) {
-            try {
-                cd.dgvLlibres.CurrentCell = cd.dgvLlibres.Rows[n].Cells[0];
-            } catch (Exception e) {
+        protected void llibresGo(int n)
+        {
+            try
+            {
+                BibliotecaAdmin.llibre1.dgvLlibres.CurrentCell = BibliotecaAdmin.llibre1.dgvLlibres.Rows[n].Cells[0];
+            }
+            catch (Exception e)
+            {
             }
         }
-        protected void copiesGo(int n) {
-            try {
-                cd.dgvCopies.CurrentCell = cd.dgvCopies.Rows[n].Cells[0];
-            } catch (Exception e) {
+        protected void copiesGo(int n)
+        {
+            try
+            {
+                BibliotecaAdmin.copia1.dgvCopies.CurrentCell = BibliotecaAdmin.copia1.dgvCopies.Rows[n].Cells[0];
+            }
+            catch (Exception e)
+            {
             }
         }
         //protected void afegirAutor(object sender, EventArgs args) {
@@ -160,14 +180,18 @@ namespace Controller {
         //        fa.Hide();
         //    }
         //}
-        public void autorsPopulate() {
-            try {
+        public void autorsPopulate()
+        {
+            try
+            {
                 BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
                 BibliotecaAdmin.llibre1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
                 BibliotecaAdmin.llibre1.dgvAutors.Columns["dataBaixa"].Visible = false;
                 BibliotecaAdmin.llibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
                 BibliotecaAdmin.llibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
         }
@@ -185,17 +209,23 @@ namespace Controller {
         //        MessageBox.Show("Error: \n" + e.ToString());
         //    }
         //}
-        //protected void autorSelectionChanged(object sender, EventArgs args) {
-        //    AutorDTO a;
-        //    if ((a = autorGetSelected()) != null) {
-        //        llibresPopulate(a);
-        //    }
-        //}
+        protected void autorSelectionChanged(object sender, EventArgs args)
+        {
+            AutorDTO a;
+            if ((a = autorGetSelected()) != null)
+            {
+                llibresPopulate();
+            }
+        }
 
-        protected AutorDTO autorGetSelected() {
-            if (BibliotecaAdmin.autor1.dgvAutors.SelectedRows.Count == 0) {
+        protected AutorDTO autorGetSelected()
+        {
+            if (BibliotecaAdmin.autor1.dgvAutors.SelectedRows.Count == 0)
+            {
                 return null;
-            } else {
+            }
+            else
+            {
                 return (new AutorDTO(BibliotecaAdmin.autor1.dgvAutors.SelectedRows[0].Cells));
             }
         }
@@ -216,19 +246,60 @@ namespace Controller {
         {
             try
             {
-                AutorDTO a = autorLlibreGetSelected();
-                BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.AutorId.Equals(a.Id)).Select(l => new LlibreDTO(l)).ToList();
-                BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
-                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataBaixa"].Visible = false;
-                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
-                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
+                AutorDTO a;
+                if ((a = autorLlibreGetSelected()) != null)
+                {
+                    BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.AutorId.Equals(a.Id)).Select(l => new LlibreDTO(l)).ToList();
+                    BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                }
+                else
+                {
+                    BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
         }
-            #endregion
-
+        protected LlibreDTO llibreCopiaGetSelected()
+        {
+            if (BibliotecaAdmin.copia1.dgvLlibres.SelectedRows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return (new LlibreDTO(BibliotecaAdmin.copia1.dgvLlibres.SelectedRows[0].Cells));
+            }
         }
+
+        protected void llibreSelectionChanged(object sender, EventArgs args)
+        {
+            LlibreDTO a;
+            if ((a = llibreCopiaGetSelected()) != null)
+            {
+                copiesPopulate();
+            }
+        }
+        #endregion
+        #region Copia
+        public void copiesPopulate()
+        {
+            try
+            {
+                LlibreDTO a;
+                if ((a = llibreCopiaGetSelected()) != null)
+                {
+                    BibliotecaAdmin.copia1.dgvCopies.DataSource = db.Copia.ToList().Where(l => l.LlibreIsbn.Equals(a.Isbn)).Select(l => new CopiaDTO(l)).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: \n" + e.ToString());
+            }
+        }
+        #endregion
+
+    }
 }

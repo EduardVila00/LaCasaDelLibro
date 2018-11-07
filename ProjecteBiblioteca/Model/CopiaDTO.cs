@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Model {
-    class CopiaDTO {
+    public class CopiaDTO {
         public int Id { get; set; }
         public bool disponible { get; set; }
         public DateTime dataIntroduccio { get; set; }
