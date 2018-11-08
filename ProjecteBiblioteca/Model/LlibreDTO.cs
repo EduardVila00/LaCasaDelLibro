@@ -48,7 +48,7 @@ namespace Model {
             this.idioma = (string) row["idioma"].Value;
             this.dataIntroduccio = (DateTime) row["dataIntroduccio"].Value;
             this.dataDarreraModificacio = (DateTime) row["dataDarreraModificacio"].Value;
-            this.dataBaixa = (DateTime) row["dataBaixa"].Value;
+            this.dataBaixa = (DateTime?) row["dataBaixa"].Value;
         }
 
 
