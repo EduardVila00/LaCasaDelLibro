@@ -32,13 +32,14 @@ namespace Controller {
             BibliotecaAdmin.buttonExit.Click += exit;
             BibliotecaAdmin.llibre1.dgvAutors.SelectionChanged += autorSelectionChanged;
             BibliotecaAdmin.copia1.dgvLlibres.SelectionChanged += llibreSelectionChanged;
-            BibliotecaAdmin.calendariFinal1.dataGridView1.SelectionChanged += calendariSelectionChanged;
             BibliotecaAdmin.calendariFinal1.buttonDes.Click += deshabilitarDia;
             BibliotecaAdmin.calendariFinal1.buttonHabilitar.Click += habilitarDia;
             BibliotecaAdmin.autor1.buttonAfegir.Click += afegirAutorToFront;
             BibliotecaAdmin.autor1.buttonModificar.Click += modificarAutorToFront;
             BibliotecaAdmin.afegirAutor1.buttonAfegir.Click += afegirAutor;
             BibliotecaAdmin.modificarAutor1.buttonModificar.Click += modificarAutor;
+            BibliotecaAdmin.calendariFinal1.textBoxAny.KeyPress += controlarAny;
+
             //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
             //calendari.buttondesabilitar.Click += habilitarCalendari;
             //cd.buttonAfegirAutor.Click += finestraAutor;
@@ -116,19 +117,32 @@ namespace Controller {
         protected void diesNoHabilsPopulate() {
             // f1.dgvContactes.DataSource = db.contactes.ToList().Select(c => new ContacteDTO(c)).ToList();
             //calendari.dgvDiesNoHabils.DataSource = db.DiaNoHabil.ToList().Select();
-            BibliotecaAdmin.calendariFinal1.dataGridView1.DataSource = db.DiaNoHabil.ToList();
+            BibliotecaAdmin.calendariFinal1.dataGridView1.DataSource = db.DiaNoHabil.ToList().Select(a => new DiaNoHabilDTO(a)).OrderBy(a=>a.data).ToList();
         }
 
 
 
         protected void deshabilitarDia(object sender, EventArgs args) {
+
             DateTime dataNoValida = BibliotecaAdmin.calendariFinal1.dateTimePickerDes.Value;
-            string dataNoValidaString = dataNoValida.ToString("yyyy/MM/dd");
-            DateTime datafinal = DateTime.Parse(dataNoValidaString);
+            string dataString = dataNoValida.ToString("yyyy-MM-dd");
+
+
+            DateTime dataFinal = DateTime.Parse(dataString);
             DiaNoHabil diaNoHabil = new DiaNoHabil();
-            diaNoHabil.data = datafinal;
-            db.DiaNoHabil.Add(diaNoHabil);
-            diesNoHabilsPopulate();
+            diaNoHabil.data = dataFinal;
+            bool comp = true;
+            foreach (DiaNoHabil dia in db.DiaNoHabil) {
+                if (dia.data == diaNoHabil.data) {
+                    comp = false;
+                }
+            }
+            if (comp) {
+                db.DiaNoHabil.Add(diaNoHabil);
+                trySaves();
+                diesNoHabilsPopulate();
+            }
+
         }
         protected DiaNoHabilDTO diaNoHabilGetSelected() {
             if (BibliotecaAdmin.calendariFinal1.dataGridView1.SelectedRows.Count == 0) {
@@ -138,26 +152,33 @@ namespace Controller {
                 return (new DiaNoHabilDTO(BibliotecaAdmin.calendariFinal1.dataGridView1.SelectedRows[0].Cells));
             }
         }
-        protected void calendariSelectionChanged(object sender, EventArgs e) {
-            DiaNoHabilDTO c;
-            if ((c = diaNoHabilGetSelected()) != null) {
-                BibliotecaAdmin.calendariFinal1.dateTimePickerHab.Value = c.data;
-            }
-        }
+
 
         protected void habilitarDia(object sender, EventArgs e) {
             DiaNoHabil c;
             DiaNoHabilDTO cDTO = diaNoHabilGetSelected();
             c = db.DiaNoHabil.Where(x => x.Id == cDTO.Id).FirstOrDefault();
             db.DiaNoHabil.Remove(c);
-        }
-        protected void habilitarCalendari(object sender, EventArgs args) {
-            DateTime dataNoValida = DateTime.Now;
-            string dataNoValidaString = dataNoValida.ToString("MM/dd/yyyy");
-
             trySaves();
             diesNoHabilsPopulate();
+
         }
+        public void controlarAny(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        public void deshabilitarTotsDies(object sender, EventArgs e) {
+            if (BibliotecaAdmin.calendariFinal1.comboBoxDia.SelectedIndex. != null) {
+                int any = int.Parse(BibliotecaAdmin.calendariFinal1.textBoxAny.Text);
+                if (any < 2099 && any > 2017) {
+
+                }
+            }
+            
+        }
+
 
         protected void trySaves() {
             try {
@@ -166,6 +187,8 @@ namespace Controller {
                 Console.WriteLine(e);
             }
         }
+
+
 
         #endregion
 
