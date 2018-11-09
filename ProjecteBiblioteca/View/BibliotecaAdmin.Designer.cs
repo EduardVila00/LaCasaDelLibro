@@ -47,6 +47,8 @@
             this.calendariFinal1 = new View.CalendariFinal();
             this.autor1 = new View.Autor();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.afegirAutor1 = new View.AfegirAutor();
+            this.modificarAutor1 = new View.ModificarAutor();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -319,11 +321,27 @@
             this.buttonExit.TabIndex = 10;
             this.buttonExit.UseVisualStyleBackColor = false;
             // 
+            // afegirAutor1
+            // 
+            this.afegirAutor1.Location = new System.Drawing.Point(209, 145);
+            this.afegirAutor1.Name = "afegirAutor1";
+            this.afegirAutor1.Size = new System.Drawing.Size(803, 426);
+            this.afegirAutor1.TabIndex = 11;
+            // 
+            // modificarAutor1
+            // 
+            this.modificarAutor1.Location = new System.Drawing.Point(209, 145);
+            this.modificarAutor1.Name = "modificarAutor1";
+            this.modificarAutor1.Size = new System.Drawing.Size(803, 426);
+            this.modificarAutor1.TabIndex = 12;
+            // 
             // BibliotecaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 583);
+            this.Controls.Add(this.modificarAutor1);
+            this.Controls.Add(this.afegirAutor1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.usuari1);
             this.Controls.Add(this.prestec1);
@@ -372,5 +390,7 @@
         public Prestec prestec1;
         public Usuari usuari1;
         public System.Windows.Forms.Button buttonExit;
+        public AfegirAutor afegirAutor1;
+        public ModificarAutor modificarAutor1;
     }
 }

@@ -34,6 +34,7 @@
             // 
             // dgvAutors
             // 
+            this.dgvAutors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAutors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAutors.Location = new System.Drawing.Point(3, 3);
             this.dgvAutors.MultiSelect = false;

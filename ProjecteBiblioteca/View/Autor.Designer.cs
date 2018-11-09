@@ -66,7 +66,7 @@
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(142, 41);
             this.buttonModificar.TabIndex = 2;
-            this.buttonModificar.Text = "Modifcar";
+            this.buttonModificar.Text = "Modificar";
             this.buttonModificar.UseVisualStyleBackColor = false;
             // 
             // buttonEliminar

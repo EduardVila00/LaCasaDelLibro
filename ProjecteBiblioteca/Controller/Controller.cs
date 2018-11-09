@@ -35,7 +35,10 @@ namespace Controller {
             BibliotecaAdmin.calendariFinal1.dataGridView1.SelectionChanged += calendariSelectionChanged;
             BibliotecaAdmin.calendariFinal1.buttonDes.Click += deshabilitarDia;
             BibliotecaAdmin.calendariFinal1.buttonHabilitar.Click += habilitarDia;
-
+            BibliotecaAdmin.autor1.buttonAfegir.Click += afegirAutorToFront;
+            BibliotecaAdmin.autor1.buttonModificar.Click += modificarAutorToFront;
+            BibliotecaAdmin.afegirAutor1.buttonAfegir.Click += afegirAutor;
+            BibliotecaAdmin.modificarAutor1.buttonModificar.Click += modificarAutor;
             //cd.dgvAutors.SelectionChanged += autorSelectionChanged;
             //calendari.buttondesabilitar.Click += habilitarCalendari;
             //cd.buttonAfegirAutor.Click += finestraAutor;
@@ -84,6 +87,20 @@ namespace Controller {
                     break;
             }
 
+        }
+
+        protected void afegirAutorToFront(object sender, EventArgs args)
+        {
+            BibliotecaAdmin.afegirAutor1.textBoxNom.Text = "";
+            BibliotecaAdmin.afegirAutor1.textBoxCognoms.Text = "";
+            BibliotecaAdmin.afegirAutor1.BringToFront();
+        }
+
+        protected void modificarAutorToFront(object sender, EventArgs args)
+        {
+            BibliotecaAdmin.modificarAutor1.textBoxNom.Text = autorGetSelected().Nom;
+            BibliotecaAdmin.modificarAutor1.textBoxCognoms.Text = autorGetSelected().Cognoms;
+            BibliotecaAdmin.modificarAutor1.BringToFront();
         }
 
         public void run() {
@@ -180,24 +197,43 @@ namespace Controller {
             } catch (Exception e) {
             }
         }
-        //protected void afegirAutor(object sender, EventArgs args) {
-        //    string nom;
-        //    string cognom;
-        //    if (((nom = fa.textBoxNom.Text).CompareTo("") > 0) && ((cognom = fa.textBoxCognom.Text).CompareTo("") > 0)) {
-        //        Autors a = new Autors();
-        //        a.Nom = nom;
-        //        a.Cognom = cognom;
-        //        a.dataIntroduccio = DateTime.Now;
-        //        a.dataDarreraModificacio = DateTime.Now;
-        //        a.dataBaixa = DateTime.Parse("01/01/1990");
-        //        db.Autors.Add(a);
-        //        int n = trySave();
-        //        autorsPopulate();
-        //        autorsGo(cd.dgvAutors.RowCount - 1);
-        //        cd.Visible = true;
-        //        fa.Hide();
-        //    }
-        //}
+        
+        protected void afegirAutor(object sender, EventArgs args)
+        {
+            string nom;
+            string cognoms;
+            if (((nom = BibliotecaAdmin.afegirAutor1.textBoxNom.Text).CompareTo("") > 0) && ((cognoms = BibliotecaAdmin.afegirAutor1.textBoxCognoms.Text).CompareTo("") > 0))
+            {
+                Model.Autor a = new Model.Autor();
+                a.nom = nom;
+                a.cognoms = cognoms;
+                a.dataIntroduccio = DateTime.Now;
+                a.dataDarreraModificacio = DateTime.Now;
+                a.dataBaixa = null;
+                db.Autor.Add(a);
+                int n = trySave();
+                autorsPopulate();
+                autorsGo(BibliotecaAdmin.autor1.dgvAutors.RowCount - 1);
+                BibliotecaAdmin.autor1.BringToFront();
+            }
+        }
+        protected void modificarAutor(object sender, EventArgs args)
+        {
+            string nom;
+            string cognoms;
+            int id = (autorGetSelected().Id);
+            if (((nom = BibliotecaAdmin.modificarAutor1.textBoxNom.Text).CompareTo("") > 0) && ((cognoms = BibliotecaAdmin.modificarAutor1.textBoxCognoms.Text).CompareTo("") > 0))
+            {
+                Model.Autor a = db.Autor.Where(x => x.Id == id).SingleOrDefault();
+                a.nom = nom;
+                a.cognoms = cognoms;
+                db.Autor.Add(a);
+                int n = trySave();
+                autorsPopulate();
+                autorsGo(BibliotecaAdmin.autor1.dgvAutors.RowCount - 1);
+                BibliotecaAdmin.autor1.BringToFront();
+            }
+        }
         public void autorsPopulate() {
             try {
                 BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
@@ -252,9 +288,13 @@ namespace Controller {
                 if ((a = autorLlibreGetSelected()) != null) {
                     BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.AutorId.Equals(a.Id)).Select(l => new LlibreDTO(l)).ToList();
                     BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                    
                 } else {
                     BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
                 }
+                BibliotecaAdmin.copia1.dgvLlibres.Columns["dataBaixa"].Visible = false;
+                BibliotecaAdmin.copia1.dgvLlibres.Columns["dataIntroduccio"].Visible = false;
+                BibliotecaAdmin.copia1.dgvLlibres.Columns["dataDarreraModificacio"].Visible = false;
             } catch (Exception e) {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
