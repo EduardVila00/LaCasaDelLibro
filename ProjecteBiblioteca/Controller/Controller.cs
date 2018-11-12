@@ -105,18 +105,6 @@ namespace Controller
 
         }
 
-        protected void afegirAutorToFront(object sender, EventArgs args) {
-            BibliotecaAdmin.afegirAutor1.textBoxNom.Text = "";
-            BibliotecaAdmin.afegirAutor1.textBoxCognoms.Text = "";
-            BibliotecaAdmin.afegirAutor1.BringToFront();
-        }
-
-        protected void modificarAutorToFront(object sender, EventArgs args) {
-            BibliotecaAdmin.modificarAutor1.textBoxNom.Text = autorGetSelected().Nom;
-            BibliotecaAdmin.modificarAutor1.textBoxCognoms.Text = autorGetSelected().Cognoms;
-            BibliotecaAdmin.modificarAutor1.BringToFront();
-        }
-
         public void run() {
             Application.Run(BibliotecaAdmin);
         }
