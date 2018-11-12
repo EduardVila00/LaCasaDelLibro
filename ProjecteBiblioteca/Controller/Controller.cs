@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Controller
 {
@@ -37,6 +38,7 @@ namespace Controller
             BibliotecaAdmin.llibre1.dgvAutors.SelectionChanged += autorSelectionChanged;
             BibliotecaAdmin.copia1.dgvLlibres.SelectionChanged += llibreSelectionChanged;
             BibliotecaAdmin.calendariFinal1.buttonDes.Click += deshabilitarDia;
+            BibliotecaAdmin.calendariFinal1.buttonAcceptar.Click += deshabilitarTotsDies;
             BibliotecaAdmin.calendariFinal1.buttonHabilitar.Click += habilitarDia;
             BibliotecaAdmin.autor1.buttonAfegir.Click += afegirAutorToFront;
             BibliotecaAdmin.autor1.buttonModificar.Click += modificarAutorToFront;
@@ -102,14 +104,25 @@ namespace Controller
             }
 
         }
-        public void run()
-        {
+
+        protected void afegirAutorToFront(object sender, EventArgs args) {
+            BibliotecaAdmin.afegirAutor1.textBoxNom.Text = "";
+            BibliotecaAdmin.afegirAutor1.textBoxCognoms.Text = "";
+            BibliotecaAdmin.afegirAutor1.BringToFront();
+        }
+
+        protected void modificarAutorToFront(object sender, EventArgs args) {
+            BibliotecaAdmin.modificarAutor1.textBoxNom.Text = autorGetSelected().Nom;
+            BibliotecaAdmin.modificarAutor1.textBoxCognoms.Text = autorGetSelected().Cognoms;
+            BibliotecaAdmin.modificarAutor1.BringToFront();
+        }
+
+        public void run() {
             Application.Run(BibliotecaAdmin);
         }
 
-        public void exit(object sender, EventArgs e)
-        {
-            Environment.Exit(-1);
+        public void exit(object sender, EventArgs e) {
+            Process.GetCurrentProcess().Kill();
         }
         #endregion
         #region Calendari
@@ -181,15 +194,64 @@ namespace Controller
             }
         }
 
-        //public void deshabilitarTotsDies(object sender, EventArgs e) {
-        //    if (BibliotecaAdmin.calendariFinal1.comboBoxDia.SelectedIndex. != null) {
-        //        int any = int.Parse(BibliotecaAdmin.calendariFinal1.textBoxAny.Text);
-        //        if (any < 2099 && any > 2017) {
+        public void deshabilitarTotsDies(object sender, EventArgs e) {
+            string diaSeleccionat = BibliotecaAdmin.calendariFinal1.comboBoxDia.SelectedItem.ToString();
+            MessageBox.Show(diaSeleccionat);
+            if (diaSeleccionat != null) {
+                int any = int.Parse(BibliotecaAdmin.calendariFinal1.textBoxAny.Text);
+                if (any < 2099 && any > 2017) {
+                    var year = any;
+                    foreach (var month in Enumerable.Range(1, 12)) {
+                        foreach (var day in Enumerable.Range(1, DateTime.DaysInMonth(year, month))
+                      .Select(day => new DateTime(year, month, day).ToString("yyyy-MM-dd"))) {
+                            DateTime dia = DateTime.Parse(day);
+                            if (diaSeleccionat.Equals("Dilluns") && dia.DayOfWeek == DayOfWeek.Monday) {
+                                deshabilitarTotDia(dia);
+                            }
+                            if (diaSeleccionat.Equals("Dimarts") && dia.DayOfWeek == DayOfWeek.Tuesday) {
+                                deshabilitarTotDia(dia);
+                            }
+                            if (diaSeleccionat.Equals("Dimecres") && dia.DayOfWeek == DayOfWeek.Wednesday) {
+                                deshabilitarTotDia(dia);
+                            }
+                            if (diaSeleccionat.Equals("Dijous") && dia.DayOfWeek == DayOfWeek.Thursday) {
+                                deshabilitarTotDia(dia);
+                            }
+                            if (diaSeleccionat.Equals("Divendres") && dia.DayOfWeek == DayOfWeek.Friday) {
+                                deshabilitarTotDia(dia);
+                            }
+                            if (diaSeleccionat.Equals("Dissabte") && dia.DayOfWeek == DayOfWeek.Saturday) {
+                                deshabilitarTotDia(dia);
+                            }
+                            if (diaSeleccionat.Equals("Diumenge") && dia.DayOfWeek == DayOfWeek.Sunday) {
+                                deshabilitarTotDia(dia);
+                            }
+                        }
+                    }
+                    trySaves();
+                    diesNoHabilsPopulate();
+                } else {
+                    MessageBox.Show("Introduiex un any entre 2017 i 2099");
+                }
+            } else {
+                MessageBox.Show("Selecciona un dia");
+            }
 
-        //        }
-        //    }
+        }
+        public void deshabilitarTotDia(DateTime dataFinal) {
+            DiaNoHabil diaNoHabil = new DiaNoHabil();
+            diaNoHabil.data = dataFinal;
+            bool comp = true;
+            foreach (DiaNoHabil dia in db.DiaNoHabil) {
+                if (dia.data == diaNoHabil.data) {
+                    comp = false;
+                }
+            }
+            if (comp) {
+                db.DiaNoHabil.Add(diaNoHabil);
 
-        //}
+            }
+        }
 
 
         protected void trySaves()
@@ -287,8 +349,7 @@ namespace Controller
                 BibliotecaAdmin.autor1.BringToFront();
             }
         }
-        protected void modificarAutor(object sender, EventArgs args)
-        {
+        protected void modificarAutor(object sender, EventArgs args) {
             string nom;
             string cognoms;
             int id = (autorGetSelected().Id);
