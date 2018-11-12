@@ -24,15 +24,15 @@
         /// </summary>
         private void InitializeComponent() {
             this.buttonModificar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxIsbn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxTitol = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxEditorial = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxNumPagines = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxIdioma = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -50,13 +50,13 @@
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // textBoxIsbn
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(157, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 26);
-            this.textBox1.TabIndex = 6;
+            this.textBoxIsbn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxIsbn.Location = new System.Drawing.Point(157, 69);
+            this.textBoxIsbn.Name = "textBoxIsbn";
+            this.textBoxIsbn.Size = new System.Drawing.Size(194, 26);
+            this.textBoxIsbn.TabIndex = 6;
             // 
             // label1
             // 
@@ -68,13 +68,13 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "ISBN";
             // 
-            // textBox2
+            // textBoxTitol
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(159, 135);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(194, 26);
-            this.textBox2.TabIndex = 11;
+            this.textBoxTitol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTitol.Location = new System.Drawing.Point(159, 135);
+            this.textBoxTitol.Name = "textBoxTitol";
+            this.textBoxTitol.Size = new System.Drawing.Size(194, 26);
+            this.textBoxTitol.TabIndex = 11;
             // 
             // label2
             // 
@@ -86,13 +86,13 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Titol";
             // 
-            // textBox3
+            // textBoxEditorial
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(433, 69);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(194, 26);
-            this.textBox3.TabIndex = 15;
+            this.textBoxEditorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxEditorial.Location = new System.Drawing.Point(433, 69);
+            this.textBoxEditorial.Name = "textBoxEditorial";
+            this.textBoxEditorial.Size = new System.Drawing.Size(194, 26);
+            this.textBoxEditorial.TabIndex = 15;
             // 
             // label3
             // 
@@ -104,13 +104,13 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Editorial";
             // 
-            // textBox4
+            // textBoxNumPagines
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(162, 201);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(194, 26);
-            this.textBox4.TabIndex = 13;
+            this.textBoxNumPagines.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumPagines.Location = new System.Drawing.Point(162, 201);
+            this.textBoxNumPagines.Name = "textBoxNumPagines";
+            this.textBoxNumPagines.Size = new System.Drawing.Size(194, 26);
+            this.textBoxNumPagines.TabIndex = 13;
             // 
             // label4
             // 
@@ -122,13 +122,13 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Numero de pagines";
             // 
-            // textBox6
+            // textBoxIdioma
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(433, 135);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(195, 26);
-            this.textBox6.TabIndex = 17;
+            this.textBoxIdioma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxIdioma.Location = new System.Drawing.Point(433, 135);
+            this.textBoxIdioma.Name = "textBoxIdioma";
+            this.textBoxIdioma.Size = new System.Drawing.Size(195, 26);
+            this.textBoxIdioma.TabIndex = 17;
             // 
             // label6
             // 
@@ -144,16 +144,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBoxIdioma);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxEditorial);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBoxNumPagines);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxTitol);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonModificar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxIsbn);
             this.Controls.Add(this.label1);
             this.Name = "ModificarLlibre";
             this.Size = new System.Drawing.Size(803, 426);
@@ -164,16 +164,16 @@
 
         #endregion
 
-        public System.Windows.Forms.TextBox textBox6;
+        public System.Windows.Forms.TextBox textBoxIdioma;
         public System.Windows.Forms.Label label6;
-        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.TextBox textBoxEditorial;
         public System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox textBox4;
+        public System.Windows.Forms.TextBox textBoxNumPagines;
         public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox textBoxTitol;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Button buttonModificar;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBoxIsbn;
         public System.Windows.Forms.Label label1;
     }
 }

@@ -35,8 +35,8 @@ namespace Model {
             this.disponible = (bool) row["disponible"].Value;
             this.dataIntroduccio = (DateTime) row["dataIntroduccio"].Value;
             this.dataDarreraModificacio = (DateTime) row["dataDarreraModificacio"].Value;
-            this.dataBaixa = (DateTime) row["dataBaixa"].Value;
-            this.llibre_ISBN = (string) row["LlibreIsbn"].Value;
+            this.dataBaixa = (DateTime?) row["dataBaixa"].Value;
+            this.llibre_ISBN = (string) row["Llibre_Isbn"].Value;
 
         }
     }
