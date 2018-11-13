@@ -40,6 +40,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.modificarLlibre1 = new View.ModificarLlibre();
+            this.afegirLlibre1 = new View.AfegirLlibre();
             this.modificarAutor1 = new View.ModificarAutor();
             this.afegirAutor1 = new View.AfegirAutor();
             this.usuari1 = new View.Usuari();
@@ -49,8 +51,8 @@
             this.configuracio1 = new View.Configuracio();
             this.calendariFinal1 = new View.CalendariFinal();
             this.autor1 = new View.Autor();
-            this.afegirLlibre1 = new View.AfegirLlibre();
-            this.modificarLlibre1 = new View.ModificarLlibre();
+            this.afegirUsuari1 = new View.AfegirUsuari();
+            this.modificarUsuari1 = new View.ModificarUsuari();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -274,6 +276,20 @@
             this.buttonExit.TabIndex = 10;
             this.buttonExit.UseVisualStyleBackColor = false;
             // 
+            // modificarLlibre1
+            // 
+            this.modificarLlibre1.Location = new System.Drawing.Point(209, 145);
+            this.modificarLlibre1.Name = "modificarLlibre1";
+            this.modificarLlibre1.Size = new System.Drawing.Size(803, 426);
+            this.modificarLlibre1.TabIndex = 14;
+            // 
+            // afegirLlibre1
+            // 
+            this.afegirLlibre1.Location = new System.Drawing.Point(209, 145);
+            this.afegirLlibre1.Name = "afegirLlibre1";
+            this.afegirLlibre1.Size = new System.Drawing.Size(803, 426);
+            this.afegirLlibre1.TabIndex = 13;
+            // 
             // modificarAutor1
             // 
             this.modificarAutor1.Location = new System.Drawing.Point(209, 145);
@@ -337,25 +353,27 @@
             this.autor1.Size = new System.Drawing.Size(803, 426);
             this.autor1.TabIndex = 3;
             // 
-            // afegirLlibre1
+            // afegirUsuari1
             // 
-            this.afegirLlibre1.Location = new System.Drawing.Point(209, 145);
-            this.afegirLlibre1.Name = "afegirLlibre1";
-            this.afegirLlibre1.Size = new System.Drawing.Size(803, 426);
-            this.afegirLlibre1.TabIndex = 13;
+            this.afegirUsuari1.Location = new System.Drawing.Point(209, 145);
+            this.afegirUsuari1.Name = "afegirUsuari1";
+            this.afegirUsuari1.Size = new System.Drawing.Size(803, 426);
+            this.afegirUsuari1.TabIndex = 15;
             // 
-            // modificarLlibre1
+            // modificarUsuari1
             // 
-            this.modificarLlibre1.Location = new System.Drawing.Point(209, 145);
-            this.modificarLlibre1.Name = "modificarLlibre1";
-            this.modificarLlibre1.Size = new System.Drawing.Size(803, 426);
-            this.modificarLlibre1.TabIndex = 14;
+            this.modificarUsuari1.Location = new System.Drawing.Point(209, 145);
+            this.modificarUsuari1.Name = "modificarUsuari1";
+            this.modificarUsuari1.Size = new System.Drawing.Size(803, 426);
+            this.modificarUsuari1.TabIndex = 16;
             // 
             // BibliotecaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 583);
+            this.Controls.Add(this.modificarUsuari1);
+            this.Controls.Add(this.afegirUsuari1);
             this.Controls.Add(this.modificarLlibre1);
             this.Controls.Add(this.afegirLlibre1);
             this.Controls.Add(this.modificarAutor1);
@@ -412,5 +430,7 @@
         public ModificarAutor modificarAutor1;
         public AfegirLlibre afegirLlibre1;
         public ModificarLlibre modificarLlibre1;
+        public AfegirUsuari afegirUsuari1;
+        public ModificarUsuari modificarUsuari1;
     }
 }

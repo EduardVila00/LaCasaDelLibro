@@ -53,6 +53,11 @@ namespace Controller
             BibliotecaAdmin.copia1.buttonAfegir.Click += afegirCopia;
             BibliotecaAdmin.copia1.buttonModificar.Click += modificarCopia;
             BibliotecaAdmin.copia1.buttonEliminar.Click += eliminarCopia;
+            BibliotecaAdmin.usuari1.buttonAfegir.Click += afegirUsuariToFront;
+            BibliotecaAdmin.afegirUsuari1.buttonAfegir.Click += afegirUsuari;
+            BibliotecaAdmin.usuari1.buttonModificar.Click += modificarUsuariToFront;
+            BibliotecaAdmin.modificarUsuari1.buttonModificar.Click += modificarUsuari;
+            BibliotecaAdmin.usuari1.buttonEliminar.Click += eliminarUsuari;
             BibliotecaAdmin.calendariFinal1.textBoxAny.KeyPress += controlarAny;
 
 
@@ -65,6 +70,7 @@ namespace Controller
             diesNoHabilsPopulate();
             llibresPopulate();
             copiesPopulate();
+            usuarisPopulate();
         }
 
 
@@ -102,14 +108,15 @@ namespace Controller
                 default:
                     break;
             }
-
         }
 
-        public void run() {
+        public void run()
+        {
             Application.Run(BibliotecaAdmin);
         }
 
-        public void exit(object sender, EventArgs e) {
+        public void exit(object sender, EventArgs e)
+        {
             Process.GetCurrentProcess().Kill();
         }
         #endregion
@@ -182,60 +189,80 @@ namespace Controller
             }
         }
 
-        public void deshabilitarTotsDies(object sender, EventArgs e) {
+        public void deshabilitarTotsDies(object sender, EventArgs e)
+        {
             string diaSeleccionat = BibliotecaAdmin.calendariFinal1.comboBoxDia.SelectedItem.ToString();
             MessageBox.Show(diaSeleccionat);
-            if (diaSeleccionat != null) {
+            if (diaSeleccionat != null)
+            {
                 int any = int.Parse(BibliotecaAdmin.calendariFinal1.textBoxAny.Text);
-                if (any < 2099 && any > 2017) {
+                if (any < 2099 && any > 2017)
+                {
                     var year = any;
-                    foreach (var month in Enumerable.Range(1, 12)) {
+                    foreach (var month in Enumerable.Range(1, 12))
+                    {
                         foreach (var day in Enumerable.Range(1, DateTime.DaysInMonth(year, month))
-                      .Select(day => new DateTime(year, month, day).ToString("yyyy-MM-dd"))) {
+                      .Select(day => new DateTime(year, month, day).ToString("yyyy-MM-dd")))
+                        {
                             DateTime dia = DateTime.Parse(day);
-                            if (diaSeleccionat.Equals("Dilluns") && dia.DayOfWeek == DayOfWeek.Monday) {
+                            if (diaSeleccionat.Equals("Dilluns") && dia.DayOfWeek == DayOfWeek.Monday)
+                            {
                                 deshabilitarTotDia(dia);
                             }
-                            if (diaSeleccionat.Equals("Dimarts") && dia.DayOfWeek == DayOfWeek.Tuesday) {
+                            if (diaSeleccionat.Equals("Dimarts") && dia.DayOfWeek == DayOfWeek.Tuesday)
+                            {
                                 deshabilitarTotDia(dia);
                             }
-                            if (diaSeleccionat.Equals("Dimecres") && dia.DayOfWeek == DayOfWeek.Wednesday) {
+                            if (diaSeleccionat.Equals("Dimecres") && dia.DayOfWeek == DayOfWeek.Wednesday)
+                            {
                                 deshabilitarTotDia(dia);
                             }
-                            if (diaSeleccionat.Equals("Dijous") && dia.DayOfWeek == DayOfWeek.Thursday) {
+                            if (diaSeleccionat.Equals("Dijous") && dia.DayOfWeek == DayOfWeek.Thursday)
+                            {
                                 deshabilitarTotDia(dia);
                             }
-                            if (diaSeleccionat.Equals("Divendres") && dia.DayOfWeek == DayOfWeek.Friday) {
+                            if (diaSeleccionat.Equals("Divendres") && dia.DayOfWeek == DayOfWeek.Friday)
+                            {
                                 deshabilitarTotDia(dia);
                             }
-                            if (diaSeleccionat.Equals("Dissabte") && dia.DayOfWeek == DayOfWeek.Saturday) {
+                            if (diaSeleccionat.Equals("Dissabte") && dia.DayOfWeek == DayOfWeek.Saturday)
+                            {
                                 deshabilitarTotDia(dia);
                             }
-                            if (diaSeleccionat.Equals("Diumenge") && dia.DayOfWeek == DayOfWeek.Sunday) {
+                            if (diaSeleccionat.Equals("Diumenge") && dia.DayOfWeek == DayOfWeek.Sunday)
+                            {
                                 deshabilitarTotDia(dia);
                             }
                         }
                     }
                     trySaves();
                     diesNoHabilsPopulate();
-                } else {
+                }
+                else
+                {
                     MessageBox.Show("Introduiex un any entre 2017 i 2099");
                 }
-            } else {
+            }
+            else
+            {
                 MessageBox.Show("Selecciona un dia");
             }
 
         }
-        public void deshabilitarTotDia(DateTime dataFinal) {
+        public void deshabilitarTotDia(DateTime dataFinal)
+        {
             DiaNoHabil diaNoHabil = new DiaNoHabil();
             diaNoHabil.data = dataFinal;
             bool comp = true;
-            foreach (DiaNoHabil dia in db.DiaNoHabil) {
-                if (dia.data == diaNoHabil.data) {
+            foreach (DiaNoHabil dia in db.DiaNoHabil)
+            {
+                if (dia.data == diaNoHabil.data)
+                {
                     comp = false;
                 }
             }
-            if (comp) {
+            if (comp)
+            {
                 db.DiaNoHabil.Add(diaNoHabil);
 
             }
@@ -305,6 +332,19 @@ namespace Controller
             BibliotecaAdmin.modificarLlibre1.textBoxIdioma.Text = llibreGetSelected().idioma;
             BibliotecaAdmin.modificarLlibre1.BringToFront();
         }
+        protected void afegirUsuariToFront(object sender, EventArgs args)
+        {
+            BibliotecaAdmin.afegirUsuari1.textBoxNom.Text = "";
+            BibliotecaAdmin.afegirUsuari1.textBoxCognoms.Text = "";
+            BibliotecaAdmin.afegirUsuari1.BringToFront();
+        }
+
+        protected void modificarUsuariToFront(object sender, EventArgs args)
+        {
+            BibliotecaAdmin.modificarUsuari1.textBoxNom.Text = usuariGetSelected().nom;
+            BibliotecaAdmin.modificarUsuari1.textBoxCognoms.Text = usuariGetSelected().cognoms;
+            BibliotecaAdmin.modificarUsuari1.BringToFront();
+        }
         #endregion
         #region Autor
         protected void autorsGo(int n)
@@ -337,7 +377,8 @@ namespace Controller
                 BibliotecaAdmin.autor1.BringToFront();
             }
         }
-        protected void modificarAutor(object sender, EventArgs args) {
+        protected void modificarAutor(object sender, EventArgs args)
+        {
             string nom;
             string cognoms;
             int id = (autorGetSelected().Id);
@@ -382,20 +423,7 @@ namespace Controller
                 MessageBox.Show("Error: \n" + e.ToString());
             }
         }
-        //public void llibresPopulate(AutorDTO a) {
-        //    try {
-        //        cd.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.Autor.Equals(a)).Select(l => new LlibreDTO(l)).ToList();
-        //    } catch (Exception e) {
-        //        MessageBox.Show("Error: \n" + e.ToString());
-        //    }
-        //}
-        //public void copiesPopulate(LlibreDTO l) {
-        //    try {
-        //        cd.dgvCopies.DataSource = db.Copias.ToList().Where(c => c.Llibre_ISBN.Equals(l.ISBN)).Select(c => new CopiaDTO(c)).ToList();
-        //    } catch (Exception e) {
-        //        MessageBox.Show("Error: \n" + e.ToString());
-        //    }
-        //}
+
         protected void autorSelectionChanged(object sender, EventArgs args)
         {
             AutorDTO a;
@@ -504,7 +532,7 @@ namespace Controller
             string numpaginesString;
             string editorial;
             string idioma;
-            if (((isbn = BibliotecaAdmin.afegirLlibre1.textBoxIsbn.Text).CompareTo("") > 0) && ((titol = BibliotecaAdmin.afegirLlibre1.textBoxTitol.Text).CompareTo("") > 0) 
+            if (((isbn = BibliotecaAdmin.afegirLlibre1.textBoxIsbn.Text).CompareTo("") > 0) && ((titol = BibliotecaAdmin.afegirLlibre1.textBoxTitol.Text).CompareTo("") > 0)
                 && ((numpaginesString = BibliotecaAdmin.afegirLlibre1.textBoxNumPagines.Text).CompareTo("") > 0) && ((editorial = BibliotecaAdmin.afegirLlibre1.textBoxEditorial.Text).CompareTo("") > 0)
                  && ((idioma = BibliotecaAdmin.afegirLlibre1.textBoxIdioma.Text).CompareTo("") > 0))
             {
@@ -605,47 +633,145 @@ namespace Controller
 
         protected void afegirCopia(object sender, EventArgs args)
         {
-                Model.Copia c = new Model.Copia();
-                c.LlibreIsbn = llibreCopiaGetSelected().Isbn;
-                c.disponible = true;
-                c.dataIntroduccio = DateTime.Now;
-                c.dataDarreraModificacio = DateTime.Now;
-                c.dataBaixa = null;
-                db.Copia.Add(c);
-                int n = trySave();
-                copiesPopulate();
-                copiesGo(BibliotecaAdmin.copia1.dgvCopies.RowCount - 1);
+            Model.Copia c = new Model.Copia();
+            c.LlibreIsbn = llibreCopiaGetSelected().Isbn;
+            c.disponible = true;
+            c.dataIntroduccio = DateTime.Now;
+            c.dataDarreraModificacio = DateTime.Now;
+            c.dataBaixa = null;
+            db.Copia.Add(c);
+            int n = trySave();
+            copiesPopulate();
+            copiesGo(BibliotecaAdmin.copia1.dgvCopies.RowCount - 1);
         }
         protected void modificarCopia(object sender, EventArgs args)
         {
-                Model.Copia c;
-                CopiaDTO cDTO = copiaGetSelected();
-                c = db.Copia.Where(x => x.Id == cDTO.Id).FirstOrDefault();
+            Model.Copia c;
+            CopiaDTO cDTO = copiaGetSelected();
+            c = db.Copia.Where(x => x.Id == cDTO.Id).FirstOrDefault();
             if (c.disponible)
             {
                 c.disponible = false;
-            } else
+            }
+            else
             {
                 c.disponible = true;
             }
-                c.dataDarreraModificacio = DateTime.Now;
-                int n = trySave();
-                copiesPopulate();
-                copiesGo(n);
+            c.dataDarreraModificacio = DateTime.Now;
+            int n = trySave();
+            copiesPopulate();
+            copiesGo(n);
         }
         protected void eliminarCopia(object sender, EventArgs args)
         {
             int id = (copiaGetSelected().Id);
+            Model.Prestec p = db.Prestec.Where(x => x.CopiaId == id).FirstOrDefault();
             Model.Copia c;
             CopiaDTO cDTO = copiaGetSelected();
-            c = db.Copia.Where(x => x.Id == cDTO.Id).FirstOrDefault();
-            db.Copia.Remove(c);
+            if (p == null)
+            {
+                c = db.Copia.Where(x => x.Id == cDTO.Id).FirstOrDefault();
+                db.Copia.Remove(c);
+            }
+            else
+            {
+                c = db.Copia.Where(x => x.Id == cDTO.Id).FirstOrDefault();
+                c.dataDarreraModificacio = DateTime.Now;
+                c.dataBaixa = DateTime.Now;
+            }
             int n = trySave();
             copiesPopulate();
             copiesGo(n);
         }
         #endregion
+        #region Soci/Usuari
+        protected void usuarisGo(int n)
+        {
+            try
+            {
+                BibliotecaAdmin.usuari1.dgvUsuaris.CurrentCell = BibliotecaAdmin.usuari1.dgvUsuaris.Rows[n].Cells[0];
+            }
+            catch (Exception e)
+            {
+            }
+        }
 
+        protected SociDTO usuariGetSelected()
+        {
+            if (BibliotecaAdmin.usuari1.dgvUsuaris.SelectedRows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return (new SociDTO(BibliotecaAdmin.usuari1.dgvUsuaris.SelectedRows[0].Cells));
+            }
+        }
+
+        protected void afegirUsuari(object sender, EventArgs args)
+        {
+            string nom;
+            string cognoms;
+            if (((nom = BibliotecaAdmin.afegirUsuari1.textBoxNom.Text).CompareTo("") > 0) && ((cognoms = BibliotecaAdmin.afegirUsuari1.textBoxCognoms.Text).CompareTo("") > 0))
+            {
+                Model.Soci s = new Model.Soci();
+                s.nom = nom;
+                s.cognoms = cognoms;
+                s.dataIntroduccio = DateTime.Now;
+                s.dataDarreraModificacio = DateTime.Now;
+                s.dataBaixa = null;
+                db.Soci.Add(s);
+                int n = trySave();
+                usuarisPopulate();
+                usuarisGo(BibliotecaAdmin.usuari1.dgvUsuaris.RowCount - 1);
+                BibliotecaAdmin.usuari1.BringToFront();
+            }
+        }
+        protected void modificarUsuari(object sender, EventArgs args)
+        {
+            string nom;
+            string cognoms;
+            int id = (usuariGetSelected().Id);
+            if (((nom = BibliotecaAdmin.modificarUsuari1.textBoxNom.Text).CompareTo("") > 0) && ((cognoms = BibliotecaAdmin.modificarUsuari1.textBoxCognoms.Text).CompareTo("") > 0))
+            {
+                Model.Soci a;
+                SociDTO aDTO = usuariGetSelected();
+                a = db.Soci.Where(x => x.Id == aDTO.Id).FirstOrDefault();
+                a.nom = nom;
+                a.cognoms = cognoms;
+                a.dataDarreraModificacio = DateTime.Now;
+                int n = trySave();
+                usuarisPopulate();
+                usuarisGo(n);
+                BibliotecaAdmin.usuari1.BringToFront();
+            }
+        }
+
+        protected void eliminarUsuari(object sender, EventArgs args)
+        {
+            int id = (usuariGetSelected().Id);
+            Model.Soci a;
+            SociDTO aDTO = usuariGetSelected();
+            a = db.Soci.Where(x => x.Id == aDTO.Id).FirstOrDefault();
+            db.Soci.Remove(a);
+            int n = trySave();
+            usuarisPopulate();
+            usuarisGo(n);
+        }
+
+        public void usuarisPopulate()
+        {
+            try
+            {
+                BibliotecaAdmin.usuari1.dgvUsuaris.DataSource = db.Soci.ToList().Select(s => new SociDTO(s)).ToList();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: \n" + e.ToString());
+            }
+        }
+
+        #endregion
     }
 }
 

@@ -17,7 +17,7 @@ namespace Model
         public int Id { get; set; }
         public System.DateTime dataInici { get; set; }
         public System.DateTime dataFinal { get; set; }
-        public System.DateTime dataRetorn { get; set; }
+        public Nullable<System.DateTime> dataRetorn { get; set; }
         public int CopiaId { get; set; }
         public int SocisId { get; set; }
     

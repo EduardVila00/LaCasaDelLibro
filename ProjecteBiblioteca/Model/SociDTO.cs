@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Model {
-    class SociDTO {
+    public class SociDTO {
         public int Id { get; set; }
         public string nom { get; set; }
-        public string cognom { get; set; }
+        public string cognoms { get; set; }
         public DateTime dataIntroduccio { get; set; }
         public DateTime dataDarreraModificacio { get; set; }
         public DateTime? dataBaixa { get; set; }
@@ -17,7 +17,7 @@ namespace Model {
         public SociDTO(int id, string nom, string cognom, DateTime dataIntroduccio, DateTime dataDarreraModificacio) {
             Id = id;
             this.nom = nom;
-            this.cognom = cognom;
+            this.cognoms = cognom;
             this.dataIntroduccio = dataIntroduccio;
             this.dataDarreraModificacio = dataDarreraModificacio;
             this.dataBaixa = null;
@@ -26,7 +26,7 @@ namespace Model {
         public SociDTO(Soci s) {
             Id = s.Id;
             this.nom = s.nom;
-            this.cognom = s.cognoms;
+            this.cognoms = s.cognoms;
             this.dataIntroduccio = s.dataIntroduccio;
             this.dataDarreraModificacio = s.dataDarreraModificacio;
             this.dataBaixa = null;
@@ -35,10 +35,10 @@ namespace Model {
         public SociDTO(DataGridViewCellCollection row) {
             this.Id = (int) row["Id"].Value;
             this.nom = (string) row["nom"].Value;
-            this.nom = (string) row["cognom"].Value;
+            this.cognoms = (string) row["cognoms"].Value;
             this.dataIntroduccio = (DateTime) row["dataIntroduccio"].Value;
             this.dataDarreraModificacio = (DateTime) row["dataDarreraModificacio"].Value;
-            this.dataBaixa = (DateTime) row["dataBaixa"].Value;
+            this.dataBaixa = (DateTime?) row["dataBaixa"].Value;
 
 
         }
