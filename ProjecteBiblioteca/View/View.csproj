@@ -115,6 +115,12 @@
     <Compile Include="Copia.Designer.cs">
       <DependentUpon>Copia.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerarPrestec.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GenerarPrestec.Designer.cs">
+      <DependentUpon>GenerarPrestec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Llibre.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Copia.resx">
       <DependentUpon>Copia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerarPrestec.resx">
+      <DependentUpon>GenerarPrestec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Llibre.resx">
       <DependentUpon>Llibre.cs</DependentUpon>

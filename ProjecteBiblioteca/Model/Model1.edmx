@@ -237,7 +237,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dataInici" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataFinal" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dataRetorn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dataRetorn" Type="DateTime" Nullable="true" Precision="3" />
           <Property Name="CopiaId" Type="Int32" Nullable="false" />
           <Property Name="SocisId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Copia" Relationship="Self.FK_CopiaPrestec" FromRole="Prestec" ToRole="Copia" />

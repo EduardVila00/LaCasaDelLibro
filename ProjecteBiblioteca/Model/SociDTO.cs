@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Model {
-    class SociDTO {
+    public class SociDTO {
         public int Id { get; set; }
         public string nom { get; set; }
         public string cognom { get; set; }
@@ -38,7 +38,7 @@ namespace Model {
             this.nom = (string) row["cognom"].Value;
             this.dataIntroduccio = (DateTime) row["dataIntroduccio"].Value;
             this.dataDarreraModificacio = (DateTime) row["dataDarreraModificacio"].Value;
-            this.dataBaixa = (DateTime) row["dataBaixa"].Value;
+            this.dataBaixa = (DateTime?) row["dataBaixa"].Value;
 
 
         }
