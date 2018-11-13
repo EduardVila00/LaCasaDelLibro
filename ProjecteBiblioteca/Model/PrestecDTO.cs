@@ -11,9 +11,9 @@ namespace Model {
         public int IdCopia { get; set; }
         public DateTime dataInici { get; set; }
         public DateTime dataFinal { get; set; }
-        public DateTime dataRetorn { get; set; }
+        public DateTime? dataRetorn { get; set; }
 
-        public PrestecDTO(int id, int idCopia, DateTime dataInici, DateTime dataFinal, DateTime dataRetorn) {
+        public PrestecDTO(int id, int idCopia, DateTime dataInici, DateTime dataFinal, DateTime? dataRetorn) {
             Id = id;
             IdCopia = idCopia;
             this.dataInici = dataInici;
