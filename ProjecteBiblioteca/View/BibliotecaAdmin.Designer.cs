@@ -53,6 +53,7 @@
             this.autor1 = new View.Autor();
             this.afegirUsuari1 = new View.AfegirUsuari();
             this.modificarUsuari1 = new View.ModificarUsuari();
+            this.generarPrestec1 = new View.GenerarPrestec();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -367,11 +368,19 @@
             this.modificarUsuari1.Size = new System.Drawing.Size(803, 426);
             this.modificarUsuari1.TabIndex = 16;
             // 
+            // generarPrestec1
+            // 
+            this.generarPrestec1.Location = new System.Drawing.Point(209, 145);
+            this.generarPrestec1.Name = "generarPrestec1";
+            this.generarPrestec1.Size = new System.Drawing.Size(803, 426);
+            this.generarPrestec1.TabIndex = 17;
+            // 
             // BibliotecaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 583);
+            this.Controls.Add(this.generarPrestec1);
             this.Controls.Add(this.modificarUsuari1);
             this.Controls.Add(this.afegirUsuari1);
             this.Controls.Add(this.modificarLlibre1);
@@ -432,5 +441,6 @@
         public ModificarLlibre modificarLlibre1;
         public AfegirUsuari afegirUsuari1;
         public ModificarUsuari modificarUsuari1;
+        public GenerarPrestec generarPrestec1;
     }
 }
