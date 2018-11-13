@@ -54,7 +54,8 @@ namespace Controller {
             BibliotecaAdmin.usuari1.buttonModificar.Click += modificarUsuariToFront;
             BibliotecaAdmin.modificarUsuari1.buttonModificar.Click += modificarUsuari;
             BibliotecaAdmin.usuari1.buttonEliminar.Click += eliminarUsuari;
-            BibliotecaAdmin.calendariFinal1.textBoxAny.KeyPress += controlarAny;
+            BibliotecaAdmin.calendariFinal1.textBoxAny.KeyPress += noLetters;
+            BibliotecaAdmin.afegirAutor1.textBoxNom.KeyPress += noNumbers;
             BibliotecaAdmin.prestec1.dgvUsuaris.SelectionChanged += SociSelectionChanged;
 
 
@@ -165,11 +166,7 @@ namespace Controller {
             diesNoHabilsPopulate();
 
         }
-        public void controlarAny(object sender, KeyPressEventArgs e) {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                e.Handled = true;
-            }
-        }
+        
 
         public void deshabilitarTotsDies(object sender, EventArgs e)
         {
@@ -313,6 +310,23 @@ namespace Controller {
             BibliotecaAdmin.modificarUsuari1.textBoxCognoms.Text = usuariGetSelected().cognoms;
             BibliotecaAdmin.modificarUsuari1.BringToFront();
         }
+
+        public void noLetters(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void noNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         #endregion
         #region Autor
         protected void autorsGo(int n) {
@@ -362,8 +376,26 @@ namespace Controller {
             int id = (autorGetSelected().Id);
             Model.Autor a;
             AutorDTO aDTO = autorGetSelected();
-            a = db.Autor.Where(x => x.Id == aDTO.Id).FirstOrDefault();
-            db.Autor.Remove(a);
+            Model.Prestec p = null;
+            foreach (Model.Llibre llibre in db.Llibre.Where(x => x.AutorId == aDTO.Id))
+            {
+                foreach (Model.Copia copia in db.Copia.Where(x => x.LlibreIsbn == llibre.Isbn))
+                {
+                    p = db.Prestec.Where(x => x.CopiaId == copia.Id).FirstOrDefault();
+                }
+            }
+
+            if (p != null)
+            {
+                a = db.Autor.Where(x => x.Id == aDTO.Id).FirstOrDefault();
+                a.dataDarreraModificacio = DateTime.Now;
+                a.dataBaixa = DateTime.Now;
+            } else
+            {
+                a = db.Autor.Where(x => x.Id == aDTO.Id).FirstOrDefault();
+                db.Autor.Remove(a);
+            }
+
             int n = trySave();
             autorsPopulate();
             autorsGo(n);
@@ -519,8 +551,21 @@ namespace Controller {
             string isbn = (llibreGetSelected().Isbn);
             Model.Llibre l;
             LlibreDTO lDTO = llibreGetSelected();
+            Model.Prestec p = null;
+            foreach (Model.Copia copia in db.Copia.Where(x => x.LlibreIsbn == lDTO.Isbn))
+            {
+               p = db.Prestec.Where(x => x.CopiaId == copia.Id).FirstOrDefault();
+            }
+            
+            if(p != null)
+            {
+                l = db.Llibre.Where(x => x.Isbn == lDTO.Isbn).FirstOrDefault();
+                l.dataDarreraModificacio = DateTime.Now;
+                l.dataBaixa = DateTime.Now;
+            } else { 
             l = db.Llibre.Where(x => x.Isbn == lDTO.Isbn).FirstOrDefault();
             db.Llibre.Remove(l);
+            }
             int n = trySave();
             llibresPopulate();
             llibresGo(n);
