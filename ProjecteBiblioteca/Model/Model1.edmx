@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Autor">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,6 +15,14 @@
           <Property Name="dataIntroduccio" Type="datetime" Nullable="false" />
           <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
           <Property Name="dataBaixa" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AutorLlibre">
+          <Key>
+            <PropertyRef Name="Autor_Id" />
+            <PropertyRef Name="Llibre_Isbn" />
+          </Key>
+          <Property Name="Autor_Id" Type="int" Nullable="false" />
+          <Property Name="Llibre_Isbn" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Copia">
           <Key>
@@ -46,7 +54,6 @@
           <Property Name="dataIntroduccio" Type="datetime" Nullable="false" />
           <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
           <Property Name="dataBaixa" Type="datetime" />
-          <Property Name="AutorId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LlistaEspera">
           <Key>
@@ -78,15 +85,27 @@
           <Property Name="dataDarreraModificacio" Type="datetime" Nullable="false" />
           <Property Name="dataBaixa" Type="datetime" />
         </EntityType>
-        <Association Name="FK_AutorLlibre">
+        <Association Name="FK_AutorLlibre_Autor">
           <End Role="Autor" Type="Self.Autor" Multiplicity="1" />
-          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
+          <End Role="AutorLlibre" Type="Self.AutorLlibre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Autor">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Llibre">
-              <PropertyRef Name="AutorId" />
+            <Dependent Role="AutorLlibre">
+              <PropertyRef Name="Autor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutorLlibre_Llibre">
+          <End Role="Llibre" Type="Self.Llibre" Multiplicity="1" />
+          <End Role="AutorLlibre" Type="Self.AutorLlibre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Llibre">
+              <PropertyRef Name="Isbn" />
+            </Principal>
+            <Dependent Role="AutorLlibre">
+              <PropertyRef Name="Llibre_Isbn" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -140,15 +159,20 @@
         </Association>
         <EntityContainer Name="BibliotecaModelStoreContainer">
           <EntitySet Name="Autor" EntityType="Self.Autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutorLlibre" EntityType="Self.AutorLlibre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Copia" EntityType="Self.Copia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiaNoHabil" EntityType="Self.DiaNoHabil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Llibre" EntityType="Self.Llibre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LlistaEspera" EntityType="Self.LlistaEspera" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prestec" EntityType="Self.Prestec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Soci" EntityType="Self.Soci" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_AutorLlibre" Association="Self.FK_AutorLlibre">
+          <AssociationSet Name="FK_AutorLlibre_Autor" Association="Self.FK_AutorLlibre_Autor">
             <End Role="Autor" EntitySet="Autor" />
+            <End Role="AutorLlibre" EntitySet="AutorLlibre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutorLlibre_Llibre" Association="Self.FK_AutorLlibre_Llibre">
             <End Role="Llibre" EntitySet="Llibre" />
+            <End Role="AutorLlibre" EntitySet="AutorLlibre" />
           </AssociationSet>
           <AssociationSet Name="FK_CopiaPrestec" Association="Self.FK_CopiaPrestec">
             <End Role="Copia" EntitySet="Copia" />
@@ -167,7 +191,8 @@
             <End Role="Prestec" EntitySet="Prestec" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -181,7 +206,7 @@
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataBaixa" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Llibre" Relationship="Self.FK_AutorLlibre" FromRole="Autor" ToRole="Llibre" />
+          <NavigationProperty Name="Llibre" Relationship="Self.AutorLlibre" FromRole="Autor" ToRole="Llibre" />
         </EntityType>
         <EntityType Name="Copia">
           <Key>
@@ -215,10 +240,9 @@
           <Property Name="dataIntroduccio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataDarreraModificacio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataBaixa" Type="DateTime" Precision="3" />
-          <Property Name="AutorId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Autor" Relationship="Self.FK_AutorLlibre" FromRole="Llibre" ToRole="Autor" />
           <NavigationProperty Name="Copia" Relationship="Self.FK_LlibreCopia" FromRole="Llibre" ToRole="Copia" />
           <NavigationProperty Name="LlistaEspera" Relationship="Self.FK_LlibreLlistaEspera" FromRole="Llibre" ToRole="LlistaEspera" />
+          <NavigationProperty Name="Autor" Relationship="Self.AutorLlibre" FromRole="Llibre" ToRole="Autor" />
         </EntityType>
         <EntityType Name="LlistaEspera">
           <Key>
@@ -236,7 +260,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dataInici" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dataFinal" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dataRetorn" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="dataRetorn" Type="DateTime" Precision="3" />
           <Property Name="CopiaId" Type="Int32" Nullable="false" />
           <Property Name="SocisId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Copia" Relationship="Self.FK_CopiaPrestec" FromRole="Prestec" ToRole="Copia" />
@@ -254,18 +278,6 @@
           <Property Name="dataBaixa" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Prestec" Relationship="Self.FK_PrestecSocis" FromRole="Soci" ToRole="Prestec" />
         </EntityType>
-        <Association Name="FK_AutorLlibre">
-          <End Role="Autor" Type="Self.Autor" Multiplicity="1" />
-          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Autor">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Llibre">
-              <PropertyRef Name="AutorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CopiaPrestec">
           <End Role="Copia" Type="Self.Copia" Multiplicity="1" />
           <End Role="Prestec" Type="Self.Prestec" Multiplicity="*" />
@@ -314,7 +326,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BibliotecaEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="AutorLlibre">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="*" />
+          <End Role="Llibre" Type="Self.Llibre" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BibliotecaEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Autor" EntityType="Self.Autor" />
           <EntitySet Name="Copia" EntityType="Self.Copia" />
           <EntitySet Name="DiaNoHabil" EntityType="Self.DiaNoHabil" />
@@ -322,10 +338,6 @@
           <EntitySet Name="LlistaEspera" EntityType="Self.LlistaEspera" />
           <EntitySet Name="Prestec" EntityType="Self.Prestec" />
           <EntitySet Name="Soci" EntityType="Self.Soci" />
-          <AssociationSet Name="FK_AutorLlibre" Association="Self.FK_AutorLlibre">
-            <End Role="Autor" EntitySet="Autor" />
-            <End Role="Llibre" EntitySet="Llibre" />
-          </AssociationSet>
           <AssociationSet Name="FK_CopiaPrestec" Association="Self.FK_CopiaPrestec">
             <End Role="Copia" EntitySet="Copia" />
             <End Role="Prestec" EntitySet="Prestec" />
@@ -342,13 +354,17 @@
             <End Role="Soci" EntitySet="Soci" />
             <End Role="Prestec" EntitySet="Prestec" />
           </AssociationSet>
+          <AssociationSet Name="AutorLlibre" Association="Self.AutorLlibre">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Llibre" EntitySet="Llibre" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BibliotecaModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
+        <EntityContainerMapping StorageEntityContainer="BibliotecaModelStoreContainer" CdmEntityContainer="BibliotecaEntities1">
           <EntitySetMapping Name="Autor">
             <EntityTypeMapping TypeName="BibliotecaModel.Autor">
               <MappingFragment StoreEntitySet="Autor">
@@ -392,7 +408,6 @@
                 <ScalarProperty Name="dataIntroduccio" ColumnName="dataIntroduccio" />
                 <ScalarProperty Name="dataDarreraModificacio" ColumnName="dataDarreraModificacio" />
                 <ScalarProperty Name="dataBaixa" ColumnName="dataBaixa" />
-                <ScalarProperty Name="AutorId" ColumnName="AutorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -429,6 +444,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="AutorLlibre" TypeName="BibliotecaModel.AutorLlibre" StoreEntitySet="AutorLlibre">
+            <EndProperty Name="Autor">
+              <ScalarProperty Name="Id" ColumnName="Autor_Id" />
+            </EndProperty>
+            <EndProperty Name="Llibre">
+              <ScalarProperty Name="Isbn" ColumnName="Llibre_Isbn" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

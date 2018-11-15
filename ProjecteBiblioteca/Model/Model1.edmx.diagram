@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e589b3580e8b4feda61dc624700adc86" Name="Diagram1" ZoomLevel="94">
+      <Diagram DiagramId="0c44eb435900427d873296dc3173801c" Name="Diagram1">
         <EntityTypeShape EntityType="BibliotecaModel.Autor" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BibliotecaModel.Copia" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BibliotecaModel.DiaNoHabil" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
@@ -12,11 +12,11 @@
         <EntityTypeShape EntityType="BibliotecaModel.LlistaEspera" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BibliotecaModel.Prestec" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BibliotecaModel.Soci" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
-        <AssociationConnector Association="BibliotecaModel.FK_AutorLlibre" ManuallyRouted="false" />
         <AssociationConnector Association="BibliotecaModel.FK_CopiaPrestec" ManuallyRouted="false" />
         <AssociationConnector Association="BibliotecaModel.FK_LlibreCopia" ManuallyRouted="false" />
         <AssociationConnector Association="BibliotecaModel.FK_LlibreLlistaEspera" ManuallyRouted="false" />
         <AssociationConnector Association="BibliotecaModel.FK_PrestecSocis" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaModel.AutorLlibre" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

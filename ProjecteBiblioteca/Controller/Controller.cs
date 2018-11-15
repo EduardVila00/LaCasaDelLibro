@@ -12,7 +12,7 @@ using System.Diagnostics;
 namespace Controller {
     public class Controller {
         BibliotecaAdmin BibliotecaAdmin = new BibliotecaAdmin();
-        BibliotecaEntities db = new BibliotecaEntities();
+        BibliotecaEntities1 db = new BibliotecaEntities1();
 
         #region Controller Principal
         public void init() {
@@ -354,13 +354,13 @@ namespace Controller {
             Model.Autor a;
             AutorDTO aDTO = autorGetSelected();
             Model.Prestec p = null;
-            foreach (Model.Llibre llibre in db.Llibre.Where(x => x.AutorId == aDTO.Id))
-            {
-                foreach (Model.Copia copia in db.Copia.Where(x => x.LlibreIsbn == llibre.Isbn))
-                {
-                    p = db.Prestec.Where(x => x.CopiaId == copia.Id).FirstOrDefault();
-                }
-            }
+            //foreach (Model.Llibre llibre in db.Llibre.Where(x => x.AutorId == aDTO.Id))
+            //{
+            //    foreach (Model.Copia copia in db.Copia.Where(x => x.LlibreIsbn == llibre.Isbn))
+            //    {
+            //        p = db.Prestec.Where(x => x.CopiaId == copia.Id).FirstOrDefault();
+            //    }
+            //}
 
             if (p != null)
             {
@@ -429,7 +429,7 @@ namespace Controller {
             try {
                 AutorDTO a;
                 if ((a = autorLlibreGetSelected()) != null) {
-                    BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.AutorId.Equals(a.Id)).Select(l => new LlibreDTO(l)).ToList();
+                    //BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.AutorId.Equals(a.Id)).Select(l => new LlibreDTO(l)).ToList();
                     BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
 
                 } else {
@@ -488,7 +488,7 @@ namespace Controller {
                 l.numPagines = int.Parse(numpaginesString);
                 l.editorial = editorial;
                 l.idioma = idioma;
-                l.AutorId = autorLlibreGetSelected().Id;
+                //l.AutorId = autorLlibreGetSelected().Id;
                 l.dataIntroduccio = DateTime.Now;
                 l.dataDarreraModificacio = DateTime.Now;
                 l.dataBaixa = null;
@@ -680,9 +680,9 @@ namespace Controller {
 
                 for (int i = 0; i < maximDeDies; i++) {
 
-                    if () {
+                    //if () {
 
-                    }
+                    //}
                 }
 
                     // Do something with the date

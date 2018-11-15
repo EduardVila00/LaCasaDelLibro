@@ -19,6 +19,7 @@ namespace Model
         {
             this.Copia = new HashSet<Copia>();
             this.LlistaEspera = new HashSet<LlistaEspera>();
+            this.Autor = new HashSet<Autor>();
         }
     
         public string Isbn { get; set; }
@@ -29,12 +30,12 @@ namespace Model
         public System.DateTime dataIntroduccio { get; set; }
         public System.DateTime dataDarreraModificacio { get; set; }
         public Nullable<System.DateTime> dataBaixa { get; set; }
-        public int AutorId { get; set; }
     
-        public virtual Autor Autor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Copia> Copia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LlistaEspera> LlistaEspera { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Autor> Autor { get; set; }
     }
 }
