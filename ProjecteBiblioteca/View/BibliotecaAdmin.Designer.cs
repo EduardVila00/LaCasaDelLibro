@@ -54,6 +54,7 @@
             this.afegirUsuari1 = new View.AfegirUsuari();
             this.modificarUsuari1 = new View.ModificarUsuari();
             this.generarPrestec1 = new View.GenerarPrestec();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -375,11 +376,24 @@
             this.generarPrestec1.Size = new System.Drawing.Size(803, 426);
             this.generarPrestec1.TabIndex = 17;
             // 
+            // buttonBack
+            // 
+            this.buttonBack.BackColor = System.Drawing.Color.Transparent;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.Image")));
+            this.buttonBack.Location = new System.Drawing.Point(926, 12);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(40, 35);
+            this.buttonBack.TabIndex = 18;
+            this.buttonBack.UseVisualStyleBackColor = false;
+            // 
             // BibliotecaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 583);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.generarPrestec1);
             this.Controls.Add(this.modificarUsuari1);
             this.Controls.Add(this.afegirUsuari1);
@@ -442,5 +456,6 @@
         public AfegirUsuari afegirUsuari1;
         public ModificarUsuari modificarUsuari1;
         public GenerarPrestec generarPrestec1;
+        public System.Windows.Forms.Button buttonBack;
     }
 }

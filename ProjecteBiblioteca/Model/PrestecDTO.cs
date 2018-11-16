@@ -33,7 +33,7 @@ namespace Model {
             this.IdCopia = (int) row["IdCopia"].Value;
             this.dataInici = (DateTime) row["dataInici"].Value;
             this.dataFinal = (DateTime) row["dataFinal"].Value;
-            this.dataRetorn = (DateTime) row["dataRetorn"].Value;
+            this.dataRetorn = (DateTime?) row["dataRetorn"].Value;
 
         }
     }

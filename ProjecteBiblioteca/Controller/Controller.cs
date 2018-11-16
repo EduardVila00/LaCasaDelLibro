@@ -27,6 +27,7 @@ namespace Controller
         public void initListeners()
         {
             BibliotecaAdmin.autor1.BringToFront();
+            BibliotecaAdmin.buttonBack.Click += returnMenu;
             BibliotecaAdmin.buttonAutors.Click += changeButton1;
             BibliotecaAdmin.buttonCalendari.Click += changeButton1;
             BibliotecaAdmin.buttonConfiguracio.Click += changeButton1;
@@ -62,6 +63,8 @@ namespace Controller
             BibliotecaAdmin.afegirAutor1.textBoxNom.KeyPress += noNumbers;
             BibliotecaAdmin.prestec1.dgvUsuaris.SelectionChanged += SociSelectionChanged;
             BibliotecaAdmin.prestec1.buttonGenerarPrestec.Click += crearPrestecToFront;
+            BibliotecaAdmin.generarPrestec1.buttonGenerarPrestec.Click += crearPrestec;
+            BibliotecaAdmin.prestec1.buttonFinalitzarPrestec.Click += finalitzarPrestec;
 
 
 
@@ -112,9 +115,36 @@ namespace Controller
                     break;
             }
         }
+        private void returnMenu(object sender, EventArgs e) {
+            switch (BibliotecaAdmin.SidePanel.Top) {
 
-        public void run()
-        {
+                case 59:
+                    BibliotecaAdmin.autor1.BringToFront();
+                    break;
+                case 116:
+                    BibliotecaAdmin.llibre1.BringToFront();
+                    break;
+                case 173:
+                    BibliotecaAdmin.copia1.BringToFront();
+                    break;
+                case 230:
+                    BibliotecaAdmin.usuari1.BringToFront();
+                    break;
+                case 287:
+                    BibliotecaAdmin.prestec1.BringToFront();
+                    break;
+                case 344:
+                    BibliotecaAdmin.calendariFinal1.BringToFront();
+                    break;
+                case 401:
+                    BibliotecaAdmin.configuracio1.BringToFront();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void run() {
             Application.Run(BibliotecaAdmin);
         }
 
@@ -342,18 +372,14 @@ namespace Controller
             BibliotecaAdmin.modificarUsuari1.BringToFront();
         }
 
-        public void noLetters(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
+        public void noLetters(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
                 e.Handled = true;
             }
         }
 
-        public void noNumbers(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
-            {
+        public void noNumbers(object sender, KeyPressEventArgs e) {
+            if (char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar)) {
                 e.Handled = true;
             }
         }
@@ -424,8 +450,7 @@ namespace Controller
             //    }
             //}
 
-            if (p != null)
-            {
+            if (p != null) {
                 a = db.Autor.Where(x => x.Id == aDTO.Id).FirstOrDefault();
                 a.dataDarreraModificacio = DateTime.Now;
                 a.dataBaixa = DateTime.Now;
@@ -778,53 +803,75 @@ namespace Controller
             }
         }
 
-        public void crearPrestec(object sender, EventArgs args)
-        {
+        public void crearPrestec(object sender, EventArgs args) {
+            var missatge = "Aquest soci te el maxim de prestecs";
             int maximDePrestecs = 4;
             int cont = 0;
-            int maximDeDies = 3;
+            int maximDeDies = 5;
             SociDTO sDTO = sociPrestecGetSelected();
-            LlibreDTO lDTO = llibreGetSelected();
-            if (sDTO != null && lDTO != null)
-            {
+            LlibreDTO lDTO = llibrePrestecGetSelected();
+            if (sDTO != null && lDTO != null) {
                 Soci soci = db.Soci.Where(x => x.Id == sDTO.Id).FirstOrDefault();
                 Model.Llibre llibre = db.Llibre.Where(x => x.Isbn.Equals(lDTO.Isbn)).FirstOrDefault();
                 Model.Copia c = null;
-                foreach (var copia in db.Prestec.Where(z => z.SocisId == soci.Id))
-                {
+                foreach (var copia in db.Prestec.Where(z => z.SocisId == soci.Id && (z.dataRetorn == null))) {
                     cont++;
                 }
-                if (cont <= maximDePrestecs)
-                {
-                    foreach (var copia in db.Copia.Where(y => y.LlibreIsbn.Equals(llibre.Isbn)))
-                    {
-                        if (copia.disponible == true)
-                        {
+                if (cont < maximDePrestecs) {
+                    foreach (var copia in db.Copia.Where(y => y.LlibreIsbn.Equals(llibre.Isbn))) {
+                        if (copia.disponible == true) {
                             c = copia;
+                            break;
                         }
                     }
-                    if (c != null)
-                    {
+
+                    int contDiesNoHabils = 0;
+                    if (c != null) {
                         c.disponible = false;
-                        int n = trySave();
-                        copiesPopulate();
-                        copiesGo(n);
                     }
+
+
+                    DateTime avui = DateTime.Today;
+                    int num = 0;
+                    DateTime avuiMesos = avui.AddMonths(2);
+                    DateTime avuiDies = avui.AddDays(0);
+                    var a = 1;
+                    while (num < maximDeDies) {
+                        contDiesNoHabils = 0;
+                        avuiDies = avuiDies.AddDays(a++);
+
+                        foreach (var dia in db.DiaNoHabil.Where(d => d.data < avuiMesos)) {
+
+                            if (dia.data == avuiDies) {
+                                contDiesNoHabils++;
+                            }
+                        }
+                        if (contDiesNoHabils == 0) {
+                            num++;
+                        }
+
+                    }
+                    DateTime dataFinal = DateTime.Today.AddDays(a);
+                    Model.Prestec prestec = new Model.Prestec();
+                    prestec.CopiaId = c.Id;
+                    prestec.SocisId = soci.Id;
+                    prestec.dataInici = DateTime.Now;
+                    prestec.dataFinal = dataFinal;
+                    prestec.dataRetorn = null;
+
+
+                    db.Prestec.Add(prestec);
+
+                    trySave();
+                    prestecsPopulate();
+                    BibliotecaAdmin.prestec1.BringToFront();
+
+
+                } else {
+                    MessageBox.Show(missatge);
                 }
-                int contDiesNoHabils = 0;
-                Model.Prestec prestec = new Model.Prestec();
-                prestec.CopiaId = c.Id;
-                prestec.SocisId = soci.Id;
-                prestec.dataInici = DateTime.Now;
-                prestec.dataRetorn = null;
 
-                for (int i = 0; i < maximDeDies; i++)
-                {
 
-                    //if () {
-
-                    //}
-                }
 
                 // Do something with the date
 
@@ -832,6 +879,34 @@ namespace Controller
 
             }
 
+        }
+
+
+        protected void finalitzarPrestec(object sender, EventArgs e) {
+            PrestecDTO prestecDTO = PrestecGetSelected();
+            Model.Prestec p = db.Prestec.Where(x => x.Id == prestecDTO.Id).FirstOrDefault();
+            Model.Copia c = db.Copia.Where(y => y.Id == p.CopiaId).FirstOrDefault();
+            p.dataRetorn = DateTime.Today;
+            c.disponible = true;
+            trySave();
+            prestecsPopulate();
+            copiesPopulate();
+
+
+        }
+        protected LlibreDTO llibrePrestecGetSelected() {
+            if (BibliotecaAdmin.generarPrestec1.dgvLlibres.SelectedRows.Count == 0) {
+                return null;
+            } else {
+                return (new LlibreDTO(BibliotecaAdmin.generarPrestec1.dgvLlibres.SelectedRows[0].Cells));
+            }
+        }
+        protected PrestecDTO PrestecGetSelected() {
+            if (BibliotecaAdmin.prestec1.dgvPrestecs.SelectedRows.Count == 0) {
+                return null;
+            } else {
+                return (new PrestecDTO(BibliotecaAdmin.prestec1.dgvPrestecs.SelectedRows[0].Cells));
+            }
         }
 
 
