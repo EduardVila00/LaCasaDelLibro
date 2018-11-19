@@ -23,26 +23,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.dgvAutors = new System.Windows.Forms.DataGridView();
             this.buttonAfegir = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.dgvLlibres = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLlibres)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvAutors
-            // 
-            this.dgvAutors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAutors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAutors.Location = new System.Drawing.Point(3, 3);
-            this.dgvAutors.MultiSelect = false;
-            this.dgvAutors.Name = "dgvAutors";
-            this.dgvAutors.ReadOnly = true;
-            this.dgvAutors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAutors.Size = new System.Drawing.Size(396, 272);
-            this.dgvAutors.TabIndex = 0;
             // 
             // buttonAfegir
             // 
@@ -89,12 +75,12 @@
             // dgvLlibres
             // 
             this.dgvLlibres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLlibres.Location = new System.Drawing.Point(404, 3);
+            this.dgvLlibres.Location = new System.Drawing.Point(106, 50);
             this.dgvLlibres.MultiSelect = false;
             this.dgvLlibres.Name = "dgvLlibres";
             this.dgvLlibres.ReadOnly = true;
             this.dgvLlibres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLlibres.Size = new System.Drawing.Size(396, 272);
+            this.dgvLlibres.Size = new System.Drawing.Size(592, 272);
             this.dgvLlibres.TabIndex = 4;
             // 
             // Llibre
@@ -105,10 +91,8 @@
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonAfegir);
-            this.Controls.Add(this.dgvAutors);
             this.Name = "Llibre";
             this.Size = new System.Drawing.Size(803, 426);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLlibres)).EndInit();
             this.ResumeLayout(false);
 
@@ -119,7 +103,6 @@
         public System.Windows.Forms.Button buttonEliminar;
         public System.Windows.Forms.Button buttonModificar;
         public System.Windows.Forms.Button buttonAfegir;
-        public System.Windows.Forms.DataGridView dgvAutors;
         public System.Windows.Forms.DataGridView dgvLlibres;
     }
 }

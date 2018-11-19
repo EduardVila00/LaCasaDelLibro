@@ -17,7 +17,7 @@ namespace Model {
         public DateTime? dataBaixa { get; set; }
         public int LlistaEsperas_Id { get; set; }
 
-        public LlibreDTO(string ISBN, string titol, int numPagines, string editorial,string idioma, DateTime dataIntroduccio, DateTime dataDarreraModificacio, DateTime dataBaixa, int llistaEsperas_Id) {
+        public LlibreDTO(string ISBN, string titol, int numPagines, string editorial,string idioma, DateTime dataIntroduccio, DateTime dataDarreraModificacio, DateTime dataBaixa) {
             this.Isbn = ISBN;
             Titol = titol;
             this.numPagines = numPagines;
@@ -26,7 +26,6 @@ namespace Model {
             this.dataIntroduccio = dataIntroduccio;
             this.dataDarreraModificacio = dataDarreraModificacio;
             this.dataBaixa = dataBaixa;
-            LlistaEsperas_Id = llistaEsperas_Id;
         }
 
         public LlibreDTO(Llibre l) {

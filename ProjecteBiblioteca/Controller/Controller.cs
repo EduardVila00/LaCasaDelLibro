@@ -36,7 +36,6 @@ namespace Controller
             BibliotecaAdmin.buttonPrestecs.Click += changeButton1;
             BibliotecaAdmin.buttonUsuaris.Click += changeButton1;
             BibliotecaAdmin.buttonExit.Click += exit;
-            BibliotecaAdmin.llibre1.dgvAutors.SelectionChanged += autorSelectionChanged;
             BibliotecaAdmin.copia1.dgvLlibres.SelectionChanged += llibreSelectionChanged;
             BibliotecaAdmin.calendariFinal1.buttonDes.Click += deshabilitarDia;
             BibliotecaAdmin.calendariFinal1.buttonAcceptar.Click += deshabilitarTotsDies;
@@ -470,22 +469,20 @@ namespace Controller
             try
             {
                 BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
-                BibliotecaAdmin.llibre1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
-                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataBaixa"].Visible = false;
-                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
-                BibliotecaAdmin.llibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
+                if (llibreGetSelected() != null)
+                {
+                    string isbn = llibreGetSelected().Isbn;
+                    Model.Llibre llib = db.Llibre.Where(x => x.Isbn == isbn).FirstOrDefault();
+
+                    BibliotecaAdmin.modificarLlibre1.dgvAutors.DataSource = db.Autor.ToList().Where(l => !l.Llibre.Any(b => b.Isbn == llib.Isbn)).Select(b => new AutorDTO(b)).ToList();
+                    BibliotecaAdmin.modificarLlibre1.dgvAutors.Columns["dataBaixa"].Visible = false;
+                    BibliotecaAdmin.modificarLlibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
+                    BibliotecaAdmin.modificarLlibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: \n" + e.ToString());
-            }
-        }
-        protected void autorSelectionChanged(object sender, EventArgs args)
-        {
-            AutorDTO a;
-            if ((a = autorGetSelected()) != null)
-            {
-                llibresPopulate();
             }
         }
 
@@ -500,35 +497,15 @@ namespace Controller
                 return (new AutorDTO(BibliotecaAdmin.autor1.dgvAutors.SelectedRows[0].Cells));
             }
         }
-        protected AutorDTO autorLlibreGetSelected()
-        {
-            if (BibliotecaAdmin.llibre1.dgvAutors.SelectedRows.Count == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return (new AutorDTO(BibliotecaAdmin.llibre1.dgvAutors.SelectedRows[0].Cells));
-            }
-        }
         #endregion
         #region Llibre
         public void llibresPopulate()
         {
             try
             {
-                AutorDTO a;
-                if ((a = autorLlibreGetSelected()) != null)
-                {
-                    BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(l => l.Autor.Equals(a)).Select(l => new LlibreDTO(l)).ToList();
-                    BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
-
-                }
-                else
-                {
-                    BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
                     BibliotecaAdmin.generarPrestec1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
-                }
                 if (autorGetSelected() != null) {
                     int id = autorGetSelected().Id;
                     Model.Autor aut = db.Autor.Where(x => x.Id == id).FirstOrDefault();
@@ -608,7 +585,6 @@ namespace Controller
                 l.numPagines = int.Parse(numpaginesString);
                 l.editorial = editorial;
                 l.idioma = idioma;
-                l.Autor = db.Autor.Where(a => a.Id.Equals(autorLlibreGetSelected().Id)).ToList();
                 l.dataIntroduccio = DateTime.Now;
                 l.dataDarreraModificacio = DateTime.Now;
                 l.dataBaixa = null;
@@ -626,7 +602,6 @@ namespace Controller
             string numpaginesString;
             string editorial;
             string idioma;
-            int id = (autorGetSelected().Id);
             if (((isbn = BibliotecaAdmin.modificarLlibre1.textBoxIsbn.Text).CompareTo("") > 0) && ((titol = BibliotecaAdmin.modificarLlibre1.textBoxTitol.Text).CompareTo("") > 0)
                 && ((numpaginesString = BibliotecaAdmin.modificarLlibre1.textBoxNumPagines.Text).CompareTo("") > 0) && ((editorial = BibliotecaAdmin.modificarLlibre1.textBoxEditorial.Text).CompareTo("") > 0)
                  && ((idioma = BibliotecaAdmin.modificarLlibre1.textBoxIdioma.Text).CompareTo("") > 0))

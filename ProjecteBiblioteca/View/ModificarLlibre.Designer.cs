@@ -34,6 +34,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxIdioma = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.buttonAfegirAutors = new System.Windows.Forms.Button();
+            this.dgvAutors = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonModificar
@@ -43,7 +46,7 @@
             this.buttonModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonModificar.ForeColor = System.Drawing.Color.White;
-            this.buttonModificar.Location = new System.Drawing.Point(325, 297);
+            this.buttonModificar.Location = new System.Drawing.Point(343, 345);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(142, 41);
             this.buttonModificar.TabIndex = 9;
@@ -53,7 +56,7 @@
             // textBoxIsbn
             // 
             this.textBoxIsbn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxIsbn.Location = new System.Drawing.Point(157, 69);
+            this.textBoxIsbn.Location = new System.Drawing.Point(34, 69);
             this.textBoxIsbn.Name = "textBoxIsbn";
             this.textBoxIsbn.Size = new System.Drawing.Size(194, 26);
             this.textBoxIsbn.TabIndex = 6;
@@ -62,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(154, 39);
+            this.label1.Location = new System.Drawing.Point(31, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 5;
@@ -71,7 +74,7 @@
             // textBoxTitol
             // 
             this.textBoxTitol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTitol.Location = new System.Drawing.Point(159, 135);
+            this.textBoxTitol.Location = new System.Drawing.Point(36, 135);
             this.textBoxTitol.Name = "textBoxTitol";
             this.textBoxTitol.Size = new System.Drawing.Size(194, 26);
             this.textBoxTitol.TabIndex = 11;
@@ -80,7 +83,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(158, 105);
+            this.label2.Location = new System.Drawing.Point(35, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 20);
             this.label2.TabIndex = 10;
@@ -89,7 +92,7 @@
             // textBoxEditorial
             // 
             this.textBoxEditorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEditorial.Location = new System.Drawing.Point(433, 69);
+            this.textBoxEditorial.Location = new System.Drawing.Point(38, 260);
             this.textBoxEditorial.Name = "textBoxEditorial";
             this.textBoxEditorial.Size = new System.Drawing.Size(194, 26);
             this.textBoxEditorial.TabIndex = 15;
@@ -98,7 +101,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(430, 39);
+            this.label3.Location = new System.Drawing.Point(35, 230);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 20);
             this.label3.TabIndex = 14;
@@ -107,7 +110,7 @@
             // textBoxNumPagines
             // 
             this.textBoxNumPagines.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNumPagines.Location = new System.Drawing.Point(162, 201);
+            this.textBoxNumPagines.Location = new System.Drawing.Point(39, 201);
             this.textBoxNumPagines.Name = "textBoxNumPagines";
             this.textBoxNumPagines.Size = new System.Drawing.Size(194, 26);
             this.textBoxNumPagines.TabIndex = 13;
@@ -116,7 +119,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(158, 171);
+            this.label4.Location = new System.Drawing.Point(35, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 20);
             this.label4.TabIndex = 12;
@@ -125,7 +128,7 @@
             // textBoxIdioma
             // 
             this.textBoxIdioma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxIdioma.Location = new System.Drawing.Point(433, 135);
+            this.textBoxIdioma.Location = new System.Drawing.Point(38, 326);
             this.textBoxIdioma.Name = "textBoxIdioma";
             this.textBoxIdioma.Size = new System.Drawing.Size(195, 26);
             this.textBoxIdioma.TabIndex = 17;
@@ -134,16 +137,43 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(430, 105);
+            this.label6.Location = new System.Drawing.Point(35, 296);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 20);
             this.label6.TabIndex = 16;
             this.label6.Text = "Idioma";
             // 
+            // buttonAfegirAutors
+            // 
+            this.buttonAfegirAutors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.buttonAfegirAutors.FlatAppearance.BorderSize = 0;
+            this.buttonAfegirAutors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAfegirAutors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAfegirAutors.ForeColor = System.Drawing.Color.White;
+            this.buttonAfegirAutors.Location = new System.Drawing.Point(648, 292);
+            this.buttonAfegirAutors.Name = "buttonAfegirAutors";
+            this.buttonAfegirAutors.Size = new System.Drawing.Size(142, 41);
+            this.buttonAfegirAutors.TabIndex = 19;
+            this.buttonAfegirAutors.Text = "Afegir";
+            this.buttonAfegirAutors.UseVisualStyleBackColor = false;
+            // 
+            // dgvAutors
+            // 
+            this.dgvAutors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAutors.Location = new System.Drawing.Point(367, 25);
+            this.dgvAutors.MultiSelect = false;
+            this.dgvAutors.Name = "dgvAutors";
+            this.dgvAutors.ReadOnly = true;
+            this.dgvAutors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAutors.Size = new System.Drawing.Size(423, 261);
+            this.dgvAutors.TabIndex = 18;
+            // 
             // ModificarLlibre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAfegirAutors);
+            this.Controls.Add(this.dgvAutors);
             this.Controls.Add(this.textBoxIdioma);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxEditorial);
@@ -157,6 +187,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ModificarLlibre";
             this.Size = new System.Drawing.Size(803, 426);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +206,7 @@
         public System.Windows.Forms.Button buttonModificar;
         public System.Windows.Forms.TextBox textBoxIsbn;
         public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button buttonAfegirAutors;
+        public System.Windows.Forms.DataGridView dgvAutors;
     }
 }
