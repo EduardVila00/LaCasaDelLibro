@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Controller {
     public class Controller {
         BibliotecaAdmin BibliotecaAdmin = new BibliotecaAdmin();
         BibliotecaEntities1 db = new BibliotecaEntities1();
-
+        public static string Missatge = "Hi ha algun camp sense text";
         #region Controller Principal
         public void init() {
             initListeners();
@@ -54,15 +55,41 @@ namespace Controller {
             BibliotecaAdmin.usuari1.buttonModificar.Click += modificarUsuariToFront;
             BibliotecaAdmin.modificarUsuari1.buttonModificar.Click += modificarUsuari;
             BibliotecaAdmin.usuari1.buttonEliminar.Click += eliminarUsuari;
-            BibliotecaAdmin.calendariFinal1.textBoxAny.KeyPress += noLetters;
-            BibliotecaAdmin.afegirAutor1.textBoxNom.KeyPress += noNumbers;
             BibliotecaAdmin.prestec1.dgvUsuaris.SelectionChanged += SociSelectionChanged;
             BibliotecaAdmin.prestec1.buttonGenerarPrestec.Click += crearPrestecToFront;
             BibliotecaAdmin.generarPrestec1.buttonGenerarPrestec.Click += crearPrestec;
             BibliotecaAdmin.prestec1.buttonFinalitzarPrestec.Click += finalitzarPrestec;
 
+            //Keypress
+            BibliotecaAdmin.afegirAutor1.textBoxNom.KeyPress += noNumbers;
+            BibliotecaAdmin.afegirAutor1.textBoxCognoms.KeyPress += noNumbers;
+
+            BibliotecaAdmin.modificarAutor1.textBoxNom.KeyPress += noNumbers;
+            BibliotecaAdmin.modificarAutor1.textBoxCognoms.KeyPress += noNumbers;
+
+            BibliotecaAdmin.afegirLlibre1.textBoxIdioma.KeyPress += noNumbers;
+            BibliotecaAdmin.afegirLlibre1.textBoxIsbn.KeyPress += noLetters;
+            BibliotecaAdmin.afegirLlibre1.textBoxNumPagines.KeyPress += noLetters;
+
+            BibliotecaAdmin.modificarLlibre1.textBoxIdioma.KeyPress += noNumbers;
+            BibliotecaAdmin.modificarLlibre1.textBoxIsbn.KeyPress += noLetters;
+            BibliotecaAdmin.modificarLlibre1.textBoxNumPagines.KeyPress += noLetters;
+
+            BibliotecaAdmin.afegirUsuari1.textBoxNom.KeyPress += noNumbers;
+            BibliotecaAdmin.afegirUsuari1.textBoxCognoms.KeyPress += noNumbers;
+
+            BibliotecaAdmin.modificarUsuari1.textBoxNom.KeyPress += noNumbers;
+            BibliotecaAdmin.modificarUsuari1.textBoxCognoms.KeyPress += noNumbers;
 
 
+
+
+
+
+        }
+
+        private void TextBoxTitol_KeyPress(object sender, KeyPressEventArgs e) {
+            throw new NotImplementedException();
         }
 
         public void populaters() {
@@ -326,10 +353,11 @@ namespace Controller {
         }
 
         public void noNumbers(object sender, KeyPressEventArgs e) {
-            if (char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar)) {
+            if (!(char.IsLetter(e.KeyChar) || e.KeyChar == (char) Keys.Back) && !char.IsWhiteSpace(e.KeyChar)) {
                 e.Handled = true;
             }
         }
+
 
         #endregion
         #region Autor
@@ -357,6 +385,8 @@ namespace Controller {
                 autorsPopulate();
                 autorsGo(BibliotecaAdmin.autor1.dgvAutors.RowCount - 1);
                 BibliotecaAdmin.autor1.BringToFront();
+            } else {
+                MessageBox.Show(Missatge);
             }
         }
         protected void modificarAutor(object sender, EventArgs args) {
@@ -374,6 +404,8 @@ namespace Controller {
                 autorsPopulate();
                 autorsGo(n);
                 BibliotecaAdmin.autor1.BringToFront();
+            } else {
+                MessageBox.Show(Missatge);
             }
         }
 
@@ -406,8 +438,7 @@ namespace Controller {
         public void autorsPopulate() {
             try {
                 BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
-                if (llibreGetSelected() != null)
-                {
+                if (llibreGetSelected() != null) {
                     string isbn = llibreGetSelected().Isbn;
                     Model.Llibre llib = db.Llibre.Where(x => x.Isbn == isbn).FirstOrDefault();
 
@@ -416,9 +447,7 @@ namespace Controller {
                     BibliotecaAdmin.modificarLlibre1.dgvAutors.Columns["dataIntroduccio"].Visible = false;
                     BibliotecaAdmin.modificarLlibre1.dgvAutors.Columns["dataDarreraModificacio"].Visible = false;
                 }
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
         }
@@ -432,13 +461,11 @@ namespace Controller {
         }
         #endregion
         #region Llibre
-        public void llibresPopulate()
-        {
-            try
-            {
+        public void llibresPopulate() {
+            try {
                 BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
                 BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
-                    BibliotecaAdmin.generarPrestec1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                BibliotecaAdmin.generarPrestec1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
                 if (autorGetSelected() != null) {
                     int id = autorGetSelected().Id;
                     Model.Autor aut = db.Autor.Where(x => x.Id == id).FirstOrDefault();
@@ -495,8 +522,7 @@ namespace Controller {
             string idioma;
             if (((isbn = BibliotecaAdmin.afegirLlibre1.textBoxIsbn.Text).CompareTo("") > 0) && ((titol = BibliotecaAdmin.afegirLlibre1.textBoxTitol.Text).CompareTo("") > 0)
                 && ((numpaginesString = BibliotecaAdmin.afegirLlibre1.textBoxNumPagines.Text).CompareTo("") > 0) && ((editorial = BibliotecaAdmin.afegirLlibre1.textBoxEditorial.Text).CompareTo("") > 0)
-                 && ((idioma = BibliotecaAdmin.afegirLlibre1.textBoxIdioma.Text).CompareTo("") > 0))
-            {
+                 && ((idioma = BibliotecaAdmin.afegirLlibre1.textBoxIdioma.Text).CompareTo("") > 0)) {
                 Model.Llibre l = new Model.Llibre();
                 l.Isbn = isbn;
                 l.titol = titol;
@@ -511,6 +537,8 @@ namespace Controller {
                 llibresPopulate();
                 llibresGo(BibliotecaAdmin.llibre1.dgvLlibres.RowCount - 1);
                 BibliotecaAdmin.llibre1.BringToFront();
+            } else {
+                MessageBox.Show(Missatge);
             }
         }
         protected void modificarLlibre(object sender, EventArgs args) {
@@ -535,6 +563,8 @@ namespace Controller {
                 llibresPopulate();
                 llibresGo(n);
                 BibliotecaAdmin.llibre1.BringToFront();
+            } else {
+                MessageBox.Show(Missatge);
             }
         }
 
@@ -655,7 +685,7 @@ namespace Controller {
             try {
                 SociDTO a;
                 if ((a = sociPrestecGetSelected()) != null) {
-                    BibliotecaAdmin.prestec1.dgvPrestecs.DataSource = db.Prestec.ToList().Where(l => l.SocisId == a.Id && l.dataRetorn == null).OrderBy(l=> l.dataInici).Select(l => new PrestecDTO(l)).ToList();
+                    BibliotecaAdmin.prestec1.dgvPrestecs.DataSource = db.Prestec.ToList().Where(l => l.SocisId == a.Id && l.dataRetorn == null).OrderBy(l => l.dataInici).Select(l => new PrestecDTO(l)).ToList();
                 }
             } catch (Exception e) {
                 MessageBox.Show(e.ToString());
@@ -664,8 +694,13 @@ namespace Controller {
         }
 
         public void crearPrestec(object sender, EventArgs args) {
-            var maxPrestecs = BibliotecaAdmin.generarPrestec1.comboBoxPrestecs.SelectedItem.ToString();
-            var maxDies = BibliotecaAdmin.generarPrestec1.comboBoxDies.SelectedItem.ToString();
+            string maxPrestecs=null;
+            string maxDies=null;
+            if (BibliotecaAdmin.generarPrestec1.comboBoxPrestecs.SelectedItem != null && BibliotecaAdmin.generarPrestec1.comboBoxDies.SelectedItem != null) {
+                maxPrestecs = BibliotecaAdmin.generarPrestec1.comboBoxPrestecs.SelectedItem.ToString();
+                maxDies = BibliotecaAdmin.generarPrestec1.comboBoxDies.SelectedItem.ToString();
+            }
+
             var missatge = "Aquest soci te el maxim de prestecs";
             int maximDePrestecs = 4;
             int cont = 0;
@@ -683,7 +718,7 @@ namespace Controller {
                 foreach (var copia in db.Prestec.Where(z => z.SocisId == soci.Id && (z.dataRetorn == null))) {
                     cont++;
                 }
-                if (cont < maximDePrestecs) {
+                if (cont <= maximDePrestecs) {
                     foreach (var copia in db.Copia.Where(y => y.LlibreIsbn.Equals(llibre.Isbn))) {
                         if (copia.disponible) {
                             c = copia;
@@ -805,6 +840,8 @@ namespace Controller {
                 usuarisPopulate();
                 usuarisGo(BibliotecaAdmin.usuari1.dgvUsuaris.RowCount - 1);
                 BibliotecaAdmin.usuari1.BringToFront();
+            } else {
+                MessageBox.Show(Missatge);
             }
         }
         protected void modificarUsuari(object sender, EventArgs args) {
@@ -822,6 +859,8 @@ namespace Controller {
                 usuarisPopulate();
                 usuarisGo(n);
                 BibliotecaAdmin.usuari1.BringToFront();
+            } else {
+                MessageBox.Show(Missatge);
             }
         }
 
