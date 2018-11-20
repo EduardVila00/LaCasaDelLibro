@@ -43,6 +43,7 @@ namespace Controller
             BibliotecaAdmin.calendariFinal1.buttonAcceptar.Click += deshabilitarTotsDies;
             BibliotecaAdmin.calendariFinal1.buttonHabilitar.Click += habilitarDia;
             // Autor
+            BibliotecaAdmin.autor1.checkBoxDeshabilitats.CheckedChanged += autorsDeshabilitats;
             BibliotecaAdmin.autor1.buttonAfegir.Click += afegirAutorToFront;
             BibliotecaAdmin.autor1.buttonModificar.Click += modificarAutorToFront;
             BibliotecaAdmin.afegirAutor1.buttonAfegir.Click += afegirAutor;
@@ -50,6 +51,7 @@ namespace Controller
             BibliotecaAdmin.modificarAutor1.buttonModificar.Click += modificarAutor;
             BibliotecaAdmin.autor1.buttonEliminar.Click += eliminarAutor;
             // Llibre
+            BibliotecaAdmin.llibre1.checkBoxDeshabilitats.CheckedChanged += llibresDeshabilitats;
             BibliotecaAdmin.llibre1.buttonAfegir.Click += afegirLlibreToFront;
             BibliotecaAdmin.afegirLlibre1.buttonAfegir.Click += afegirLlibre;
             BibliotecaAdmin.llibre1.buttonModificar.Click += modificarLlibreToFront;
@@ -57,6 +59,7 @@ namespace Controller
             BibliotecaAdmin.modificarLlibre1.buttonModificar.Click += modificarLlibre;
             BibliotecaAdmin.llibre1.buttonEliminar.Click += eliminarLlibre;
             // Copia
+            BibliotecaAdmin.copia1.checkBoxDeshabilitats.CheckedChanged += copiesDeshabilitats;
             BibliotecaAdmin.copia1.buttonAfegir.Click += afegirCopia;
             BibliotecaAdmin.copia1.buttonModificar.Click += modificarCopia;
             BibliotecaAdmin.copia1.buttonEliminar.Click += eliminarCopia;
@@ -535,7 +538,13 @@ namespace Controller
         {
             try
             {
-                BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Select(a => new AutorDTO(a)).ToList();
+                if (!BibliotecaAdmin.autor1.checkBoxDeshabilitats.Checked)
+                {
+                    BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Where(a => a.dataBaixa == null).Select(a => new AutorDTO(a)).ToList();
+                } else
+                {
+                    BibliotecaAdmin.autor1.dgvAutors.DataSource = db.Autor.ToList().Where(a => a.dataBaixa != null).Select(a => new AutorDTO(a)).ToList();
+                }
                 if (llibreGetSelected() != null) {
                     string isbn = llibreGetSelected().Isbn;
                     Model.Llibre llib = db.Llibre.Where(x => x.Isbn == isbn).FirstOrDefault();
@@ -548,6 +557,11 @@ namespace Controller
             } catch (Exception e) {
                 MessageBox.Show("Error: \n" + e.ToString());
             }
+        }
+
+        protected void autorsDeshabilitats(object sender, EventArgs args)
+        {
+            autorsPopulate();
         }
 
         protected AutorDTO autorGetSelected()
@@ -565,7 +579,14 @@ namespace Controller
         #region Llibre
         public void llibresPopulate() {
             try {
-                BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
+                if (BibliotecaAdmin.llibre1.checkBoxDeshabilitats.Checked)
+                {
+                    BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(a => a.dataBaixa != null).Select(l => new LlibreDTO(l)).ToList();
+                }
+                else
+                {
+                    BibliotecaAdmin.llibre1.dgvLlibres.DataSource = db.Llibre.ToList().Where(a => a.dataBaixa == null).Select(l => new LlibreDTO(l)).ToList();
+                }
 
                 BibliotecaAdmin.copia1.dgvLlibres.DataSource = db.Llibre.ToList().Select(l => new LlibreDTO(l)).ToList();
                 BibliotecaAdmin.copia1.dgvLlibres.Columns["dataBaixa"].Visible = false;
@@ -724,7 +745,12 @@ namespace Controller
         //llibresGo(n);
     }
 
-    protected void afegirAutorToLlibre(object sender, EventArgs args)
+        protected void llibresDeshabilitats(object sender, EventArgs args)
+        {
+            llibresPopulate();
+        }
+
+        protected void afegirAutorToLlibre(object sender, EventArgs args)
     {
         if (BibliotecaAdmin.modificarLlibre1.dgvAutors.SelectedRows[0].Cells != null)
         {
@@ -741,7 +767,7 @@ namespace Controller
     }
 
     #endregion
-    #region Copia
+        #region Copia
     public void copiesPopulate()
     {
         try
@@ -749,7 +775,14 @@ namespace Controller
             LlibreDTO a;
             if ((a = llibreCopiaGetSelected()) != null)
             {
-                BibliotecaAdmin.copia1.dgvCopies.DataSource = db.Copia.ToList().Where(l => l.LlibreIsbn.Equals(a.Isbn)).Select(l => new CopiaDTO(l)).ToList();
+                    if (BibliotecaAdmin.copia1.checkBoxDeshabilitats.Checked)
+                    {
+                        BibliotecaAdmin.copia1.dgvCopies.DataSource = db.Copia.ToList().Where(c => c.dataBaixa != null).Select(c => new CopiaDTO(c)).ToList();
+                    }
+                    else
+                    {
+                        BibliotecaAdmin.copia1.dgvCopies.DataSource = db.Copia.ToList().Where(l => l.LlibreIsbn.Equals(a.Isbn)).Where(c => c.dataBaixa == null).Select(l => new CopiaDTO(l)).ToList();
+                    } 
             }
         }
         catch (Exception e)
@@ -837,10 +870,15 @@ namespace Controller
         copiesPopulate();
         copiesGo(n);
     }
-    #endregion
-    #region Prestec
 
-    protected void SociSelectionChanged(object sender, EventArgs args)
+        protected void copiesDeshabilitats(object sender, EventArgs args)
+        {
+            copiesPopulate();
+        }
+        #endregion
+        #region Prestec
+
+        protected void SociSelectionChanged(object sender, EventArgs args)
     {
         SociDTO a;
         if ((a = sociPrestecGetSelected()) != null)
@@ -1010,7 +1048,7 @@ namespace Controller
 
 
     #endregion
-    #region Soci/Usuari
+        #region Soci/Usuari
     protected void usuarisGo(int n)
     {
         try

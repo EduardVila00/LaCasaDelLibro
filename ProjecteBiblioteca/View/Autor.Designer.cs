@@ -27,6 +27,7 @@
             this.buttonAfegir = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
+            this.checkBoxDeshabilitats = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,10 +84,27 @@
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = false;
             // 
+            // checkBoxDeshabilitats
+            // 
+            this.checkBoxDeshabilitats.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxDeshabilitats.AutoSize = true;
+            this.checkBoxDeshabilitats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.checkBoxDeshabilitats.FlatAppearance.BorderSize = 0;
+            this.checkBoxDeshabilitats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxDeshabilitats.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxDeshabilitats.ForeColor = System.Drawing.Color.White;
+            this.checkBoxDeshabilitats.Location = new System.Drawing.Point(544, 17);
+            this.checkBoxDeshabilitats.Name = "checkBoxDeshabilitats";
+            this.checkBoxDeshabilitats.Size = new System.Drawing.Size(154, 25);
+            this.checkBoxDeshabilitats.TabIndex = 11;
+            this.checkBoxDeshabilitats.Text = "Mostrar Deshabilitats";
+            this.checkBoxDeshabilitats.UseVisualStyleBackColor = false;
+            // 
             // Autor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxDeshabilitats);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonAfegir);
@@ -95,6 +113,7 @@
             this.Size = new System.Drawing.Size(803, 426);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,5 +123,6 @@
         public System.Windows.Forms.Button buttonAfegir;
         public System.Windows.Forms.Button buttonModificar;
         public System.Windows.Forms.Button buttonEliminar;
+        public System.Windows.Forms.CheckBox checkBoxDeshabilitats;
     }
 }
