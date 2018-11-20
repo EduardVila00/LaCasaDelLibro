@@ -27,7 +27,7 @@
             this.buttonFinalitzarPrestec = new System.Windows.Forms.Button();
             this.dgvPrestecs = new System.Windows.Forms.DataGridView();
             this.dgvUsuaris = new System.Windows.Forms.DataGridView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxMostrarFinalitzats = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestecs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuaris)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +53,7 @@
             this.buttonFinalitzarPrestec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFinalitzarPrestec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFinalitzarPrestec.ForeColor = System.Drawing.Color.White;
-            this.buttonFinalitzarPrestec.Location = new System.Drawing.Point(341, 362);
+            this.buttonFinalitzarPrestec.Location = new System.Drawing.Point(535, 362);
             this.buttonFinalitzarPrestec.Name = "buttonFinalitzarPrestec";
             this.buttonFinalitzarPrestec.Size = new System.Drawing.Size(142, 41);
             this.buttonFinalitzarPrestec.TabIndex = 3;
@@ -84,27 +84,27 @@
             this.dgvUsuaris.Size = new System.Drawing.Size(396, 272);
             this.dgvUsuaris.TabIndex = 7;
             // 
-            // checkBox1
+            // checkBoxMostrarFinalitzats
             // 
-            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
-            this.checkBox1.FlatAppearance.BorderSize = 0;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(595, 362);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 25);
-            this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBoxMostrarFinalitzats.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxMostrarFinalitzats.AutoSize = true;
+            this.checkBoxMostrarFinalitzats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.checkBoxMostrarFinalitzats.FlatAppearance.BorderSize = 0;
+            this.checkBoxMostrarFinalitzats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxMostrarFinalitzats.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxMostrarFinalitzats.ForeColor = System.Drawing.Color.White;
+            this.checkBoxMostrarFinalitzats.Location = new System.Drawing.Point(610, 281);
+            this.checkBoxMostrarFinalitzats.Name = "checkBoxMostrarFinalitzats";
+            this.checkBoxMostrarFinalitzats.Size = new System.Drawing.Size(190, 25);
+            this.checkBoxMostrarFinalitzats.TabIndex = 10;
+            this.checkBoxMostrarFinalitzats.Text = "Mostrar prestecs finalitzats";
+            this.checkBoxMostrarFinalitzats.UseVisualStyleBackColor = false;
             // 
             // Prestec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBoxMostrarFinalitzats);
             this.Controls.Add(this.dgvPrestecs);
             this.Controls.Add(this.dgvUsuaris);
             this.Controls.Add(this.buttonFinalitzarPrestec);
@@ -124,6 +124,6 @@
         public System.Windows.Forms.Button buttonGenerarPrestec;
         public System.Windows.Forms.DataGridView dgvPrestecs;
         public System.Windows.Forms.DataGridView dgvUsuaris;
-        public System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.CheckBox checkBoxMostrarFinalitzats;
     }
 }

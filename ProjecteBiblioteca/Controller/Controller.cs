@@ -70,6 +70,7 @@ namespace Controller
             // Prestec
             BibliotecaAdmin.prestec1.dgvUsuaris.SelectionChanged += SociSelectionChanged;
             BibliotecaAdmin.prestec1.buttonGenerarPrestec.Click += crearPrestecToFront;
+            BibliotecaAdmin.prestec1.checkBoxMostrarFinalitzats.CheckedChanged += veurePrestecsDeshabilitats;
             BibliotecaAdmin.generarPrestec1.buttonGenerarPrestec.Click += crearPrestec;
             BibliotecaAdmin.prestec1.buttonFinalitzarPrestec.Click += finalitzarPrestec;
             //Keypress
@@ -861,6 +862,19 @@ namespace Controller
         }
     }
 
+        private void veurePrestecsDeshabilitats(object sender, EventArgs e) {
+
+            if (BibliotecaAdmin.prestec1.checkBoxMostrarFinalitzats.Checked) {
+                SociDTO a;
+                if ((a = sociPrestecGetSelected()) != null) {
+                    var PrestecsFinalitzats = db.Prestec.ToList().Where(l => l.SocisId == a.Id && l.dataRetorn != null).OrderBy(l => l.dataInici).Select(l => new PrestecDTO(l)).ToList();
+                    BibliotecaAdmin.prestec1.dgvPrestecs.DataSource = PrestecsFinalitzats;
+                } 
+            } else {
+                prestecsPopulate();
+            }
+        }
+
     public void prestecsPopulate()
     {
         try
@@ -1086,17 +1100,29 @@ namespace Controller
         usuarisPopulate();
         usuarisGo(n);
     }
+        private void veureUsuarisBaixa(object sender, EventArgs e) {
+
+            if (BibliotecaAdmin.prestec1.checkBoxMostrarFinalitzats.Checked) {
+                SociDTO a;
+                    //var PrestecsFinalitzats = db.Prestec.ToList().Where(l => l.SocisId == a.Id && l.dataRetorn != null).OrderBy(l => l.dataInici).Select(l => new PrestecDTO(l)).ToList();
+                    //BibliotecaAdmin.prestec1.dgvPrestecs.DataSource = PrestecsFinalitzats;
+
+            } else {
+                prestecsPopulate();
+            }
+        }
+
 
     public void usuarisPopulate()
     {
         try
         {
-            BibliotecaAdmin.usuari1.dgvUsuaris.DataSource = db.Soci.ToList().Select(s => new SociDTO(s)).ToList();
-            BibliotecaAdmin.prestec1.dgvUsuaris.DataSource = db.Soci.ToList().Select(a => new SociDTO(a)).ToList();
+            BibliotecaAdmin.usuari1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s=> s.dataBaixa!=null).Select(s => new SociDTO(s)).ToList();
+            BibliotecaAdmin.prestec1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s => s.dataBaixa != null).Select(a => new SociDTO(a)).ToList();
             BibliotecaAdmin.prestec1.dgvUsuaris.Columns["dataBaixa"].Visible = false;
             BibliotecaAdmin.prestec1.dgvUsuaris.Columns["dataIntroduccio"].Visible = false;
             BibliotecaAdmin.prestec1.dgvUsuaris.Columns["dataDarreraModificacio"].Visible = false;
-            BibliotecaAdmin.generarPrestec1.dgvUsuaris.DataSource = db.Soci.ToList().Select(a => new SociDTO(a)).ToList();
+            BibliotecaAdmin.generarPrestec1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s => s.dataBaixa != null).Select(a => new SociDTO(a)).ToList();
             BibliotecaAdmin.generarPrestec1.dgvUsuaris.Columns["dataBaixa"].Visible = false;
             BibliotecaAdmin.generarPrestec1.dgvUsuaris.Columns["dataIntroduccio"].Visible = false;
             BibliotecaAdmin.generarPrestec1.dgvUsuaris.Columns["dataDarreraModificacio"].Visible = false;
