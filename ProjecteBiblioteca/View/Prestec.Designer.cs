@@ -27,6 +27,7 @@
             this.buttonFinalitzarPrestec = new System.Windows.Forms.Button();
             this.dgvPrestecs = new System.Windows.Forms.DataGridView();
             this.dgvUsuaris = new System.Windows.Forms.DataGridView();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestecs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuaris)).BeginInit();
             this.SuspendLayout();
@@ -38,7 +39,7 @@
             this.buttonGenerarPrestec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGenerarPrestec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGenerarPrestec.ForeColor = System.Drawing.Color.White;
-            this.buttonGenerarPrestec.Location = new System.Drawing.Point(170, 362);
+            this.buttonGenerarPrestec.Location = new System.Drawing.Point(92, 362);
             this.buttonGenerarPrestec.Name = "buttonGenerarPrestec";
             this.buttonGenerarPrestec.Size = new System.Drawing.Size(142, 41);
             this.buttonGenerarPrestec.TabIndex = 1;
@@ -52,7 +53,7 @@
             this.buttonFinalitzarPrestec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFinalitzarPrestec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFinalitzarPrestec.ForeColor = System.Drawing.Color.White;
-            this.buttonFinalitzarPrestec.Location = new System.Drawing.Point(497, 362);
+            this.buttonFinalitzarPrestec.Location = new System.Drawing.Point(341, 362);
             this.buttonFinalitzarPrestec.Name = "buttonFinalitzarPrestec";
             this.buttonFinalitzarPrestec.Size = new System.Drawing.Size(142, 41);
             this.buttonFinalitzarPrestec.TabIndex = 3;
@@ -83,10 +84,27 @@
             this.dgvUsuaris.Size = new System.Drawing.Size(396, 272);
             this.dgvUsuaris.TabIndex = 7;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.checkBox1.FlatAppearance.BorderSize = 0;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(595, 362);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(86, 25);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            // 
             // Prestec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dgvPrestecs);
             this.Controls.Add(this.dgvUsuaris);
             this.Controls.Add(this.buttonFinalitzarPrestec);
@@ -96,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestecs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuaris)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -105,5 +124,6 @@
         public System.Windows.Forms.Button buttonGenerarPrestec;
         public System.Windows.Forms.DataGridView dgvPrestecs;
         public System.Windows.Forms.DataGridView dgvUsuaris;
+        public System.Windows.Forms.CheckBox checkBox1;
     }
 }
