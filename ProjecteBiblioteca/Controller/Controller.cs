@@ -1155,12 +1155,12 @@ namespace Controller
     {
         try
         {
-            BibliotecaAdmin.usuari1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s=> s.dataBaixa!=null).Select(s => new SociDTO(s)).ToList();
-            BibliotecaAdmin.prestec1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s => s.dataBaixa != null).Select(a => new SociDTO(a)).ToList();
+            BibliotecaAdmin.usuari1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s=> s.dataBaixa==null).Select(s => new SociDTO(s)).ToList();
+            BibliotecaAdmin.prestec1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s => s.dataBaixa == null).Select(a => new SociDTO(a)).ToList();
             BibliotecaAdmin.prestec1.dgvUsuaris.Columns["dataBaixa"].Visible = false;
             BibliotecaAdmin.prestec1.dgvUsuaris.Columns["dataIntroduccio"].Visible = false;
             BibliotecaAdmin.prestec1.dgvUsuaris.Columns["dataDarreraModificacio"].Visible = false;
-            BibliotecaAdmin.generarPrestec1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s => s.dataBaixa != null).Select(a => new SociDTO(a)).ToList();
+            BibliotecaAdmin.generarPrestec1.dgvUsuaris.DataSource = db.Soci.ToList().Where(s => s.dataBaixa == null).Select(a => new SociDTO(a)).ToList();
             BibliotecaAdmin.generarPrestec1.dgvUsuaris.Columns["dataBaixa"].Visible = false;
             BibliotecaAdmin.generarPrestec1.dgvUsuaris.Columns["dataIntroduccio"].Visible = false;
             BibliotecaAdmin.generarPrestec1.dgvUsuaris.Columns["dataDarreraModificacio"].Visible = false;
