@@ -27,6 +27,7 @@ namespace Controller
 
         public void initListeners()
         {
+            // Menu Principal
             BibliotecaAdmin.autor1.BringToFront();
             BibliotecaAdmin.buttonBack.Click += returnMenu;
             BibliotecaAdmin.buttonAutors.Click += changeButton1;
@@ -37,35 +38,40 @@ namespace Controller
             BibliotecaAdmin.buttonPrestecs.Click += changeButton1;
             BibliotecaAdmin.buttonUsuaris.Click += changeButton1;
             BibliotecaAdmin.buttonExit.Click += exit;
-            BibliotecaAdmin.copia1.dgvLlibres.SelectionChanged += llibreSelectionChanged;
+            // Calendari
             BibliotecaAdmin.calendariFinal1.buttonDes.Click += deshabilitarDia;
             BibliotecaAdmin.calendariFinal1.buttonAcceptar.Click += deshabilitarTotsDies;
             BibliotecaAdmin.calendariFinal1.buttonHabilitar.Click += habilitarDia;
+            // Autor
             BibliotecaAdmin.autor1.buttonAfegir.Click += afegirAutorToFront;
             BibliotecaAdmin.autor1.buttonModificar.Click += modificarAutorToFront;
             BibliotecaAdmin.afegirAutor1.buttonAfegir.Click += afegirAutor;
             BibliotecaAdmin.modificarAutor1.buttonAfegirLlibres.Click += afegirLlibreToAutor;
             BibliotecaAdmin.modificarAutor1.buttonModificar.Click += modificarAutor;
             BibliotecaAdmin.autor1.buttonEliminar.Click += eliminarAutor;
+            // Llibre
             BibliotecaAdmin.llibre1.buttonAfegir.Click += afegirLlibreToFront;
             BibliotecaAdmin.afegirLlibre1.buttonAfegir.Click += afegirLlibre;
             BibliotecaAdmin.llibre1.buttonModificar.Click += modificarLlibreToFront;
             BibliotecaAdmin.modificarLlibre1.buttonAfegirAutors.Click += afegirAutorToLlibre;
             BibliotecaAdmin.modificarLlibre1.buttonModificar.Click += modificarLlibre;
             BibliotecaAdmin.llibre1.buttonEliminar.Click += eliminarLlibre;
+            // Copia
             BibliotecaAdmin.copia1.buttonAfegir.Click += afegirCopia;
             BibliotecaAdmin.copia1.buttonModificar.Click += modificarCopia;
             BibliotecaAdmin.copia1.buttonEliminar.Click += eliminarCopia;
+            BibliotecaAdmin.copia1.dgvLlibres.SelectionChanged += llibreSelectionChanged;
+            // Usuari
             BibliotecaAdmin.usuari1.buttonAfegir.Click += afegirUsuariToFront;
             BibliotecaAdmin.afegirUsuari1.buttonAfegir.Click += afegirUsuari;
             BibliotecaAdmin.usuari1.buttonModificar.Click += modificarUsuariToFront;
             BibliotecaAdmin.modificarUsuari1.buttonModificar.Click += modificarUsuari;
             BibliotecaAdmin.usuari1.buttonEliminar.Click += eliminarUsuari;
+            // Prestec
             BibliotecaAdmin.prestec1.dgvUsuaris.SelectionChanged += SociSelectionChanged;
             BibliotecaAdmin.prestec1.buttonGenerarPrestec.Click += crearPrestecToFront;
             BibliotecaAdmin.generarPrestec1.buttonGenerarPrestec.Click += crearPrestec;
             BibliotecaAdmin.prestec1.buttonFinalitzarPrestec.Click += finalitzarPrestec;
-
             //Keypress
             BibliotecaAdmin.afegirAutor1.textBoxNom.KeyPress += noNumbers;
             BibliotecaAdmin.afegirAutor1.textBoxCognoms.KeyPress += noNumbers;
