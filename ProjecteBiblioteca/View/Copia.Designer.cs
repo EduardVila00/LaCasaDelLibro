@@ -28,6 +28,7 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.dgvCopies = new System.Windows.Forms.DataGridView();
             this.dgvLlibres = new System.Windows.Forms.DataGridView();
+            this.checkBoxDeshabilitats = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCopies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLlibres)).BeginInit();
             this.SuspendLayout();
@@ -96,10 +97,27 @@
             this.dgvLlibres.Size = new System.Drawing.Size(396, 272);
             this.dgvLlibres.TabIndex = 5;
             // 
+            // checkBoxDeshabilitats
+            // 
+            this.checkBoxDeshabilitats.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxDeshabilitats.AutoSize = true;
+            this.checkBoxDeshabilitats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.checkBoxDeshabilitats.FlatAppearance.BorderSize = 0;
+            this.checkBoxDeshabilitats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxDeshabilitats.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxDeshabilitats.ForeColor = System.Drawing.Color.White;
+            this.checkBoxDeshabilitats.Location = new System.Drawing.Point(646, 281);
+            this.checkBoxDeshabilitats.Name = "checkBoxDeshabilitats";
+            this.checkBoxDeshabilitats.Size = new System.Drawing.Size(154, 25);
+            this.checkBoxDeshabilitats.TabIndex = 13;
+            this.checkBoxDeshabilitats.Text = "Mostrar Deshabilitats";
+            this.checkBoxDeshabilitats.UseVisualStyleBackColor = false;
+            // 
             // Copia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxDeshabilitats);
             this.Controls.Add(this.dgvCopies);
             this.Controls.Add(this.dgvLlibres);
             this.Controls.Add(this.buttonEliminar);
@@ -110,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCopies)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLlibres)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -120,5 +139,6 @@
         public System.Windows.Forms.Button buttonAfegir;
         public System.Windows.Forms.DataGridView dgvCopies;
         public System.Windows.Forms.DataGridView dgvLlibres;
+        public System.Windows.Forms.CheckBox checkBoxDeshabilitats;
     }
 }
