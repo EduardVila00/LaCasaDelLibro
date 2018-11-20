@@ -27,6 +27,7 @@
             this.buttonAfegir = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
+            this.checkBoxMostrarBaixa = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuaris)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,10 +84,27 @@
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = false;
             // 
+            // checkBoxMostrarBaixa
+            // 
+            this.checkBoxMostrarBaixa.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxMostrarBaixa.AutoSize = true;
+            this.checkBoxMostrarBaixa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.checkBoxMostrarBaixa.FlatAppearance.BorderSize = 0;
+            this.checkBoxMostrarBaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxMostrarBaixa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxMostrarBaixa.ForeColor = System.Drawing.Color.White;
+            this.checkBoxMostrarBaixa.Location = new System.Drawing.Point(522, 17);
+            this.checkBoxMostrarBaixa.Name = "checkBoxMostrarBaixa";
+            this.checkBoxMostrarBaixa.Size = new System.Drawing.Size(176, 25);
+            this.checkBoxMostrarBaixa.TabIndex = 11;
+            this.checkBoxMostrarBaixa.Text = "Mostrar usuaris de baixa";
+            this.checkBoxMostrarBaixa.UseVisualStyleBackColor = false;
+            // 
             // Usuari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxMostrarBaixa);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonAfegir);
@@ -95,6 +113,7 @@
             this.Size = new System.Drawing.Size(803, 426);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuaris)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,5 +123,6 @@
         public System.Windows.Forms.Button buttonModificar;
         public System.Windows.Forms.Button buttonAfegir;
         public System.Windows.Forms.DataGridView dgvUsuaris;
+        public System.Windows.Forms.CheckBox checkBoxMostrarBaixa;
     }
 }
