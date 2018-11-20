@@ -564,23 +564,32 @@ namespace Controller {
             string numpaginesString;
             string editorial;
             string idioma;
+            Model.Llibre asegurar;
+
             if (((isbn = BibliotecaAdmin.afegirLlibre1.textBoxIsbn.Text).CompareTo("") > 0) && ((titol = BibliotecaAdmin.afegirLlibre1.textBoxTitol.Text).CompareTo("") > 0)
                 && ((numpaginesString = BibliotecaAdmin.afegirLlibre1.textBoxNumPagines.Text).CompareTo("") > 0) && ((editorial = BibliotecaAdmin.afegirLlibre1.textBoxEditorial.Text).CompareTo("") > 0)
                  && ((idioma = BibliotecaAdmin.afegirLlibre1.textBoxIdioma.Text).CompareTo("") > 0)) {
-                Model.Llibre l = new Model.Llibre();
-                l.Isbn = isbn;
-                l.titol = titol;
-                l.numPagines = int.Parse(numpaginesString);
-                l.editorial = editorial;
-                l.idioma = idioma;
-                l.dataIntroduccio = DateTime.Now;
-                l.dataDarreraModificacio = DateTime.Now;
-                l.dataBaixa = null;
-                db.Llibre.Add(l);
-                int n = trySave();
-                llibresPopulate();
-                /*llibresGo(BibliotecaAdmin.llibre1.dgvLlibres.RowCount - 1);*/
-                BibliotecaAdmin.llibre1.BringToFront();
+                asegurar = db.Llibre.Where(x => x.Isbn == isbn).FirstOrDefault();
+                if (asegurar == null)
+                {
+                    Model.Llibre l = new Model.Llibre();
+                    l.Isbn = isbn;
+                    l.titol = titol;
+                    l.numPagines = int.Parse(numpaginesString);
+                    l.editorial = editorial;
+                    l.idioma = idioma;
+                    l.dataIntroduccio = DateTime.Now;
+                    l.dataDarreraModificacio = DateTime.Now;
+                    l.dataBaixa = null;
+                    db.Llibre.Add(l);
+                    int n = trySave();
+                    llibresPopulate();
+                    /*llibresGo(BibliotecaAdmin.llibre1.dgvLlibres.RowCount - 1);*/
+                    BibliotecaAdmin.llibre1.BringToFront();
+                } else
+                {
+                    MessageBox.Show("Ja existeix un llibre amb aquest ISBN.");
+                }
             } else {
                 MessageBox.Show(Missatge);
             }
@@ -856,6 +865,7 @@ namespace Controller {
                 } else {
                     MessageBox.Show(missatge);
                 }
+                copiesPopulate();
             }
         }
 
