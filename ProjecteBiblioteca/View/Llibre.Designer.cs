@@ -29,6 +29,8 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.dgvLlibres = new System.Windows.Forms.DataGridView();
             this.checkBoxDeshabilitats = new System.Windows.Forms.CheckBox();
+            this.textBoxBuscarAutor = new System.Windows.Forms.TextBox();
+            this.buttonBuscarAutor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLlibres)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,10 +112,33 @@
             this.checkBoxDeshabilitats.Text = "Mostrar Deshabilitats";
             this.checkBoxDeshabilitats.UseVisualStyleBackColor = false;
             // 
+            // textBoxBuscarAutor
+            // 
+            this.textBoxBuscarAutor.Location = new System.Drawing.Point(106, 19);
+            this.textBoxBuscarAutor.Name = "textBoxBuscarAutor";
+            this.textBoxBuscarAutor.Size = new System.Drawing.Size(142, 20);
+            this.textBoxBuscarAutor.TabIndex = 15;
+            // 
+            // buttonBuscarAutor
+            // 
+            this.buttonBuscarAutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.buttonBuscarAutor.FlatAppearance.BorderSize = 0;
+            this.buttonBuscarAutor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscarAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBuscarAutor.ForeColor = System.Drawing.Color.White;
+            this.buttonBuscarAutor.Location = new System.Drawing.Point(264, 15);
+            this.buttonBuscarAutor.Name = "buttonBuscarAutor";
+            this.buttonBuscarAutor.Size = new System.Drawing.Size(103, 27);
+            this.buttonBuscarAutor.TabIndex = 14;
+            this.buttonBuscarAutor.Text = "Buscar";
+            this.buttonBuscarAutor.UseVisualStyleBackColor = false;
+            // 
             // Llibre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxBuscarAutor);
+            this.Controls.Add(this.buttonBuscarAutor);
             this.Controls.Add(this.checkBoxDeshabilitats);
             this.Controls.Add(this.dgvLlibres);
             this.Controls.Add(this.buttonEliminar);
@@ -134,5 +159,7 @@
         public System.Windows.Forms.Button buttonAfegir;
         public System.Windows.Forms.DataGridView dgvLlibres;
         public System.Windows.Forms.CheckBox checkBoxDeshabilitats;
+        public System.Windows.Forms.TextBox textBoxBuscarAutor;
+        public System.Windows.Forms.Button buttonBuscarAutor;
     }
 }
