@@ -10,22 +10,26 @@ namespace Model {
         public int Id { get; set; }
         public int idSoci { get; set; }
         public string LlibreIsbn { get; set; }
+        public System.DateTime dataFinalGuardar { get; set; }
 
-        public LlistaEsperaDTO(int id, int idSoci, string LlibreIsbn) {
+        public LlistaEsperaDTO(int id, int idSoci, string LlibreIsbn,DateTime dataFinalGuardar) {
             Id = id;
             this.idSoci = idSoci;
             this.LlibreIsbn = LlibreIsbn;
+            this.dataFinalGuardar = dataFinalGuardar;
         }
 
         public LlistaEsperaDTO(LlistaEspera llistaEspera) {
             this.Id = llistaEspera.Id;
             this.idSoci = llistaEspera.idSoci;
             this.LlibreIsbn = llistaEspera.LlibreIsbn;
+            this.dataFinalGuardar = llistaEspera.dataFinalGuardar;
         }
         public LlistaEsperaDTO(DataGridViewCellCollection row) {
             this.Id = (int) row["Id"].Value;
             this.idSoci = (int) row["idSoci"].Value;
             this.LlibreIsbn = (string) row["LlibreIsbn"].Value;
+            this.dataFinalGuardar = (DateTime)row["dataFinalGUardar"].Value;
         }
     }
 }

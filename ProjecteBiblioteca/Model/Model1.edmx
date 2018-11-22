@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Autor">
           <Key>
             <PropertyRef Name="Id" />
@@ -42,6 +42,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="data" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prestecId" Type="int" Nullable="false" />
+          <Property Name="sociId" Type="int" Nullable="false" />
+          <Property Name="data" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Llibre">
           <Key>
             <PropertyRef Name="Isbn" />
@@ -62,6 +71,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LlibreIsbn" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="idSoci" Type="int" Nullable="false" />
+          <Property Name="dataFinalGuardar" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Prestec">
           <Key>
@@ -162,6 +172,7 @@
           <EntitySet Name="AutorLlibre" EntityType="Self.AutorLlibre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Copia" EntityType="Self.Copia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiaNoHabil" EntityType="Self.DiaNoHabil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Llibre" EntityType="Self.Llibre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LlistaEspera" EntityType="Self.LlistaEspera" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prestec" EntityType="Self.Prestec" Schema="dbo" store:Type="Tables" />
@@ -191,8 +202,7 @@
             <End Role="Prestec" EntitySet="Prestec" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -252,6 +262,7 @@
           <Property Name="LlibreIsbn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="idSoci" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Llibre" Relationship="Self.FK_LlibreLlistaEspera" FromRole="LlistaEspera" ToRole="Llibre" />
+          <Property Name="dataFinalGuardar" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Prestec">
           <Key>
@@ -358,7 +369,17 @@
             <End Role="Autor" EntitySet="Autor" />
             <End Role="Llibre" EntitySet="Llibre" />
           </AssociationSet>
+          <EntitySet Name="Email" EntityType="BibliotecaModel.Email" />
         </EntityContainer>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="sociId" Type="Int32" Nullable="false" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prestecId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -414,6 +435,7 @@
           <EntitySetMapping Name="LlistaEspera">
             <EntityTypeMapping TypeName="BibliotecaModel.LlistaEspera">
               <MappingFragment StoreEntitySet="LlistaEspera">
+                <ScalarProperty Name="dataFinalGuardar" ColumnName="dataFinalGuardar" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="LlibreIsbn" ColumnName="LlibreIsbn" />
                 <ScalarProperty Name="idSoci" ColumnName="idSoci" />
@@ -452,6 +474,16 @@
               <ScalarProperty Name="Isbn" ColumnName="Llibre_Isbn" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Email">
+            <EntityTypeMapping TypeName="BibliotecaModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="prestecId" ColumnName="prestecId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="sociId" ColumnName="sociId" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

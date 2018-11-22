@@ -32,5 +32,6 @@ namespace Model
         public virtual DbSet<LlistaEspera> LlistaEspera { get; set; }
         public virtual DbSet<Prestec> Prestec { get; set; }
         public virtual DbSet<Soci> Soci { get; set; }
+        public virtual DbSet<Email> Email { get; set; }
     }
 }

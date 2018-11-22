@@ -17,6 +17,7 @@
         <AssociationConnector Association="BibliotecaModel.FK_LlibreLlistaEspera" ManuallyRouted="false" />
         <AssociationConnector Association="BibliotecaModel.FK_PrestecSocis" ManuallyRouted="false" />
         <AssociationConnector Association="BibliotecaModel.AutorLlibre" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BibliotecaModel.Email" Width="1.5" PointX="2.75" PointY="6.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
