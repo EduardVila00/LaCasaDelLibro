@@ -30,6 +30,8 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonAfegirLlibres = new System.Windows.Forms.Button();
             this.dgvLlibres = new System.Windows.Forms.DataGridView();
+            this.buttonEliminarLlibres = new System.Windows.Forms.Button();
+            this.checkBoxSwitchLlibres = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLlibres)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,11 +110,38 @@
             this.dgvLlibres.Size = new System.Drawing.Size(423, 261);
             this.dgvLlibres.TabIndex = 7;
             // 
+            // buttonEliminarLlibres
+            // 
+            this.buttonEliminarLlibres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.buttonEliminarLlibres.FlatAppearance.BorderSize = 0;
+            this.buttonEliminarLlibres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEliminarLlibres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminarLlibres.ForeColor = System.Drawing.Color.White;
+            this.buttonEliminarLlibres.Location = new System.Drawing.Point(634, 295);
+            this.buttonEliminarLlibres.Name = "buttonEliminarLlibres";
+            this.buttonEliminarLlibres.Size = new System.Drawing.Size(142, 41);
+            this.buttonEliminarLlibres.TabIndex = 9;
+            this.buttonEliminarLlibres.Text = "Eliminar";
+            this.buttonEliminarLlibres.UseVisualStyleBackColor = false;
+            // 
+            // checkBoxSwitchLlibres
+            // 
+            this.checkBoxSwitchLlibres.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxSwitchLlibres.AutoSize = true;
+            this.checkBoxSwitchLlibres.Location = new System.Drawing.Point(556, 3);
+            this.checkBoxSwitchLlibres.Name = "checkBoxSwitchLlibres";
+            this.checkBoxSwitchLlibres.Size = new System.Drawing.Size(49, 23);
+            this.checkBoxSwitchLlibres.TabIndex = 10;
+            this.checkBoxSwitchLlibres.Text = "Switch";
+            this.checkBoxSwitchLlibres.UseVisualStyleBackColor = true;
+            // 
             // ModificarAutor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonAfegirLlibres);
+            this.Controls.Add(this.checkBoxSwitchLlibres);
+            this.Controls.Add(this.buttonEliminarLlibres);
             this.Controls.Add(this.dgvLlibres);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.textBoxCognoms);
@@ -136,5 +165,7 @@
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button buttonAfegirLlibres;
         public System.Windows.Forms.DataGridView dgvLlibres;
+        public System.Windows.Forms.Button buttonEliminarLlibres;
+        public System.Windows.Forms.CheckBox checkBoxSwitchLlibres;
     }
 }

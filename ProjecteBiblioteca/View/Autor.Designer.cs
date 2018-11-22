@@ -29,7 +29,6 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.checkBoxDeshabilitats = new System.Windows.Forms.CheckBox();
-            this.buttonBuscarAutor = new System.Windows.Forms.Button();
             this.textBoxBuscarAutor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).BeginInit();
             this.SuspendLayout();
@@ -111,20 +110,6 @@
             this.checkBoxDeshabilitats.Text = "Mostrar Deshabilitats";
             this.checkBoxDeshabilitats.UseVisualStyleBackColor = false;
             // 
-            // buttonBuscarAutor
-            // 
-            this.buttonBuscarAutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
-            this.buttonBuscarAutor.FlatAppearance.BorderSize = 0;
-            this.buttonBuscarAutor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBuscarAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBuscarAutor.ForeColor = System.Drawing.Color.White;
-            this.buttonBuscarAutor.Location = new System.Drawing.Point(264, 11);
-            this.buttonBuscarAutor.Name = "buttonBuscarAutor";
-            this.buttonBuscarAutor.Size = new System.Drawing.Size(103, 27);
-            this.buttonBuscarAutor.TabIndex = 12;
-            this.buttonBuscarAutor.Text = "Buscar";
-            this.buttonBuscarAutor.UseVisualStyleBackColor = false;
-            // 
             // textBoxBuscarAutor
             // 
             this.textBoxBuscarAutor.Location = new System.Drawing.Point(106, 15);
@@ -137,7 +122,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxBuscarAutor);
-            this.Controls.Add(this.buttonBuscarAutor);
             this.Controls.Add(this.checkBoxDeshabilitats);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
@@ -158,7 +142,6 @@
         public System.Windows.Forms.Button buttonModificar;
         public System.Windows.Forms.Button buttonEliminar;
         public System.Windows.Forms.CheckBox checkBoxDeshabilitats;
-        public System.Windows.Forms.Button buttonBuscarAutor;
         public System.Windows.Forms.TextBox textBoxBuscarAutor;
     }
 }

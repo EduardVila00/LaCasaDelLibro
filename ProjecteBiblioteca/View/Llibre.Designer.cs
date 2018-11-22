@@ -23,14 +23,13 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonAfegir = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.dgvLlibres = new System.Windows.Forms.DataGridView();
             this.checkBoxDeshabilitats = new System.Windows.Forms.CheckBox();
-            this.textBoxBuscarAutor = new System.Windows.Forms.TextBox();
-            this.buttonBuscarAutor = new System.Windows.Forms.Button();
+            this.textBoxBuscarLlibre = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLlibres)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,14 +79,14 @@
             // 
             this.dgvLlibres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvLlibres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLlibres.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLlibres.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLlibres.Location = new System.Drawing.Point(106, 50);
             this.dgvLlibres.MultiSelect = false;
             this.dgvLlibres.Name = "dgvLlibres";
@@ -112,33 +111,18 @@
             this.checkBoxDeshabilitats.Text = "Mostrar Deshabilitats";
             this.checkBoxDeshabilitats.UseVisualStyleBackColor = false;
             // 
-            // textBoxBuscarAutor
+            // textBoxBuscarLlibre
             // 
-            this.textBoxBuscarAutor.Location = new System.Drawing.Point(106, 19);
-            this.textBoxBuscarAutor.Name = "textBoxBuscarAutor";
-            this.textBoxBuscarAutor.Size = new System.Drawing.Size(142, 20);
-            this.textBoxBuscarAutor.TabIndex = 15;
-            // 
-            // buttonBuscarAutor
-            // 
-            this.buttonBuscarAutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
-            this.buttonBuscarAutor.FlatAppearance.BorderSize = 0;
-            this.buttonBuscarAutor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBuscarAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBuscarAutor.ForeColor = System.Drawing.Color.White;
-            this.buttonBuscarAutor.Location = new System.Drawing.Point(264, 15);
-            this.buttonBuscarAutor.Name = "buttonBuscarAutor";
-            this.buttonBuscarAutor.Size = new System.Drawing.Size(103, 27);
-            this.buttonBuscarAutor.TabIndex = 14;
-            this.buttonBuscarAutor.Text = "Buscar";
-            this.buttonBuscarAutor.UseVisualStyleBackColor = false;
+            this.textBoxBuscarLlibre.Location = new System.Drawing.Point(106, 19);
+            this.textBoxBuscarLlibre.Name = "textBoxBuscarLlibre";
+            this.textBoxBuscarLlibre.Size = new System.Drawing.Size(142, 20);
+            this.textBoxBuscarLlibre.TabIndex = 15;
             // 
             // Llibre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxBuscarAutor);
-            this.Controls.Add(this.buttonBuscarAutor);
+            this.Controls.Add(this.textBoxBuscarLlibre);
             this.Controls.Add(this.checkBoxDeshabilitats);
             this.Controls.Add(this.dgvLlibres);
             this.Controls.Add(this.buttonEliminar);
@@ -159,7 +143,6 @@
         public System.Windows.Forms.Button buttonAfegir;
         public System.Windows.Forms.DataGridView dgvLlibres;
         public System.Windows.Forms.CheckBox checkBoxDeshabilitats;
-        public System.Windows.Forms.TextBox textBoxBuscarAutor;
-        public System.Windows.Forms.Button buttonBuscarAutor;
+        public System.Windows.Forms.TextBox textBoxBuscarLlibre;
     }
 }

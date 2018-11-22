@@ -36,6 +36,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.buttonAfegirAutors = new System.Windows.Forms.Button();
             this.dgvAutors = new System.Windows.Forms.DataGridView();
+            this.checkBoxSwitchAutors = new System.Windows.Forms.CheckBox();
+            this.buttonEliminarAutors = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutors)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,11 +171,38 @@
             this.dgvAutors.Size = new System.Drawing.Size(423, 261);
             this.dgvAutors.TabIndex = 18;
             // 
+            // checkBoxSwitchAutors
+            // 
+            this.checkBoxSwitchAutors.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxSwitchAutors.AutoSize = true;
+            this.checkBoxSwitchAutors.Location = new System.Drawing.Point(570, 0);
+            this.checkBoxSwitchAutors.Name = "checkBoxSwitchAutors";
+            this.checkBoxSwitchAutors.Size = new System.Drawing.Size(49, 23);
+            this.checkBoxSwitchAutors.TabIndex = 20;
+            this.checkBoxSwitchAutors.Text = "Switch";
+            this.checkBoxSwitchAutors.UseVisualStyleBackColor = true;
+            // 
+            // buttonEliminarAutors
+            // 
+            this.buttonEliminarAutors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.buttonEliminarAutors.FlatAppearance.BorderSize = 0;
+            this.buttonEliminarAutors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEliminarAutors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminarAutors.ForeColor = System.Drawing.Color.White;
+            this.buttonEliminarAutors.Location = new System.Drawing.Point(648, 292);
+            this.buttonEliminarAutors.Name = "buttonEliminarAutors";
+            this.buttonEliminarAutors.Size = new System.Drawing.Size(142, 41);
+            this.buttonEliminarAutors.TabIndex = 21;
+            this.buttonEliminarAutors.Text = "Eliminar";
+            this.buttonEliminarAutors.UseVisualStyleBackColor = false;
+            // 
             // ModificarLlibre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonAfegirAutors);
+            this.Controls.Add(this.buttonEliminarAutors);
+            this.Controls.Add(this.checkBoxSwitchAutors);
             this.Controls.Add(this.dgvAutors);
             this.Controls.Add(this.textBoxIdioma);
             this.Controls.Add(this.label6);
@@ -209,5 +238,7 @@
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button buttonAfegirAutors;
         public System.Windows.Forms.DataGridView dgvAutors;
+        public System.Windows.Forms.CheckBox checkBoxSwitchAutors;
+        public System.Windows.Forms.Button buttonEliminarAutors;
     }
 }

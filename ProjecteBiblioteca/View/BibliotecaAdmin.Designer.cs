@@ -31,7 +31,7 @@
             this.buttonCalendari = new System.Windows.Forms.Button();
             this.buttonUsuaris = new System.Windows.Forms.Button();
             this.buttonCopies = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.buttonAbout = new System.Windows.Forms.Button();
             this.buttonLlibres = new System.Windows.Forms.Button();
             this.buttonAutors = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -69,7 +69,7 @@
             this.panel1.Controls.Add(this.buttonCalendari);
             this.panel1.Controls.Add(this.buttonUsuaris);
             this.panel1.Controls.Add(this.buttonCopies);
-            this.panel1.Controls.Add(this.button14);
+            this.panel1.Controls.Add(this.buttonAbout);
             this.panel1.Controls.Add(this.buttonLlibres);
             this.panel1.Controls.Add(this.buttonAutors);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -166,20 +166,20 @@
             this.buttonCopies.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCopies.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // buttonAbout
             // 
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(3, 546);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(36, 34);
-            this.button14.TabIndex = 4;
-            this.button14.Text = "?";
-            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button14.UseVisualStyleBackColor = true;
+            this.buttonAbout.FlatAppearance.BorderSize = 0;
+            this.buttonAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAbout.ForeColor = System.Drawing.Color.White;
+            this.buttonAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAbout.Location = new System.Drawing.Point(3, 546);
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.Size = new System.Drawing.Size(36, 34);
+            this.buttonAbout.TabIndex = 4;
+            this.buttonAbout.Text = "?";
+            this.buttonAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonAbout.UseVisualStyleBackColor = true;
             // 
             // buttonLlibres
             // 
@@ -439,7 +439,7 @@
         public System.Windows.Forms.Button buttonCalendari;
         public System.Windows.Forms.Button buttonUsuaris;
         public System.Windows.Forms.Button buttonCopies;
-        public System.Windows.Forms.Button button14;
+        public System.Windows.Forms.Button buttonAbout;
         public System.Windows.Forms.Panel panel2;
         public Autor autor1;
         public CalendariFinal calendariFinal1;
