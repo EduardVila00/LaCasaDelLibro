@@ -12,13 +12,11 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class LlistaEspera
+    public partial class Email
     {
+        public int sociId { get; set; }
+        public System.DateTime data { get; set; }
         public int Id { get; set; }
-        public string LlibreIsbn { get; set; }
-        public int idSoci { get; set; }
-        public System.DateTime dataFinalGuardar { get; set; }
-    
-        public virtual Llibre Llibre { get; set; }
+        public int prestecId { get; set; }
     }
 }
