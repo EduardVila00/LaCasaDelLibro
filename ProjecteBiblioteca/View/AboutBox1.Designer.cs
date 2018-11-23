@@ -142,6 +142,7 @@
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = "This product is licensed under the terms of the End-User License Agreement to:\r\n\r" +
     "\nInstitut Carles Vallbona\r\n";
+            this.textBoxDescription.TextChanged += new System.EventHandler(this.textBoxDescription_TextChanged);
             // 
             // okButton
             // 

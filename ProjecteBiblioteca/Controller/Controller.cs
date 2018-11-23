@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Drawing;
 
 namespace Controller
 {
@@ -84,6 +85,9 @@ namespace Controller
             BibliotecaAdmin.prestec1.checkBoxMostrarFinalitzats.CheckedChanged += veurePrestecsDeshabilitats;
             BibliotecaAdmin.generarPrestec1.buttonGenerarPrestec.Click += crearPrestec;
             BibliotecaAdmin.prestec1.buttonFinalitzarPrestec.Click += finalitzarPrestec;
+            //Configuacion
+            BibliotecaAdmin.configuracio1.buttonChangeColor.Click += changeColor;
+            BibliotecaAdmin.configuracio1.buttonDefaultColor.Click += defaultColor;
             //Keypress
             BibliotecaAdmin.afegirAutor1.textBoxNom.KeyPress += noNumbers;
             BibliotecaAdmin.afegirAutor1.textBoxCognoms.KeyPress += noNumbers;
@@ -312,6 +316,26 @@ namespace Controller
             {
                 e.Handled = true;
             }
+        }
+
+        public void changeColor(object sender, EventArgs e)
+        {
+            
+            if (BibliotecaAdmin.configuracio1.colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Color myColor = BibliotecaAdmin.configuracio1.colorDialog1.Color;
+                BibliotecaAdmin.panel2.BackColor = myColor;
+                BibliotecaAdmin.panel3.BackColor = myColor;
+                BibliotecaAdmin.SidePanel.BackColor = myColor;
+            }
+        }
+
+        public void defaultColor(object sender, EventArgs e)
+        {
+                Color myColor = Color.FromArgb( 178, 8, 55);
+                BibliotecaAdmin.panel2.BackColor = myColor;
+                BibliotecaAdmin.panel3.BackColor = myColor;
+                BibliotecaAdmin.SidePanel.BackColor = myColor;
         }
 
 
