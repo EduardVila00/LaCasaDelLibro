@@ -284,11 +284,9 @@ namespace Controller {
             }
         }
 
-        public void changeColor(object sender, EventArgs e)
-        {
-            
-            if (BibliotecaAdmin.configuracio1.colorDialog1.ShowDialog() == DialogResult.OK)
-            {
+        public void changeColor(object sender, EventArgs e) {
+
+            if (BibliotecaAdmin.configuracio1.colorDialog1.ShowDialog() == DialogResult.OK) {
                 Color myColor = BibliotecaAdmin.configuracio1.colorDialog1.Color;
                 BibliotecaAdmin.panel2.BackColor = myColor;
                 BibliotecaAdmin.panel3.BackColor = myColor;
@@ -296,12 +294,11 @@ namespace Controller {
             }
         }
 
-        public void defaultColor(object sender, EventArgs e)
-        {
-                Color myColor = Color.FromArgb( 178, 8, 55);
-                BibliotecaAdmin.panel2.BackColor = myColor;
-                BibliotecaAdmin.panel3.BackColor = myColor;
-                BibliotecaAdmin.SidePanel.BackColor = myColor;
+        public void defaultColor(object sender, EventArgs e) {
+            Color myColor = Color.FromArgb(178, 8, 55);
+            BibliotecaAdmin.panel2.BackColor = myColor;
+            BibliotecaAdmin.panel3.BackColor = myColor;
+            BibliotecaAdmin.SidePanel.BackColor = myColor;
         }
 
 

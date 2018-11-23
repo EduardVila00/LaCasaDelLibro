@@ -90,6 +90,6 @@
         public System.Windows.Forms.Button buttonChangeColor;
         public System.Windows.Forms.ColorDialog colorDialog1;
         public System.Windows.Forms.Button buttonDefaultColor;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox1;
     }
 }

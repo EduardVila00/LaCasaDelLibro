@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Biblioteca Montnegre")]
-[assembly: AssemblyDescription("This product is licensed under the terms of the End-User License Agreement to:                                                                                                                                          Institut Carles Vallbona")]
+[assembly: AssemblyDescription("This product is licensed under the terms of the End-User License Agreement to: Institut Carles Vallbona")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Foxtrot S.A - Eduard Vila && Alex Romero")]
 [assembly: AssemblyProduct("Projecte 2: Informatització d'una Biblioteca")]
