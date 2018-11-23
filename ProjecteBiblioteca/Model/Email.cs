@@ -17,6 +17,6 @@ namespace Model
         public int sociId { get; set; }
         public System.DateTime data { get; set; }
         public int Id { get; set; }
-        public int prestecId { get; set; }
+        public int llistaEsperaId { get; set; }
     }
 }
