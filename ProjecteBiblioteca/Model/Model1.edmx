@@ -47,7 +47,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="prestecId" Type="int" Nullable="false" />
+          <Property Name="llistaEsperaId" Type="int" Nullable="false" />
           <Property Name="sociId" Type="int" Nullable="false" />
           <Property Name="data" Type="datetime" Nullable="false" />
         </EntityType>
@@ -378,7 +378,7 @@
           <Property Name="sociId" Type="Int32" Nullable="false" />
           <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="prestecId" Type="Int32" Nullable="false" />
+          <Property Name="llistaEsperaId" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -477,7 +477,7 @@
           <EntitySetMapping Name="Email">
             <EntityTypeMapping TypeName="BibliotecaModel.Email">
               <MappingFragment StoreEntitySet="Email">
-                <ScalarProperty Name="prestecId" ColumnName="prestecId" />
+                <ScalarProperty Name="llistaEsperaId" ColumnName="llistaEsperaId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="data" ColumnName="data" />
                 <ScalarProperty Name="sociId" ColumnName="sociId" />
